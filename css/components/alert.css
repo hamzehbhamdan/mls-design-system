@@ -1,0 +1,54 @@
+/* Alert, callout, empty state and skeleton */
+
+.mls-alert {
+  --alert-accent: var(--mls-color-info);
+  --alert-bg: var(--mls-color-info-bg);
+
+  display: flex;
+  gap: var(--mls-space-3);
+  padding: var(--mls-space-4);
+  background: var(--alert-bg);
+  border-inline-start: var(--mls-borderWidth-3) solid var(--alert-accent);
+  border-radius: var(--mls-radius-md);
+  font-size: var(--mls-fontSize-sm);
+}
+.mls-alert__title { font-weight: var(--mls-fontWeight-bold); color: var(--alert-accent); }
+.mls-alert__body { display: flex; flex-direction: column; gap: var(--mls-space-1); }
+
+.mls-alert--success { --alert-accent: var(--mls-color-success); --alert-bg: var(--mls-color-success-bg); }
+.mls-alert--warning { --alert-accent: var(--mls-color-warning); --alert-bg: var(--mls-color-warning-bg); }
+.mls-alert--danger  { --alert-accent: var(--mls-color-danger);  --alert-bg: var(--mls-color-danger-bg); }
+
+/* Empty state -- uses the diagonal hatch so a "no matches today" panel
+ * still feels like part of the brand rather than a hole in the page. */
+.mls-empty {
+  display: grid;
+  place-items: center;
+  gap: var(--mls-space-3);
+  padding: var(--mls-space-16) var(--mls-space-6);
+  text-align: center;
+  border: var(--mls-borderWidth-1) dashed var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  background-image: repeating-linear-gradient(-45deg,
+    var(--mls-color-border) 0, var(--mls-color-border) 1px,
+    transparent 1px, transparent 9px);
+}
+.mls-empty__title { font-family: var(--mls-font-display); font-weight: var(--mls-fontWeight-bold); font-size: var(--mls-fontSize-lg); }
+.mls-empty__body { color: var(--mls-color-fg-muted); font-size: var(--mls-fontSize-sm); max-width: 42ch; }
+
+/* Skeleton. The shimmer runs on the 45-degree angle, like everything else. */
+.mls-skeleton {
+  background: linear-gradient(-45deg,
+    var(--mls-color-bg-muted) 25%,
+    var(--mls-color-bg-subtle) 50%,
+    var(--mls-color-bg-muted) 75%);
+  background-size: 300% 100%;
+  border-radius: var(--mls-radius-sm);
+  animation: mls-shimmer 1.4s var(--mls-easing-standard) infinite;
+}
+@keyframes mls-shimmer { from { background-position: 150% 0; } to { background-position: -150% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .mls-skeleton { animation: none; background: var(--mls-color-bg-muted); }
+}
+.mls-skeleton--text { height: 1em; }
+.mls-skeleton--title { height: 1.5em; width: 60%; }

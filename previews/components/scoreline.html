@@ -1,0 +1,110 @@
+<!-- @dsCard group="Components" name="Scoreline" subtitle="Live, final, upcoming, compact and hero" width="1120" height="880" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Scoreline</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Components</p>
+    <h1 class="pv__title">Scoreline</h1>
+    <p class="pv__note">Home team first, always. Tabular numerals, always. Match state lives in <code class="pv__code">data-state</code>. Below 640px the club name swaps to the tricode rather than truncating.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Live</h2>
+    <article class="mls-scoreline" data-state="live" data-club="por">
+      <div class="mls-scoreline__team mls-scoreline__team--home">
+        <span class="mls-crest mls-crest--sm" data-tricode="POR" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">Portland Timbers</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">POR</span>
+      </div>
+      <div class="mls-scoreline__score"><span>2</span><span class="mls-scoreline__separator">–</span><span>1</span></div>
+      <div class="mls-scoreline__team mls-scoreline__team--away">
+        <span class="mls-crest mls-crest--sm" data-tricode="SEA" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">Seattle Sounders FC</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">SEA</span>
+      </div>
+      <div class="mls-scoreline__status">
+        <span class="mls-badge mls-badge--live">Live</span>
+        <span class="mls-scoreline__clock" aria-live="polite">67&rsquo;</span>
+        <span class="mls-competition">MLS Regular Season</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Final — loser dims, winner gains weight</h2>
+    <article class="mls-scoreline" data-state="final">
+      <div class="mls-scoreline__team mls-scoreline__team--home" data-outcome="win">
+        <span class="mls-crest mls-crest--sm" data-tricode="CLB" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">Columbus Crew</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">CLB</span>
+      </div>
+      <div class="mls-scoreline__score"><span>3</span><span class="mls-scoreline__separator">–</span><span>0</span></div>
+      <div class="mls-scoreline__team mls-scoreline__team--away" data-outcome="loss">
+        <span class="mls-crest mls-crest--sm" data-tricode="CIN" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">FC Cincinnati</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">CIN</span>
+      </div>
+      <div class="mls-scoreline__status">
+        <span>Full time</span><span class="mls-competition">Hell is Real</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Upcoming and compact</h2>
+    <article class="mls-scoreline mls-scoreline--compact" data-state="upcoming">
+      <div class="mls-scoreline__team mls-scoreline__team--home">
+        <span class="mls-crest mls-crest--sm" data-tricode="MIA" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">Inter Miami CF</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">MIA</span>
+      </div>
+      <div class="mls-scoreline__score">7:30 pm ET</div>
+      <div class="mls-scoreline__team mls-scoreline__team--away">
+        <span class="mls-crest mls-crest--sm" data-tricode="ATL" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">Atlanta United FC</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">ATL</span>
+      </div>
+    </article>
+    <article class="mls-scoreline mls-scoreline--compact" data-state="final">
+      <div class="mls-scoreline__team mls-scoreline__team--home" data-outcome="loss">
+        <span class="mls-crest mls-crest--sm" data-tricode="RBNY" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">New York Red Bulls</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">RBNY</span>
+      </div>
+      <div class="mls-scoreline__score"><span>1</span><span class="mls-scoreline__separator">–</span><span>2</span></div>
+      <div class="mls-scoreline__team mls-scoreline__team--away" data-outcome="win">
+        <span class="mls-crest mls-crest--sm" data-tricode="NYC" data-placeholder></span>
+        <span class="mls-scoreline__name mls-scoreline__name--full">New York City FC</span>
+        <span class="mls-scoreline__name mls-scoreline__name--code mls-tricode">NYC</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Hero — match centre header</h2>
+    <article class="mls-scoreline mls-scoreline--hero" data-state="final" data-club="lafc">
+      <div class="mls-scoreline__team mls-scoreline__team--home" data-outcome="win">
+        <span class="mls-crest" data-tricode="LAFC" data-placeholder></span>
+        <span class="mls-scoreline__name">LAFC</span>
+      </div>
+      <div class="mls-scoreline__score"><span>3</span><span class="mls-scoreline__separator">–</span><span>2</span></div>
+      <div class="mls-scoreline__team mls-scoreline__team--away" data-outcome="loss">
+        <span class="mls-crest" data-tricode="LA" data-placeholder></span>
+        <span class="mls-scoreline__name">LA Galaxy</span>
+      </div>
+      <div class="mls-scoreline__status">
+        <span>Full time</span><span class="mls-competition">El Tráfico</span><span>BMO Stadium</span>
+      </div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- @dsCard group="Brand" name="Graphic devices" subtitle="The Slash, The Corners, duotone, crest slot" width="1120" height="820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Graphic devices</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>
+  .demo { min-height: 140px; display: grid; place-items: center; border-radius: var(--mls-radius-lg); }
+  .demo p { font-family: var(--mls-font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+  .fake-photo { aspect-ratio: 16/9; background:
+    radial-gradient(circle at 30% 35%, #d8dde4 0 18%, transparent 19%),
+    linear-gradient(160deg, #8f9aa8 0%, #4d5866 55%, #2b3341 100%); }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Brand</p>
+    <h1 class="pv__title">Graphic devices</h1>
+    <p class="pv__note">MLS's own partner guidelines name The Slash and The Corners as parts of the identity independent of the crest. They are what make a layout read as MLS with no crest in frame. Every diagonal here is exactly 45°.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">The Slash — 45°, driving upward</h2>
+    <div class="pv__grid">
+      <div class="demo mls-surface mls-slash mls-slash--subtle"><p>.mls-slash --subtle</p></div>
+      <div class="demo mls-surface mls-slash mls-slash--right mls-slash--subtle"><p>--right</p></div>
+      <div class="demo mls-hatch mls-surface"><p>.mls-hatch</p></div>
+    </div>
+    <div class="mls-slash-band" style="padding: var(--mls-space-8) var(--mls-space-6) var(--mls-space-12); color: var(--mls-color-accent-contrast)">
+      <p class="mls-display-3">.mls-slash-band</p>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">The Corners — clipped 45° geometry</h2>
+    <div class="pv__grid">
+      <div class="demo mls-notch" style="background: var(--mls-color-accent-base); color: var(--mls-color-accent-contrast); --notch: 16px"><p>.mls-notch</p></div>
+      <div class="demo mls-notch mls-notch--br" style="background: var(--mls-color-bg-inverse); color: var(--mls-color-fg-inverse); --notch: 16px"><p>--br</p></div>
+      <div class="demo mls-corners mls-surface" style="padding: var(--mls-space-6)"><p>.mls-corners</p></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Duotone — re-tints with the club theme</h2>
+    <div class="pv__grid">
+      <div data-club="por"><figure class="mls-duotone"><div class="fake-photo"></div></figure><p class="mls-caption" style="margin-top:6px">data-club="por"</p></div>
+      <div data-club="clb"><figure class="mls-duotone"><div class="fake-photo"></div></figure><p class="mls-caption" style="margin-top:6px">data-club="clb"</p></div>
+      <div data-club="mia"><figure class="mls-duotone"><div class="fake-photo"></div></figure><p class="mls-caption" style="margin-top:6px">data-club="mia"</p></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Crest slot — no marks ship in this repo</h2>
+    <p class="pv__note">Enforces the published 4×-X clear space by computing padding from its own size, plus the 32px minimum. The placeholder is deliberately ugly: one that looks finished is one that ships.</p>
+    <div class="pv__row" style="align-items:flex-end">
+      <span class="mls-crest mls-crest--sm" data-tricode="POR" data-placeholder></span>
+      <span class="mls-crest" data-tricode="SEA" data-placeholder></span>
+      <span class="mls-crest mls-crest--lg" data-tricode="CLB" data-placeholder></span>
+      <span class="mls-crest mls-crest--xl" data-tricode="MLS" data-placeholder></span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

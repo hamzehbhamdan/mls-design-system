@@ -1,0 +1,889 @@
+/* ============================================================
+ * MLS Design System -- generated file. Do not edit.
+ * Source: tokens/tokens.json + data/clubs.json
+ * Rebuild: npm run build
+ * ============================================================ */
+
+/* Club themes.
+ *
+ * Usage:  <div data-club="por"> ... </div>
+ *
+ * Two distinct values per club, and the distinction is load-bearing:
+ *   --mls-club-primary        the club's TRUE brand colour, never altered.
+ *                             Use for crests, badges, kit swatches, anywhere
+ *                             fidelity is a brand or licensing requirement.
+ *   --mls-color-accent-base   a contrast-corrected derivative for UI chrome.
+ *                             Guaranteed >= 3.2:1 on the active background.
+ *
+ * Correcting the first would be a brand violation. Not correcting the
+ * second would make 24 of 30 club themes fail WCAG.
+ */
+/* Atlanta United FC -- Eastern, since 2017. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="atl"] {
+  --mls-club-name: "Atlanta United FC";
+  --mls-club-tricode: "ATL";
+  --mls-club-primary: #9D2235;
+  --mls-club-secondary: #2D2A26;
+  --mls-club-tertiary: #A89968;
+  --mls-color-accent-base: #9D2235;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F3E4E7;
+  --mls-color-border-accent: #9D2235;
+}
+[data-club="atl"][data-theme="dark"],
+[data-theme="dark"] [data-club="atl"] {
+  --mls-color-accent-base: #B23745;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #25121C;
+  --mls-color-border-accent: #B23745;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="atl"],
+  [data-club="atl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #B23745;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #25121C;
+    --mls-color-border-accent: #B23745;
+  }
+}
+
+/* Austin FC -- Western, since 2021. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="atx"] {
+  --mls-club-name: "Austin FC";
+  --mls-club-tricode: "ATX";
+  --mls-club-primary: #00B140;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #00A432;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E0F6E8;
+  --mls-color-border-accent: #00A432;
+}
+[data-club="atx"][data-theme="dark"],
+[data-theme="dark"] [data-club="atx"] {
+  --mls-color-accent-base: #00B140;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #092C1E;
+  --mls-color-border-accent: #00B140;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="atx"],
+  [data-club="atx"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #00B140;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #092C1E;
+    --mls-color-border-accent: #00B140;
+  }
+}
+
+/* Charlotte FC -- Eastern, since 2022. Colour confidence: high. */
+[data-club="clt"] {
+  --mls-club-name: "Charlotte FC";
+  --mls-club-tricode: "CLT";
+  --mls-club-primary: #0085CA;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #000000;
+  --mls-color-accent-base: #0085CA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E0F0F9;
+  --mls-color-border-accent: #0085CA;
+}
+[data-club="clt"][data-theme="dark"],
+[data-theme="dark"] [data-club="clt"] {
+  --mls-color-accent-base: #0085CA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #092436;
+  --mls-color-border-accent: #0085CA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="clt"],
+  [data-club="clt"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #0085CA;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #092436;
+    --mls-color-border-accent: #0085CA;
+  }
+}
+
+/* Chicago Fire FC -- Eastern, since 1998. Colour confidence: high. */
+[data-club="chi"] {
+  --mls-club-name: "Chicago Fire FC";
+  --mls-club-tricode: "CHI";
+  --mls-club-primary: #FF0000;
+  --mls-club-secondary: #141946;
+  --mls-club-tertiary: #7CCDEF;
+  --mls-color-accent-base: #FF0000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFE0E0;
+  --mls-color-border-accent: #FF0000;
+}
+[data-club="chi"][data-theme="dark"],
+[data-theme="dark"] [data-club="chi"] {
+  --mls-color-accent-base: #FF0000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #370C12;
+  --mls-color-border-accent: #FF0000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="chi"],
+  [data-club="chi"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FF0000;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #370C12;
+    --mls-color-border-accent: #FF0000;
+  }
+}
+
+/* FC Cincinnati -- Eastern, since 2019. Colour confidence: high. */
+[data-club="cin"] {
+  --mls-club-name: "FC Cincinnati";
+  --mls-club-tricode: "CIN";
+  --mls-club-primary: #FE5000;
+  --mls-club-secondary: #003087;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #FE5000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFEAE0;
+  --mls-color-border-accent: #FE5000;
+}
+[data-club="cin"][data-theme="dark"],
+[data-theme="dark"] [data-club="cin"] {
+  --mls-color-accent-base: #FE5000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #371B12;
+  --mls-color-border-accent: #FE5000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="cin"],
+  [data-club="cin"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FE5000;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #371B12;
+    --mls-color-border-accent: #FE5000;
+  }
+}
+
+/* Colorado Rapids -- Western, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="col"] {
+  --mls-club-name: "Colorado Rapids";
+  --mls-club-tricode: "COL";
+  --mls-club-primary: #8A2432;
+  --mls-club-secondary: #8AB7E9;
+  --mls-club-tertiary: #C1C5C8;
+  --mls-color-accent-base: #8A2432;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F1E5E6;
+  --mls-color-border-accent: #8A2432;
+}
+[data-club="col"][data-theme="dark"],
+[data-theme="dark"] [data-club="col"] {
+  --mls-color-accent-base: #AB434D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #22131B;
+  --mls-color-border-accent: #AB434D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="col"],
+  [data-club="col"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #AB434D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #22131B;
+    --mls-color-border-accent: #AB434D;
+  }
+}
+
+/* Columbus Crew -- Eastern, since 1996. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="clb"] {
+  --mls-club-name: "Columbus Crew";
+  --mls-club-tricode: "CLB";
+  --mls-club-primary: #FEDD00;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #000000;
+  --mls-color-accent-base: #AD8C00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFFBE0;
+  --mls-color-border-accent: #AD8C00;
+}
+[data-club="clb"][data-theme="dark"],
+[data-theme="dark"] [data-club="clb"] {
+  --mls-color-accent-base: #FEDD00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #373412;
+  --mls-color-border-accent: #FEDD00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="clb"],
+  [data-club="clb"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FEDD00;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #373412;
+    --mls-color-border-accent: #FEDD00;
+  }
+}
+
+/* D.C. United -- Eastern, since 1996. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="dc"] {
+  --mls-club-name: "D.C. United";
+  --mls-club-tricode: "DC";
+  --mls-club-primary: #000000;
+  --mls-club-secondary: #EF3E42;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #000000;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E0E0;
+  --mls-color-border-accent: #000000;
+}
+[data-club="dc"][data-theme="dark"],
+[data-theme="dark"] [data-club="dc"] {
+  --mls-color-accent-base: #EF3E42;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #090C12;
+  --mls-color-border-accent: #EF3E42;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="dc"],
+  [data-club="dc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #EF3E42;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #090C12;
+    --mls-color-border-accent: #EF3E42;
+  }
+}
+
+/* FC Dallas -- Western, since 1996. Colour confidence: medium. */
+[data-club="dal"] {
+  --mls-club-name: "FC Dallas";
+  --mls-club-tricode: "DAL";
+  --mls-club-primary: #C6093B;
+  --mls-club-secondary: #001F5B;
+  --mls-club-tertiary: #C1C6C8;
+  --mls-color-accent-base: #C6093B;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F8E1E7;
+  --mls-color-border-accent: #C6093B;
+}
+[data-club="dal"][data-theme="dark"],
+[data-theme="dark"] [data-club="dal"] {
+  --mls-color-accent-base: #C6093B;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #2D0E1D;
+  --mls-color-border-accent: #C6093B;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="dal"],
+  [data-club="dal"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C6093B;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #2D0E1D;
+    --mls-color-border-accent: #C6093B;
+  }
+}
+
+/* Houston Dynamo FC -- Western, since 2006. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="hou"] {
+  --mls-club-name: "Houston Dynamo FC";
+  --mls-club-tricode: "HOU";
+  --mls-club-primary: #FF6B00;
+  --mls-club-secondary: #101820;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #F46100;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFEDE0;
+  --mls-color-border-accent: #F46100;
+}
+[data-club="hou"][data-theme="dark"],
+[data-theme="dark"] [data-club="hou"] {
+  --mls-color-accent-base: #FF6B00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #372012;
+  --mls-color-border-accent: #FF6B00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="hou"],
+  [data-club="hou"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FF6B00;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #372012;
+    --mls-color-border-accent: #FF6B00;
+  }
+}
+
+/* Inter Miami CF -- Eastern, since 2020. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="mia"] {
+  --mls-club-name: "Inter Miami CF";
+  --mls-club-tricode: "MIA";
+  --mls-club-primary: #F7B5CD;
+  --mls-club-secondary: #231F20;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #BB7D95;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FEF6F9;
+  --mls-color-border-accent: #BB7D95;
+}
+[data-club="mia"][data-theme="dark"],
+[data-theme="dark"] [data-club="mia"] {
+  --mls-color-accent-base: #F7B5CD;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #352D37;
+  --mls-color-border-accent: #F7B5CD;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mia"],
+  [data-club="mia"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #F7B5CD;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #352D37;
+    --mls-color-border-accent: #F7B5CD;
+  }
+}
+
+/* LA Galaxy -- Western, since 1996. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="la"] {
+  --mls-club-name: "LA Galaxy";
+  --mls-club-tricode: "LA";
+  --mls-club-primary: #00245D;
+  --mls-club-secondary: #FFD200;
+  --mls-club-tertiary: #0065A4;
+  --mls-color-accent-base: #00245D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E5EC;
+  --mls-color-border-accent: #00245D;
+}
+[data-club="la"][data-theme="dark"],
+[data-theme="dark"] [data-club="la"] {
+  --mls-color-accent-base: #3E65A4;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091323;
+  --mls-color-border-accent: #3E65A4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="la"],
+  [data-club="la"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #3E65A4;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091323;
+    --mls-color-border-accent: #3E65A4;
+  }
+}
+
+/* Los Angeles Football Club -- Western, since 2018. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="lafc"] {
+  --mls-club-name: "Los Angeles Football Club";
+  --mls-club-tricode: "LAFC";
+  --mls-club-primary: #000000;
+  --mls-club-secondary: #C39E6D;
+  --mls-club-tertiary: #E31837;
+  --mls-color-accent-base: #000000;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E0E0;
+  --mls-color-border-accent: #000000;
+}
+[data-club="lafc"][data-theme="dark"],
+[data-theme="dark"] [data-club="lafc"] {
+  --mls-color-accent-base: #C39E6D;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #090C12;
+  --mls-color-border-accent: #C39E6D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="lafc"],
+  [data-club="lafc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C39E6D;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #090C12;
+    --mls-color-border-accent: #C39E6D;
+  }
+}
+
+/* Minnesota United FC -- Western, since 2017. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="min"] {
+  --mls-club-name: "Minnesota United FC";
+  --mls-club-tricode: "MIN";
+  --mls-club-primary: #9BCDE4;
+  --mls-club-secondary: #231F20;
+  --mls-club-tertiary: #E2E2DE;
+  --mls-color-accent-base: #6494AA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F3F9FC;
+  --mls-color-border-accent: #6494AA;
+}
+[data-club="min"][data-theme="dark"],
+[data-theme="dark"] [data-club="min"] {
+  --mls-color-accent-base: #9BCDE4;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #25313B;
+  --mls-color-border-accent: #9BCDE4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="min"],
+  [data-club="min"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #9BCDE4;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #25313B;
+    --mls-color-border-accent: #9BCDE4;
+  }
+}
+
+/* CF Montreal (CF Montréal) -- Eastern, since 2012. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="mtl"] {
+  --mls-club-name: "CF Montréal";
+  --mls-club-tricode: "MTL";
+  --mls-club-primary: #003DA5;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #C1C6C8;
+  --mls-color-accent-base: #003DA5;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E8F4;
+  --mls-color-border-accent: #003DA5;
+}
+[data-club="mtl"][data-theme="dark"],
+[data-theme="dark"] [data-club="mtl"] {
+  --mls-color-accent-base: #255FCA;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091730;
+  --mls-color-border-accent: #255FCA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mtl"],
+  [data-club="mtl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #255FCA;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091730;
+    --mls-color-border-accent: #255FCA;
+  }
+}
+
+/* Nashville SC -- Eastern, since 2020. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="nsh"] {
+  --mls-club-name: "Nashville SC";
+  --mls-club-tricode: "NSH";
+  --mls-club-primary: #ECE83A;
+  --mls-club-secondary: #1F1646;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #979000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FDFCE7;
+  --mls-color-border-accent: #979000;
+}
+[data-club="nsh"][data-theme="dark"],
+[data-theme="dark"] [data-club="nsh"] {
+  --mls-color-accent-base: #ECE83A;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #34361C;
+  --mls-color-border-accent: #ECE83A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="nsh"],
+  [data-club="nsh"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #ECE83A;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #34361C;
+    --mls-color-border-accent: #ECE83A;
+  }
+}
+
+/* New England Revolution -- Eastern, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="ne"] {
+  --mls-club-name: "New England Revolution";
+  --mls-club-tricode: "NE";
+  --mls-club-primary: #0A2240;
+  --mls-club-secondary: #CE0E2D;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #0A2240;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E2E4E8;
+  --mls-color-border-accent: #0A2240;
+}
+[data-club="ne"][data-theme="dark"],
+[data-theme="dark"] [data-club="ne"] {
+  --mls-color-accent-base: #4B6588;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0B121E;
+  --mls-color-border-accent: #4B6588;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="ne"],
+  [data-club="ne"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #4B6588;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0B121E;
+    --mls-color-border-accent: #4B6588;
+  }
+}
+
+/* New York City FC -- Eastern, since 2015. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="nyc"] {
+  --mls-club-name: "New York City FC";
+  --mls-club-tricode: "NYC";
+  --mls-club-primary: #9FD2FF;
+  --mls-club-secondary: #000229;
+  --mls-club-tertiary: #FF5E36;
+  --mls-color-accent-base: #6293BD;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F3FAFF;
+  --mls-color-border-accent: #6293BD;
+}
+[data-club="nyc"][data-theme="dark"],
+[data-theme="dark"] [data-club="nyc"] {
+  --mls-color-accent-base: #9FD2FF;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #263240;
+  --mls-color-border-accent: #9FD2FF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="nyc"],
+  [data-club="nyc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #9FD2FF;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #263240;
+    --mls-color-border-accent: #9FD2FF;
+  }
+}
+
+/* New York Red Bulls -- Eastern, since 1996. Colour confidence: low. */
+[data-club="rbny"] {
+  --mls-club-name: "New York Red Bulls";
+  --mls-club-tricode: "RBNY";
+  --mls-club-primary: #C8102E;
+  --mls-club-secondary: #FFC72C;
+  --mls-club-tertiary: #182852;
+  --mls-color-accent-base: #C8102E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F8E2E6;
+  --mls-color-border-accent: #C8102E;
+}
+[data-club="rbny"][data-theme="dark"],
+[data-theme="dark"] [data-club="rbny"] {
+  --mls-color-accent-base: #C8102E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #2D0F1A;
+  --mls-color-border-accent: #C8102E;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="rbny"],
+  [data-club="rbny"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C8102E;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #2D0F1A;
+    --mls-color-border-accent: #C8102E;
+  }
+}
+
+/* Orlando City SC -- Eastern, since 2015. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="orl"] {
+  --mls-club-name: "Orlando City SC";
+  --mls-club-tricode: "ORL";
+  --mls-club-primary: #60269E;
+  --mls-club-secondary: #F0D283;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #60269E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #ECE5F3;
+  --mls-color-border-accent: #60269E;
+}
+[data-club="orl"][data-theme="dark"],
+[data-theme="dark"] [data-club="orl"] {
+  --mls-color-accent-base: #7C47BF;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #1A132E;
+  --mls-color-border-accent: #7C47BF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="orl"],
+  [data-club="orl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #7C47BF;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #1A132E;
+    --mls-color-border-accent: #7C47BF;
+  }
+}
+
+/* Philadelphia Union -- Eastern, since 2010. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="phi"] {
+  --mls-club-name: "Philadelphia Union";
+  --mls-club-tricode: "PHI";
+  --mls-club-primary: #051C2C;
+  --mls-club-secondary: #E0D0A6;
+  --mls-club-tertiary: #3E8EDE;
+  --mls-color-accent-base: #051C2C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E1E4E6;
+  --mls-color-border-accent: #051C2C;
+}
+[data-club="phi"][data-theme="dark"],
+[data-theme="dark"] [data-club="phi"] {
+  --mls-color-accent-base: #50697C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0A111A;
+  --mls-color-border-accent: #50697C;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="phi"],
+  [data-club="phi"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #50697C;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0A111A;
+    --mls-color-border-accent: #50697C;
+  }
+}
+
+/* Portland Timbers -- Western, since 2011. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="por"] {
+  --mls-club-name: "Portland Timbers";
+  --mls-club-tricode: "POR";
+  --mls-club-primary: #2C5234;
+  --mls-club-secondary: #C99700;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #2C5234;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E6EAE7;
+  --mls-color-border-accent: #2C5234;
+}
+[data-club="por"][data-theme="dark"],
+[data-theme="dark"] [data-club="por"] {
+  --mls-color-accent-base: #486E4F;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #111B1B;
+  --mls-color-border-accent: #486E4F;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="por"],
+  [data-club="por"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #486E4F;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #111B1B;
+    --mls-color-border-accent: #486E4F;
+  }
+}
+
+/* Real Salt Lake -- Western, since 2005. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="rsl"] {
+  --mls-club-name: "Real Salt Lake";
+  --mls-club-tricode: "RSL";
+  --mls-club-primary: #A32035;
+  --mls-club-secondary: #001E61;
+  --mls-club-tertiary: #DAAA00;
+  --mls-color-accent-base: #A32035;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F4E4E7;
+  --mls-color-border-accent: #A32035;
+}
+[data-club="rsl"][data-theme="dark"],
+[data-theme="dark"] [data-club="rsl"] {
+  --mls-color-accent-base: #B83645;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #26121C;
+  --mls-color-border-accent: #B83645;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="rsl"],
+  [data-club="rsl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #B83645;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #26121C;
+    --mls-color-border-accent: #B83645;
+  }
+}
+
+/* San Diego FC -- Western, since 2025. Colour confidence: unverified. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sd"] {
+  --mls-club-name: "San Diego FC";
+  --mls-club-tricode: "SD";
+  --mls-club-primary: #697A7C;
+  --mls-club-secondary: #697A7C;
+  --mls-club-tertiary: #697A7C;
+  --mls-color-accent-base: #667779;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #EDEFEF;
+  --mls-color-border-accent: #667779;
+}
+[data-club="sd"][data-theme="dark"],
+[data-theme="dark"] [data-club="sd"] {
+  --mls-color-accent-base: #667779;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #1C2228;
+  --mls-color-border-accent: #667779;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sd"],
+  [data-club="sd"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #667779;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #1C2228;
+    --mls-color-border-accent: #667779;
+  }
+}
+
+/* San Jose Earthquakes -- Western, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sj"] {
+  --mls-club-name: "San Jose Earthquakes";
+  --mls-club-tricode: "SJ";
+  --mls-club-primary: #003DA5;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #C8102E;
+  --mls-color-accent-base: #003DA5;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E8F4;
+  --mls-color-border-accent: #003DA5;
+}
+[data-club="sj"][data-theme="dark"],
+[data-theme="dark"] [data-club="sj"] {
+  --mls-color-accent-base: #255FCA;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091730;
+  --mls-color-border-accent: #255FCA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sj"],
+  [data-club="sj"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #255FCA;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091730;
+    --mls-color-border-accent: #255FCA;
+  }
+}
+
+/* Seattle Sounders FC -- Western, since 2009. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sea"] {
+  --mls-club-name: "Seattle Sounders FC";
+  --mls-club-tricode: "SEA";
+  --mls-club-primary: #2CC84D;
+  --mls-club-secondary: #0033A0;
+  --mls-club-tertiary: #7CE0D3;
+  --mls-color-accent-base: #00A729;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E6F8EA;
+  --mls-color-border-accent: #00A729;
+}
+[data-club="sea"][data-theme="dark"],
+[data-theme="dark"] [data-club="sea"] {
+  --mls-color-accent-base: #2CC84D;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #113020;
+  --mls-color-border-accent: #2CC84D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sea"],
+  [data-club="sea"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #2CC84D;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #113020;
+    --mls-color-border-accent: #2CC84D;
+  }
+}
+
+/* Sporting Kansas City -- Western, since 1996. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="skc"] {
+  --mls-club-name: "Sporting Kansas City";
+  --mls-club-tricode: "SKC";
+  --mls-club-primary: #A7C6ED;
+  --mls-club-secondary: #0C2340;
+  --mls-club-tertiary: #898D8D;
+  --mls-color-accent-base: #7391B6;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F4F8FD;
+  --mls-color-border-accent: #7391B6;
+}
+[data-club="skc"][data-theme="dark"],
+[data-theme="dark"] [data-club="skc"] {
+  --mls-color-accent-base: #A7C6ED;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #27303D;
+  --mls-color-border-accent: #A7C6ED;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="skc"],
+  [data-club="skc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #A7C6ED;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #27303D;
+    --mls-color-border-accent: #A7C6ED;
+  }
+}
+
+/* St. Louis CITY SC -- Western, since 2023. Colour confidence: low. */
+[data-club="stl"] {
+  --mls-club-name: "St. Louis CITY SC";
+  --mls-club-tricode: "STL";
+  --mls-club-primary: #E0004D;
+  --mls-club-secondary: #0C2340;
+  --mls-club-tertiary: #0C2340;
+  --mls-color-accent-base: #E0004D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #FBE0EA;
+  --mls-color-border-accent: #E0004D;
+}
+[data-club="stl"][data-theme="dark"],
+[data-theme="dark"] [data-club="stl"] {
+  --mls-color-accent-base: #E0004D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #310C20;
+  --mls-color-border-accent: #E0004D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="stl"],
+  [data-club="stl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #E0004D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #310C20;
+    --mls-color-border-accent: #E0004D;
+  }
+}
+
+/* Toronto FC -- Eastern, since 2007. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="tor"] {
+  --mls-club-name: "Toronto FC";
+  --mls-club-tricode: "TOR";
+  --mls-club-primary: #AA182C;
+  --mls-club-secondary: #333F48;
+  --mls-club-tertiary: #A2AAAD;
+  --mls-color-accent-base: #AA182C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F5E3E6;
+  --mls-color-border-accent: #AA182C;
+}
+[data-club="tor"][data-theme="dark"],
+[data-theme="dark"] [data-club="tor"] {
+  --mls-color-accent-base: #BB2D3A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #28111A;
+  --mls-color-border-accent: #BB2D3A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="tor"],
+  [data-club="tor"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #BB2D3A;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #28111A;
+    --mls-color-border-accent: #BB2D3A;
+  }
+}
+
+/* Vancouver Whitecaps FC -- Western, since 2011. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="van"] {
+  --mls-club-name: "Vancouver Whitecaps FC";
+  --mls-club-tricode: "VAN";
+  --mls-club-primary: #12284C;
+  --mls-club-secondary: #8AB7E9;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #12284C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E3E5EA;
+  --mls-color-border-accent: #12284C;
+}
+[data-club="van"][data-theme="dark"],
+[data-theme="dark"] [data-club="van"] {
+  --mls-color-accent-base: #4B648D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0C1420;
+  --mls-color-border-accent: #4B648D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="van"],
+  [data-club="van"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #4B648D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0C1420;
+    --mls-color-border-accent: #4B648D;
+  }
+}

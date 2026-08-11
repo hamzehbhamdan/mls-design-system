@@ -1,0 +1,152 @@
+/* Button
+ *
+ * Variants: primary (accent), secondary, ghost, danger, inverse
+ * Sizes: sm, md (default), lg
+ * States: hover, active, focus-visible, disabled, loading, [aria-pressed]
+ *
+ * Primary inherits the club accent automatically inside any [data-club]
+ * scope, and the accent is contrast-corrected at build time, so a primary
+ * button is legible in all 30 club themes in both colour schemes.
+ */
+
+.mls-btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--mls-color-fg);
+  --btn-border: transparent;
+  --btn-pad-x: var(--mls-space-5);
+  --btn-pad-y: var(--mls-space-3);
+  --btn-size: var(--mls-fontSize-sm);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mls-space-2);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  font-family: var(--mls-font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wide);
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: var(--mls-borderWidth-1) solid var(--btn-border);
+  border-radius: var(--mls-radius-md);
+
+  transition: background-color var(--mls-duration-fast) var(--mls-easing-standard),
+              color var(--mls-duration-fast) var(--mls-easing-standard),
+              border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              transform var(--mls-duration-fast) var(--mls-easing-drive);
+}
+
+.mls-btn:active:not(:disabled) { transform: translateY(1px); }
+
+.mls-btn:focus-visible {
+  outline: 2px solid var(--mls-color-focus);
+  outline-offset: 2px;
+}
+
+.mls-btn:disabled,
+.mls-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Variants ---------------------------------------------------------- */
+
+.mls-btn--primary {
+  --btn-bg: var(--mls-color-accent-base);
+  --btn-fg: var(--mls-color-accent-contrast);
+  --btn-border: var(--mls-color-accent-base);
+}
+.mls-btn--primary:hover:not(:disabled) {
+  --btn-bg: color-mix(in oklab, var(--mls-color-accent-base) 86%, var(--mls-color-fg));
+  --btn-border: var(--btn-bg);
+}
+
+.mls-btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--mls-color-fg);
+  --btn-border: var(--mls-color-border-strong);
+}
+.mls-btn--secondary:hover:not(:disabled) {
+  --btn-bg: var(--mls-color-bg-muted);
+  --btn-border: var(--mls-color-fg-subtle);
+}
+
+.mls-btn--ghost {
+  --btn-fg: var(--mls-color-fg-muted);
+}
+.mls-btn--ghost:hover:not(:disabled) {
+  --btn-bg: var(--mls-color-bg-muted);
+  --btn-fg: var(--mls-color-fg);
+}
+
+.mls-btn--danger {
+  --btn-bg: var(--mls-color-danger);
+  --btn-fg: #FFFFFF;
+  --btn-border: var(--mls-color-danger);
+}
+
+.mls-btn--inverse {
+  --btn-bg: var(--mls-color-fg);
+  --btn-fg: var(--mls-color-bg);
+  --btn-border: var(--mls-color-fg);
+}
+
+/* Notched variant -- uses The Corners geometry rather than a rounder
+ * radius when a call to action needs more presence. */
+.mls-btn--notch {
+  --notch: 8px;
+  border-radius: 0;
+  clip-path: polygon(var(--notch) 0, 100% 0, 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, 0 100%, 0 var(--notch));
+}
+
+/* Sizes ------------------------------------------------------------- */
+
+.mls-btn--sm { --btn-pad-x: var(--mls-space-3); --btn-pad-y: var(--mls-space-2); --btn-size: var(--mls-fontSize-xs); }
+.mls-btn--lg { --btn-pad-x: var(--mls-space-8); --btn-pad-y: var(--mls-space-4); --btn-size: var(--mls-fontSize-base); }
+
+.mls-btn--block { display: flex; width: 100%; }
+
+.mls-btn--icon {
+  --btn-pad-x: var(--mls-space-3);
+  --btn-pad-y: var(--mls-space-3);
+  aspect-ratio: 1;
+}
+
+/* Loading ----------------------------------------------------------- */
+
+.mls-btn[data-loading="true"] {
+  cursor: progress;
+  pointer-events: none;
+}
+.mls-btn[data-loading="true"]::before {
+  content: "";
+  width: 1em; height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--mls-radius-full);
+  animation: mls-spin 640ms linear infinite;
+}
+@keyframes mls-spin { to { transform: rotate(360deg); } }
+
+/* Group ------------------------------------------------------------- */
+
+.mls-btn-group { display: inline-flex; }
+.mls-btn-group .mls-btn { border-radius: 0; }
+.mls-btn-group .mls-btn:first-child { border-start-start-radius: var(--mls-radius-md); border-end-start-radius: var(--mls-radius-md); }
+.mls-btn-group .mls-btn:last-child  { border-start-end-radius: var(--mls-radius-md); border-end-end-radius: var(--mls-radius-md); }
+.mls-btn-group .mls-btn + .mls-btn  { margin-inline-start: -1px; }
+.mls-btn-group .mls-btn[aria-pressed="true"] {
+  --btn-bg: var(--mls-color-accent-base);
+  --btn-fg: var(--mls-color-accent-contrast);
+  --btn-border: var(--mls-color-accent-base);
+  z-index: 1;
+}

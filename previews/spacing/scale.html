@@ -1,0 +1,74 @@
+<!-- @dsCard group="Spacing" name="Space, radius, motion" subtitle="4px grid, tight radii, drive easing" width="1120" height="700" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Space, radius, motion</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>
+  .sp { display: flex; align-items: center; gap: var(--mls-space-4); font-family: var(--mls-font-mono); font-size: 11px; color: var(--mls-color-fg-subtle); }
+  .sp i { display: block; height: 14px; background: var(--mls-color-accent-base); border-radius: 2px; }
+  .sp b { width: 5rem; color: var(--mls-color-fg); }
+  .rad { display: grid; place-items: center; width: 5.5rem; height: 4rem; background: var(--mls-color-accent-muted); border: 2px solid var(--mls-color-accent-base); font-family: var(--mls-font-mono); font-size: 10px; }
+  .mo { padding: var(--mls-space-4) var(--mls-space-6); background: var(--mls-color-surface); border: 1px solid var(--mls-color-border); border-radius: var(--mls-radius-md); font-family: var(--mls-font-mono); font-size: 11px; cursor: pointer; }
+  .mo:hover { transform: translate(6px, -6px); border-color: var(--mls-color-accent-base); }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Foundations</p>
+    <h1 class="pv__title">Space, radius, motion</h1>
+    <p class="pv__note">4px grid. Radii stay tight because the crest is built from straight lines and hard angles. Motion is fast — nothing routine exceeds 240ms, because the slash is documented as representing "the nonstop nature of our game."</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Space scale</h2>
+    <div class="mls-stack" style="--mls-stack-gap: var(--mls-space-2)" id="space"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Radius — and the notch, which is preferred over a bigger radius</h2>
+    <div class="pv__row">
+      <div class="rad" style="border-radius: var(--mls-radius-none)">none</div>
+      <div class="rad" style="border-radius: var(--mls-radius-sm)">sm 3</div>
+      <div class="rad" style="border-radius: var(--mls-radius-md)">md 4</div>
+      <div class="rad" style="border-radius: var(--mls-radius-lg)">lg 6</div>
+      <div class="rad" style="border-radius: var(--mls-radius-xl)">xl 10</div>
+      <div class="rad" style="border-radius: var(--mls-radius-full)">full</div>
+      <div class="rad mls-notch" style="--notch: 14px; border-radius: 0">notch</div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Motion — hover each. Direction follows the slash: up and to the right.</h2>
+    <div class="pv__row">
+      <div class="mo" style="transition: all var(--mls-duration-fast) var(--mls-easing-standard)">fast 120 / standard</div>
+      <div class="mo" style="transition: all var(--mls-duration-base) var(--mls-easing-drive)">base 180 / drive</div>
+      <div class="mo" style="transition: all var(--mls-duration-slow) var(--mls-easing-enter)">slow 240 / enter</div>
+      <div class="mo" style="transition: all var(--mls-duration-slower) var(--mls-easing-exit)">slower 400 / exit</div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Elevation — restrained, because the crest forbids effects</h2>
+    <div class="pv__row">
+      <div class="rad" style="background: var(--mls-color-surface); border: 1px solid var(--mls-color-border); box-shadow: var(--mls-shadow-xs)">xs</div>
+      <div class="rad" style="background: var(--mls-color-surface); border: 1px solid var(--mls-color-border); box-shadow: var(--mls-shadow-sm)">sm</div>
+      <div class="rad" style="background: var(--mls-color-surface); border: 1px solid var(--mls-color-border); box-shadow: var(--mls-shadow-md)">md</div>
+      <div class="rad" style="background: var(--mls-color-surface); border: 1px solid var(--mls-color-border); box-shadow: var(--mls-shadow-lg)">lg</div>
+    </div>
+  </section>
+</main>
+<script>
+const STEPS = ['1','2','3','4','5','6','8','10','12','16','20','24'];
+const cs = getComputedStyle(document.documentElement);
+document.getElementById('space').innerHTML = STEPS.map(s => {
+  const v = cs.getPropertyValue(`--mls-space-${s}`).trim();
+  return `<div class="sp"><b>space-${s}</b><i style="width:${v}"></i><span>${v} · ${parseFloat(v)*16}px</span></div>`;
+}).join('');
+</script>
+</body>
+</html>

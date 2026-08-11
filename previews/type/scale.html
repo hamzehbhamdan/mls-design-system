@@ -1,0 +1,87 @@
+<!-- @dsCard group="Type" name="Type scale" subtitle="Display, headings, body, numerics" width="1120" height="900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>.spec{font-family:var(--mls-font-mono);font-size:10px;color:var(--mls-color-fg-subtle);display:block;margin-bottom:2px}</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Foundations</p>
+    <h1 class="pv__title">Typography</h1>
+    <p class="pv__note">Licensed originals are named first in every stack; a machine with MLS Tifo installed renders the real thing. This page falls back to Archivo (display) and Inter (text), the vetted open substitutes. Classes are named by job, not by size.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Display — uppercase, extrabold, fluid</h2>
+    <div>
+      <span class="spec">.mls-display-1 · clamp(2.5rem → 4.5rem) · display face</span>
+      <p class="mls-display-1">We&rsquo;ll take it from here</p>
+      <span class="spec">.mls-display-2</span>
+      <p class="mls-display-2">For club, for country</p>
+      <span class="spec">.mls-display-3</span>
+      <p class="mls-display-3">Decision Day</p>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Headings</h2>
+    <div class="mls-stack">
+      <div><span class="spec">.mls-heading-1 · 2.25rem</span><p class="mls-heading-1">Timbers take the Cascadia derby</p></div>
+      <div><span class="spec">.mls-heading-2 · 1.875rem</span><p class="mls-heading-2">Timbers take the Cascadia derby</p></div>
+      <div><span class="spec">.mls-heading-3 · 1.5rem</span><p class="mls-heading-3">Timbers take the Cascadia derby</p></div>
+      <div><span class="spec">.mls-heading-4 · 1.25rem</span><p class="mls-heading-4">Timbers take the Cascadia derby</p></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Body and long-form</h2>
+    <div class="pv__panel">
+      <p class="mls-eyebrow" style="margin-bottom:8px">Matchday 24 · Providence Park</p>
+      <p class="mls-heading-3" style="margin-bottom:12px">Portland leave Seattle with three points</p>
+      <div class="mls-prose">
+        <p>Portland Timbers <strong>are</strong> back in the playoff places after a 2&ndash;1 win at Lumen Field, their first away victory in the Cascadia derby since 2019. Luiz Ara&uacute;jo opened the scoring with a golazo from the edge of the area, and a stoppage-time header sealed it.</p>
+        <p>Note three things in that sentence: the plural verb on the club name, the unitalicised and unglossed <em>golazo</em>, and the preserved diacritic in Ara&uacute;jo. All three are house style, and all three are the kind of detail that marks copy as genuinely MLS.</p>
+      </div>
+      <p class="mls-caption" style="margin-top:12px">.mls-caption · micro face · 0.75rem</p>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Numerics — tabular, always</h2>
+    <div class="pv__grid">
+      <div class="pv__panel">
+        <span class="spec">.mls-numeric — aligned</span>
+        <div class="mls-numeric" style="font-size:1.5rem;line-height:1.4">
+          <div>11 &nbsp; 1888</div><div>90 &nbsp; 1111</div><div>47 &nbsp; 9090</div>
+        </div>
+      </div>
+      <div class="pv__panel">
+        <span class="spec">without tabular-nums — drifts</span>
+        <div style="font-family:var(--mls-font-numeric);font-variant-numeric:proportional-nums;font-size:1.5rem;line-height:1.4">
+          <div>11 &nbsp; 1888</div><div>90 &nbsp; 1111</div><div>47 &nbsp; 9090</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Labels</h2>
+    <div class="pv__row">
+      <span class="mls-eyebrow">Supporters&rsquo; Shield</span>
+      <span class="mls-tricode" style="font-size:1.25rem">POR · SEA · VAN</span>
+      <span class="mls-badge">Matchday 24</span>
+      <span class="mls-competition">Leagues Cup 2026</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

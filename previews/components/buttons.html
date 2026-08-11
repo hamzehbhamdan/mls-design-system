@@ -1,0 +1,85 @@
+<!-- @dsCard group="Components" name="Buttons" subtitle="5 variants, 3 sizes, states, groups" width="1120" height="720" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Buttons</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Components</p>
+    <h1 class="pv__title">Buttons</h1>
+    <p class="pv__note">Primary uses the accent slot and its guaranteed-legible contrast pair, so it works in all thirty club themes in both colour schemes without intervention.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Variants</h2>
+    <div class="pv__row">
+      <button class="mls-btn mls-btn--primary">Primary</button>
+      <button class="mls-btn mls-btn--secondary">Secondary</button>
+      <button class="mls-btn mls-btn--ghost">Ghost</button>
+      <button class="mls-btn mls-btn--danger">Danger</button>
+      <button class="mls-btn mls-btn--inverse">Inverse</button>
+      <button class="mls-btn mls-btn--primary mls-btn--notch">Notched</button>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Sizes</h2>
+    <div class="pv__row">
+      <button class="mls-btn mls-btn--primary mls-btn--sm">Small</button>
+      <button class="mls-btn mls-btn--primary">Medium</button>
+      <button class="mls-btn mls-btn--primary mls-btn--lg">Large</button>
+      <button class="mls-btn mls-btn--secondary mls-btn--icon" aria-label="Share">&#8599;</button>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">States</h2>
+    <div class="pv__row">
+      <button class="mls-btn mls-btn--primary" data-loading="true" aria-busy="true">Saving</button>
+      <button class="mls-btn mls-btn--primary" disabled>Disabled</button>
+      <button class="mls-btn mls-btn--secondary" disabled>Disabled</button>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Segmented group — competition filter</h2>
+    <div class="mls-btn-group" role="group" aria-label="Competition">
+      <button class="mls-btn mls-btn--secondary" aria-pressed="true">All</button>
+      <button class="mls-btn mls-btn--secondary" aria-pressed="false">MLS</button>
+      <button class="mls-btn mls-btn--secondary" aria-pressed="false">Leagues Cup</button>
+      <button class="mls-btn mls-btn--secondary" aria-pressed="false">U.S. Open Cup</button>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">The accent slot — same markup, different club</h2>
+    <div class="pv__row" id="clubs"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Dark</h2>
+    <div class="pv__dark" data-theme="dark">
+      <div class="pv__row" id="clubs-dark" style="margin-bottom:12px"></div>
+      <div class="pv__row">
+        <button class="mls-btn mls-btn--primary">Primary</button>
+        <button class="mls-btn mls-btn--secondary">Secondary</button>
+        <button class="mls-btn mls-btn--ghost">Ghost</button>
+        <button class="mls-btn mls-btn--inverse">Inverse</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const SHOW = ['por','clb','mia','lafc','sea','stl','nyc','skc','atx','dc'];
+const html = SHOW.map(c => `<div data-club="${c}"><button class="mls-btn mls-btn--primary">${c.toUpperCase()}</button></div>`).join('');
+document.getElementById('clubs').innerHTML = html;
+document.getElementById('clubs-dark').innerHTML = html;
+</script>
+</body>
+</html>

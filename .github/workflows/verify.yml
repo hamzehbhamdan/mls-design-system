@@ -1,0 +1,31 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build tokens, club themes and CSS bundle
+        run: npm run build
+
+      # dist/ is committed so consumers can use the repo without a build step.
+      # If a build produces a different dist/ than what was committed, the two
+      # have drifted and the commit is incomplete.
+      - name: Check dist/ is up to date with its sources
+        run: |
+          if ! git diff --quiet -- dist docs/13-clubs.md; then
+            echo "::error::dist/ or the generated club table is stale. Run 'npm run build' and commit the result."
+            git --no-pager diff --stat -- dist docs/13-clubs.md
+            exit 1
+          fi
+
+      - name: Verify contrast, tokens, club data and previews
+        run: npm run verify

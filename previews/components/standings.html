@@ -1,0 +1,114 @@
+<!-- @dsCard group="Components" name="Standings & stats" subtitle="Table, qualification zones, stat tiles, form" width="1120" height="900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Standings and stats</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+</head>
+<body>
+<main class="pv" data-club="clb">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Components</p>
+    <h1 class="pv__title">Standings &amp; stats</h1>
+    <p class="pv__note">Qualification zones carry a coloured rule <em>and</em> a written legend. Every numeric column is tabular and right-aligned. The followed club is highlighted with the accent, so it re-themes. Scoped here to <code class="pv__code">data-club="clb"</code>.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Eastern Conference</h2>
+    <div class="mls-table-wrap">
+      <table class="mls-table">
+        <caption class="mls-visually-hidden">Eastern Conference standings, Matchday 24</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th><th scope="col">Club</th>
+            <th scope="col" data-numeric>MP</th><th scope="col" data-numeric>W</th>
+            <th scope="col" data-numeric>D</th><th scope="col" data-numeric>L</th>
+            <th scope="col" data-numeric>GD</th><th scope="col" data-numeric>PTS</th>
+            <th scope="col">Form</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="mls-table__legend">
+        <span data-qualifies="champions">Concacaf Champions Cup</span>
+        <span data-qualifies="playoff">Audi MLS Cup Playoffs</span>
+        <span data-qualifies="wildcard">Wild Card</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Stat tiles</h2>
+    <div class="mls-stat-grid">
+      <div class="mls-stat mls-stat--accent">
+        <span class="mls-stat__label">Points</span>
+        <span class="mls-stat__value">58</span>
+        <span class="mls-stat__delta" data-direction="up">6 since MD20</span>
+      </div>
+      <div class="mls-stat">
+        <span class="mls-stat__label">Goals for</span>
+        <span class="mls-stat__value">61<span class="mls-stat__unit">GF</span></span>
+        <span class="mls-stat__detail">Most in the East</span>
+      </div>
+      <div class="mls-stat">
+        <span class="mls-stat__label">Clean sheets</span>
+        <span class="mls-stat__value">11</span>
+        <span class="mls-stat__delta" data-direction="flat">Unchanged</span>
+      </div>
+      <div class="mls-stat">
+        <span class="mls-stat__label">Goals against</span>
+        <span class="mls-stat__value">32<span class="mls-stat__unit">GA</span></span>
+        <span class="mls-stat__delta" data-direction="down">3 since MD20</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Match statbars</h2>
+    <div class="pv__panel mls-stack">
+      <div class="mls-statbar">
+        <div class="mls-statbar__head"><strong>58%</strong><span>Possession</span><strong>42%</strong></div>
+        <div class="mls-statbar__track"><span class="mls-statbar__fill mls-statbar__fill--home" style="inline-size:58%"></span><span class="mls-statbar__fill mls-statbar__fill--away" style="inline-size:42%"></span></div>
+      </div>
+      <div class="mls-statbar">
+        <div class="mls-statbar__head"><strong>14</strong><span>Shots</span><strong>9</strong></div>
+        <div class="mls-statbar__track"><span class="mls-statbar__fill mls-statbar__fill--home" style="inline-size:61%"></span><span class="mls-statbar__fill mls-statbar__fill--away" style="inline-size:39%"></span></div>
+      </div>
+      <div class="mls-statbar">
+        <div class="mls-statbar__head"><strong>6</strong><span>On target</span><strong>3</strong></div>
+        <div class="mls-statbar__track"><span class="mls-statbar__fill mls-statbar__fill--home" style="inline-size:67%"></span><span class="mls-statbar__fill mls-statbar__fill--away" style="inline-size:33%"></span></div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const DATA = [
+  ['CLB','Columbus Crew',24,17,7,0,29,58,'WWDWW','champions',true],
+  ['MIA','Inter Miami CF',24,16,5,3,24,53,'WWLWD','champions',false],
+  ['CIN','FC Cincinnati',24,15,4,5,18,49,'LWWDW','champions',false],
+  ['PHI','Philadelphia Union',24,13,6,5,12,45,'DWWLW','playoff',false],
+  ['NYC','New York City FC',24,12,7,5,9,43,'WDDWL','playoff',false],
+  ['CLT','Charlotte FC',24,11,6,7,4,39,'LDWWL','playoff',false],
+  ['ORL','Orlando City SC',24,10,8,6,6,38,'DDWLW','playoff',false],
+  ['NSH','Nashville SC',24,10,5,9,-1,35,'WLLDW','playoff',false],
+  ['ATL','Atlanta United FC',24,8,7,9,-4,31,'LDWLD','wildcard',false],
+  ['RBNY','New York Red Bulls',24,8,6,10,-6,30,'DLWLL','wildcard',false],
+];
+document.getElementById('rows').innerHTML = DATA.map(([code,name,mp,w,d,l,gd,pts,form,q,focus],i) => `
+  <tr data-qualifies="${q}"${focus ? ' data-focus="true"' : ''}>
+    <td class="mls-table__pos">${i+1}</td>
+    <th scope="row"><div class="mls-table__club">
+      <span class="mls-crest mls-crest--sm" style="--crest-size:1.75rem" data-tricode="${code}" data-placeholder></span>
+      <span class="mls-table__club-name">${name}</span>
+    </div></th>
+    <td data-numeric>${mp}</td><td data-numeric>${w}</td><td data-numeric>${d}</td><td data-numeric>${l}</td>
+    <td data-numeric>${gd > 0 ? '+' : ''}${gd}</td>
+    <td data-numeric="emphasis">${pts}</td>
+    <td><span class="mls-form">${form.split('').map(r => `<span class="mls-form__result" data-result="${r}" title="${r}">${r}</span>`).join('')}</span></td>
+  </tr>`).join('');
+</script>
+</body>
+</html>

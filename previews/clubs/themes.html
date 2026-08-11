@@ -1,0 +1,71 @@
+<!-- @dsCard group="Clubs" name="Club themes" subtitle="All 30, light and dark, with contrast ratios" width="1120" height="1000" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Club themes</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<script src="../../dist/mls.clubs.data.js"></script>
+<style>
+  .clubs { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--mls-space-3); }
+  .club { border: 1px solid var(--mls-color-border); border-radius: var(--mls-radius-lg); overflow: hidden; background: var(--mls-color-surface); }
+  .club__bar { height: 6px; display: flex; }
+  .club__bar i { flex: 1; }
+  .club__body { padding: var(--mls-space-4); display: flex; flex-direction: column; gap: var(--mls-space-2); }
+  .club__name { font-family: var(--mls-font-display); font-size: var(--mls-fontSize-sm); font-weight: 700; line-height: 1.2; }
+  .club__meta { font-family: var(--mls-font-mono); font-size: 10px; color: var(--mls-color-fg-subtle); }
+  .flag { display: inline-block; padding: 1px 5px; border-radius: 2px; font-family: var(--mls-font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: .04em; }
+  .flag--corrected { background: var(--mls-color-warning-bg); color: var(--mls-color-warning); }
+  .flag--low { background: var(--mls-color-danger-bg); color: var(--mls-color-danger); }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Clubs</p>
+    <h1 class="pv__title">Thirty club themes</h1>
+    <p class="pv__note">The colour bar shows each club's <strong>true</strong> primary, secondary and tertiary, never altered. The button shows the <strong>contrast-corrected</strong> UI accent. 24 of 30 need correction to clear 3.2:1 — Columbus gold on white is 1.5:1 raw. Where a primary is achromatic (LAFC, D.C. United) the accent is promoted to a chromatic club colour rather than lightened into grey.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Light</h2>
+    <div class="clubs" id="light"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Dark</h2>
+    <div class="pv__dark" data-theme="dark"><div class="clubs" id="dark"></div></div>
+  </section>
+</main>
+
+<script>
+const clubs = window.MLS_CLUBS;
+
+const card = (c, scheme) => {
+  const t = c.theme;
+  const accent = scheme === 'dark' ? t.accentDark : t.accentLight;
+  const ratio = scheme === 'dark' ? t.contrast.accentDarkOnDark : t.contrast.accentLightOnWhite;
+  const cols = [c.colors.primary?.hex, c.colors.secondary?.hex, c.colors.tertiary?.hex].filter(Boolean);
+  return `
+  <div class="club" data-club="${c.slug}">
+    <div class="club__bar">${cols.map(h => `<i style="background:${h}"></i>`).join('')}</div>
+    <div class="club__body">
+      <div class="club__name">${c.nameLocalised ?? c.name}</div>
+      <div class="club__meta">${c.tricode} · ${c.conference.slice(0,4)} · ${c.firstSeason}</div>
+      <button class="mls-btn mls-btn--primary mls-btn--sm">Tickets</button>
+      <div class="club__meta">${t.raw} &rarr; ${accent} · ${ratio}:1</div>
+      <div>
+        ${t.corrected ? '<span class="flag flag--corrected">corrected</span> ' : ''}
+        ${(c.confidence === 'low' || c.confidence === 'unverified') ? `<span class="flag flag--low">${c.confidence}</span>` : ''}
+      </div>
+    </div>
+  </div>`;
+};
+
+document.getElementById('light').innerHTML = clubs.map(c => card(c, 'light')).join('');
+document.getElementById('dark').innerHTML = clubs.map(c => card(c, 'dark')).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* Chrome for the preview pages only. Not part of the design system. */
+
+body {
+  padding: var(--mls-space-8);
+  background: var(--mls-color-bg-subtle);
+}
+.pv {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mls-space-8);
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.pv__head { display: flex; flex-direction: column; gap: var(--mls-space-1); }
+.pv__title { font-family: var(--mls-font-display); font-size: var(--mls-fontSize-2xl); font-weight: var(--mls-fontWeight-extrabold); text-transform: uppercase; letter-spacing: var(--mls-letterSpacing-tight); }
+.pv__note { font-size: var(--mls-fontSize-sm); color: var(--mls-color-fg-muted); max-width: 70ch; }
+
+.pv__section { display: flex; flex-direction: column; gap: var(--mls-space-4); }
+.pv__label {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-widest);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+  padding-bottom: var(--mls-space-2);
+  border-bottom: 1px solid var(--mls-color-border);
+}
+.pv__row { display: flex; flex-wrap: wrap; gap: var(--mls-space-3); align-items: center; }
+.pv__panel {
+  background: var(--mls-color-surface);
+  border: 1px solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  padding: var(--mls-space-6);
+}
+.pv__grid { display: grid; gap: var(--mls-space-4); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.pv__code {
+  font-family: var(--mls-font-mono);
+  font-size: var(--mls-fontSize-2xs);
+  color: var(--mls-color-fg-subtle);
+}
+.pv__dark { background: var(--mls-color-bg); padding: var(--mls-space-6); border-radius: var(--mls-radius-lg); }
+
+.mls-scoreline--hero .mls-crest[data-placeholder]::after { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.7); }

@@ -1,0 +1,116 @@
+<!-- @dsCard group="Components" name="Cards, forms & feedback" subtitle="Cards, inputs, alerts, empty states, skeletons" width="1120" height="1000" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Cards, forms and feedback</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>.fake-photo { width:100%; height:100%; background: linear-gradient(160deg,#8f9aa8,#3b4553 60%,#222a36); }</style>
+</head>
+<body>
+<main class="pv" data-club="sea">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Components</p>
+    <h1 class="pv__title">Cards, forms &amp; feedback</h1>
+    <p class="pv__note">Scoped to <code class="pv__code">data-club="sea"</code>. Form state is driven by ARIA attributes rather than classes, so the styling and the announced state cannot drift apart.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Cards</h2>
+    <div class="pv__grid">
+      <article class="mls-card mls-card--link mls-card--accent">
+        <div class="mls-card__media"><div class="fake-photo"></div></div>
+        <div class="mls-card__body">
+          <span class="mls-eyebrow">Match report</span>
+          <h3 class="mls-card__title">Sounders edge Cascadia thriller</h3>
+          <p class="mls-body-sm" style="color:var(--mls-color-fg-muted)">A stoppage-time golazo settles it at Lumen Field.</p>
+        </div>
+        <div class="mls-card__footer mls-cluster"><span class="mls-competition">MLS Regular Season</span><span class="mls-caption">4 min read</span></div>
+      </article>
+
+      <article class="mls-card mls-card--feature">
+        <div class="mls-card__body">
+          <span class="mls-eyebrow" style="color:inherit;opacity:.7">Featured</span>
+          <h3 class="mls-card__title">2027 MLS Sprint Season</h3>
+          <p class="mls-body-sm" style="opacity:.8">Fourteen matches, conference opponents only, single-elimination playoffs. February to May 2027.</p>
+          <div style="margin-top:auto;padding-top:var(--mls-space-4)"><button class="mls-btn mls-btn--primary mls-btn--sm">Read the FAQ</button></div>
+        </div>
+      </article>
+
+      <article class="mls-card">
+        <div class="mls-card__body">
+          <span class="mls-eyebrow">Loading</span>
+          <div class="mls-skeleton mls-skeleton--title"></div>
+          <div class="mls-skeleton mls-skeleton--text"></div>
+          <div class="mls-skeleton mls-skeleton--text" style="width:80%"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Form</h2>
+    <div class="pv__panel mls-stack" style="--mls-stack-gap: var(--mls-space-5); max-width: 34rem">
+      <div class="mls-field">
+        <label class="mls-label" for="email" data-required>Email</label>
+        <input class="mls-input" id="email" type="email" placeholder="you@example.com" required aria-describedby="email-help">
+        <span class="mls-help" id="email-help">Match alerts for your club, nothing else.</span>
+      </div>
+      <div class="mls-field">
+        <label class="mls-label" for="club">Your club</label>
+        <select class="mls-select" id="club">
+          <option>Seattle Sounders FC</option><option>Portland Timbers</option><option>Vancouver Whitecaps FC</option>
+        </select>
+      </div>
+      <div class="mls-field">
+        <label class="mls-label" for="bad">Supporters&rsquo; group</label>
+        <input class="mls-input" id="bad" value="ECS" aria-invalid="true" aria-describedby="bad-err">
+        <span class="mls-error" id="bad-err">We could not find that supporters&rsquo; group.</span>
+      </div>
+      <label class="mls-check"><input type="checkbox" checked><span>Send me Matchday reminders</span></label>
+      <label class="mls-switch"><input type="checkbox" checked><span class="mls-switch__track"></span><span class="mls-body-sm">Score notifications</span></label>
+      <div class="pv__row"><button class="mls-btn mls-btn--primary">Save</button><button class="mls-btn mls-btn--ghost">Cancel</button></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Feedback</h2>
+    <div class="mls-stack" style="--mls-stack-gap: var(--mls-space-3)">
+      <div class="mls-alert" role="status"><div class="mls-alert__body"><span class="mls-alert__title">Calendar change</span><span>MLS moves to a summer-to-spring calendar from July 2027.</span></div></div>
+      <div class="mls-alert mls-alert--success" role="status"><div class="mls-alert__body"><span class="mls-alert__title">Saved</span><span>Your club preference has been updated.</span></div></div>
+      <div class="mls-alert mls-alert--warning" role="status"><div class="mls-alert__body"><span class="mls-alert__title">Low confidence</span><span>This club&rsquo;s colour values could not be verified against a club-published source.</span></div></div>
+      <div class="mls-alert mls-alert--danger" role="alert"><div class="mls-alert__body"><span class="mls-alert__title">Match postponed</span><span>Tonight&rsquo;s fixture has been postponed. Tickets remain valid.</span></div></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Empty state — uses the hatch, so it still reads as brand</h2>
+    <div class="mls-empty">
+      <p class="mls-empty__title">No matches today</p>
+      <p class="mls-empty__body">The next fixture is Saturday against Portland Timbers at 7:30 pm ET.</p>
+      <button class="mls-btn mls-btn--secondary mls-btn--sm">View full schedule</button>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Badges</h2>
+    <div class="pv__row">
+      <span class="mls-badge mls-badge--live">Live</span>
+      <span class="mls-badge mls-badge--solid">Matchday 24</span>
+      <span class="mls-badge mls-badge--accent">Homegrown</span>
+      <span class="mls-badge mls-badge--success">Qualified</span>
+      <span class="mls-badge mls-badge--warning">Suspended</span>
+      <span class="mls-badge mls-badge--danger">Out</span>
+      <span class="mls-badge mls-badge--outline">Designated Player</span>
+      <span class="mls-form">
+        <span class="mls-form__result" data-result="W">W</span><span class="mls-form__result" data-result="W">W</span>
+        <span class="mls-form__result" data-result="D">D</span><span class="mls-form__result" data-result="L">L</span>
+        <span class="mls-form__result" data-result="W">W</span>
+      </span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

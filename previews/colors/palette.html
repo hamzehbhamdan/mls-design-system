@@ -1,0 +1,92 @@
+<!-- @dsCard group="Colors" name="Palette" subtitle="Ramps, semantic roles, and the accent slot" width="1120" height="900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — Colour</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>
+  .swatches { display: grid; grid-template-columns: repeat(14, 1fr); gap: 2px; }
+  .sw { aspect-ratio: 1 / 1.6; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; font-family: var(--mls-font-mono); font-size: 9px; border-radius: 2px; }
+  .ramp-name { font-family: var(--mls-font-display); font-size: var(--mls-fontSize-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mls-color-fg-subtle); margin-bottom: 4px; }
+  .role { display: flex; align-items: center; gap: var(--mls-space-3); padding: var(--mls-space-2) var(--mls-space-3); border: 1px solid var(--mls-color-border); border-radius: var(--mls-radius-md); font-size: var(--mls-fontSize-xs); }
+  .role i { width: 1.5rem; height: 1.5rem; border-radius: var(--mls-radius-xs); border: 1px solid rgba(128,128,128,.3); flex: none; }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Foundations</p>
+    <h1 class="pv__title">Colour</h1>
+    <p class="pv__note">Three tiers. Primitive ramps are generated in OKLCH so steps are perceptually even. Neutrals carry a navy cast borrowed from the league navy. Only the semantic tier should be referenced from product code.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Brand — low confidence, see docs/03</h2>
+    <div class="pv__row">
+      <div class="role"><i style="background:#E2231A"></i><b>MLS Red</b> #E2231A · PMS 485 C</div>
+      <div class="role"><i style="background:#001F5B"></i><b>MLS Navy</b> #001F5B · PMS 281 C</div>
+      <div class="role"><i style="background:#FFFFFF"></i><b>White</b> #FFFFFF</div>
+      <div class="role"><i style="background:#0B0F16"></i><b>Near-black</b> #0B0F16</div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Primitive ramps</h2>
+    <div id="ramps"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Semantic roles — light</h2>
+    <div class="pv__grid" id="roles-light"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Semantic roles — dark</h2>
+    <div class="pv__dark" data-theme="dark">
+      <div class="pv__grid" id="roles-dark"></div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">The accent slot</h2>
+    <p class="pv__note">Identical markup. Only <code class="pv__code">data-club</code> changes.</p>
+    <div class="pv__row" id="accents"></div>
+  </section>
+</main>
+
+<script>
+const STEPS = [0,25,50,100,200,300,400,500,600,700,800,900,950,1000];
+const RAMPS = ['neutral','red','navy','green','amber','cyan'];
+const cs = getComputedStyle(document.documentElement);
+
+document.getElementById('ramps').innerHTML = RAMPS.map(r => `
+  <div style="margin-bottom:14px">
+    <div class="ramp-name">${r}</div>
+    <div class="swatches">${STEPS.map(s => {
+      const v = cs.getPropertyValue(`--mls-color-primitive-${r}-${s}`).trim();
+      const light = s <= 400;
+      return `<div class="sw" style="background:${v};color:${light?'#333':'#fff'}">${s}</div>`;
+    }).join('')}</div>
+  </div>`).join('');
+
+const ROLES = ['bg','bg-subtle','bg-muted','surface','surface-sunken','fg','fg-muted','fg-subtle','border','border-strong','focus','success','warning','danger','info','live'];
+const roleHTML = (scope) => ROLES.map(r => {
+  const v = getComputedStyle(scope).getPropertyValue(`--mls-color-${r}`).trim();
+  return `<div class="role"><i style="background:${v}"></i><span><b>${r}</b><br><span class="pv__code">${v}</span></span></div>`;
+}).join('');
+document.getElementById('roles-light').innerHTML = roleHTML(document.documentElement);
+
+const darkScope = document.querySelector('[data-theme="dark"]');
+document.getElementById('roles-dark').innerHTML = roleHTML(darkScope);
+
+const CLUBS = ['','por','clb','mia','lafc','sea','atx','nyc','skc','stl'];
+document.getElementById('accents').innerHTML = CLUBS.map(c => `
+  <div ${c ? `data-club="${c}"` : ''} style="text-align:center">
+    <button class="mls-btn mls-btn--primary">${c ? c.toUpperCase() : 'League'}</button>
+  </div>`).join('');
+</script>
+</body>
+</html>

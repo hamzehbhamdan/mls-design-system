@@ -1,0 +1,105 @@
+/* Form controls */
+
+.mls-field { display: flex; flex-direction: column; gap: var(--mls-space-2); }
+
+.mls-label {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-muted);
+}
+.mls-label[data-required]::after { content: " *"; color: var(--mls-color-danger); }
+
+.mls-input,
+.mls-select,
+.mls-textarea {
+  width: 100%;
+  padding: var(--mls-space-3) var(--mls-space-4);
+  font-family: var(--mls-font-text);
+  font-size: var(--mls-fontSize-base);
+  line-height: var(--mls-lineHeight-normal);
+  color: var(--mls-color-fg);
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-md);
+  transition: border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              box-shadow var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-input::placeholder,
+.mls-textarea::placeholder { color: var(--mls-color-fg-subtle); }
+
+.mls-input:focus-visible,
+.mls-select:focus-visible,
+.mls-textarea:focus-visible {
+  outline: none;
+  border-color: var(--mls-color-focus);
+  box-shadow: var(--mls-shadow-focus);
+}
+
+.mls-input:disabled,
+.mls-select:disabled,
+.mls-textarea:disabled { opacity: 0.5; cursor: not-allowed; background: var(--mls-color-bg-muted); }
+
+/* Invalid state carries a border colour AND an icon-bearing message
+ * below. aria-invalid is what actually drives it, so the styling and the
+ * assistive-tech announcement can never drift apart. */
+.mls-input[aria-invalid="true"],
+.mls-select[aria-invalid="true"],
+.mls-textarea[aria-invalid="true"] { border-color: var(--mls-color-danger); }
+
+.mls-help  { font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-subtle); }
+.mls-error { font-size: var(--mls-fontSize-xs); color: var(--mls-color-danger); font-weight: var(--mls-fontWeight-medium); }
+.mls-error::before { content: "\26A0\FE0E  "; }
+
+.mls-textarea { min-height: 7rem; resize: vertical; }
+
+.mls-select {
+  appearance: none;
+  padding-inline-end: var(--mls-space-10);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) 55%, calc(100% - 0.85rem) 55%;
+  background-size: 0.4rem 0.4rem;
+  background-repeat: no-repeat;
+}
+
+/* Checkbox and radio. Uses accent-color so the club theme flows through
+ * with no custom control markup. */
+.mls-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mls-space-3);
+  font-size: var(--mls-fontSize-sm);
+  cursor: pointer;
+}
+.mls-check input {
+  accent-color: var(--mls-color-accent-base);
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0.15rem 0 0;
+  flex: none;
+}
+
+.mls-switch { display: inline-flex; align-items: center; gap: var(--mls-space-3); cursor: pointer; }
+.mls-switch input { position: absolute; opacity: 0; pointer-events: none; }
+.mls-switch__track {
+  position: relative;
+  width: 2.5rem; height: 1.4rem;
+  background: var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-full);
+  transition: background-color var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 1rem; height: 1rem;
+  background: #FFFFFF;
+  border-radius: var(--mls-radius-full);
+  transition: transform var(--mls-duration-fast) var(--mls-easing-drive);
+}
+.mls-switch input:checked + .mls-switch__track { background: var(--mls-color-accent-base); }
+.mls-switch input:checked + .mls-switch__track::after { transform: translateX(1.1rem); }
+.mls-switch input:focus-visible + .mls-switch__track { outline: 2px solid var(--mls-color-focus); outline-offset: 2px; }

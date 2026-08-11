@@ -1,0 +1,2516 @@
+/* ============================================================
+ * MLS Design System -- generated file. Do not edit.
+ * Source: tokens/tokens.json + data/clubs.json
+ * Rebuild: npm run build
+ * ============================================================ */
+
+
+:root {
+  --mls-color-primitive-neutral-0: #FFFFFF;
+  --mls-color-primitive-neutral-25: #F9FAFC;
+  --mls-color-primitive-neutral-50: #F2F4F8;
+  --mls-color-primitive-neutral-100: #E7EAEF;
+  --mls-color-primitive-neutral-200: #D2D6DE;
+  --mls-color-primitive-neutral-300: #BDC2CA;
+  --mls-color-primitive-neutral-400: #A5ABB5;
+  --mls-color-primitive-neutral-500: #8D939C;
+  --mls-color-primitive-neutral-600: #747A84;
+  --mls-color-primitive-neutral-700: #5B616C;
+  --mls-color-primitive-neutral-800: #424955;
+  --mls-color-primitive-neutral-900: #29313E;
+  --mls-color-primitive-neutral-950: #18212F;
+  --mls-color-primitive-neutral-1000: #000000;
+  --mls-color-primitive-red-0: #FFFFFF;
+  --mls-color-primitive-red-25: #FFF6F4;
+  --mls-color-primitive-red-50: #FFECE8;
+  --mls-color-primitive-red-100: #FFD7D0;
+  --mls-color-primitive-red-200: #FFB3A8;
+  --mls-color-primitive-red-300: #FA8F80;
+  --mls-color-primitive-red-400: #F16A5A;
+  --mls-color-primitive-red-500: #E44739;
+  --mls-color-primitive-red-600: #E2231A;
+  --mls-color-primitive-red-700: #AF160F;
+  --mls-color-primitive-red-800: #8C0E09;
+  --mls-color-primitive-red-900: #650604;
+  --mls-color-primitive-red-950: #480302;
+  --mls-color-primitive-red-1000: #000000;
+  --mls-color-primitive-navy-0: #FFFFFF;
+  --mls-color-primitive-navy-25: #F5F9FE;
+  --mls-color-primitive-navy-50: #EBF2FC;
+  --mls-color-primitive-navy-100: #D7E3F9;
+  --mls-color-primitive-navy-200: #B5CCF3;
+  --mls-color-primitive-navy-300: #93B4ED;
+  --mls-color-primitive-navy-400: #719BE4;
+  --mls-color-primitive-navy-500: #5182D7;
+  --mls-color-primitive-navy-600: #3569C5;
+  --mls-color-primitive-navy-700: #194EAD;
+  --mls-color-primitive-navy-800: #003690;
+  --mls-color-primitive-navy-900: #001F5B;
+  --mls-color-primitive-navy-950: #001250;
+  --mls-color-primitive-navy-1000: #000000;
+  --mls-color-primitive-green-0: #FFFFFF;
+  --mls-color-primitive-green-25: #F4FDF5;
+  --mls-color-primitive-green-50: #E8FAEB;
+  --mls-color-primitive-green-100: #D0F5D6;
+  --mls-color-primitive-green-200: #A7E9B4;
+  --mls-color-primitive-green-300: #7FD993;
+  --mls-color-primitive-green-400: #55C674;
+  --mls-color-primitive-green-500: #27AD57;
+  --mls-color-primitive-green-600: #00943D;
+  --mls-color-primitive-green-700: #00782A;
+  --mls-color-primitive-green-800: #005B1B;
+  --mls-color-primitive-green-900: #003F0D;
+  --mls-color-primitive-green-950: #002B05;
+  --mls-color-primitive-green-1000: #000000;
+  --mls-color-primitive-amber-0: #FFFFFF;
+  --mls-color-primitive-amber-25: #FFF9EF;
+  --mls-color-primitive-amber-50: #FFF2DD;
+  --mls-color-primitive-amber-100: #FFE5BC;
+  --mls-color-primitive-amber-200: #FECD86;
+  --mls-color-primitive-amber-300: #F4B451;
+  --mls-color-primitive-amber-400: #E29B00;
+  --mls-color-primitive-amber-500: #CA8000;
+  --mls-color-primitive-amber-600: #AF6700;
+  --mls-color-primitive-amber-700: #905000;
+  --mls-color-primitive-amber-800: #703A00;
+  --mls-color-primitive-amber-900: #4E2500;
+  --mls-color-primitive-amber-950: #371700;
+  --mls-color-primitive-amber-1000: #000000;
+  --mls-color-primitive-cyan-0: #FFFFFF;
+  --mls-color-primitive-cyan-25: #F2FCFF;
+  --mls-color-primitive-cyan-50: #E5F8FF;
+  --mls-color-primitive-cyan-100: #CAF1FF;
+  --mls-color-primitive-cyan-200: #9AE2FF;
+  --mls-color-primitive-cyan-300: #68D0FB;
+  --mls-color-primitive-cyan-400: #28BAEE;
+  --mls-color-primitive-cyan-500: #00A2D9;
+  --mls-color-primitive-cyan-600: #0088BF;
+  --mls-color-primitive-cyan-700: #006DA1;
+  --mls-color-primitive-cyan-800: #005380;
+  --mls-color-primitive-cyan-900: #00385C;
+  --mls-color-primitive-cyan-950: #002642;
+  --mls-color-primitive-cyan-1000: #000000;
+  --mls-color-brand-red: #E2231A;
+  --mls-color-brand-navy: #001F5B;
+  --mls-color-brand-white: #FFFFFF;
+  --mls-color-brand-black: #0B0F16;
+  --mls-font-display: "MLS Tifo Headline", "MLS Headline", "Archivo Expanded", Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mls-font-text: "MLS Tifo Standard", "MLS Standard", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mls-font-micro: "MLS Tifo Micro", "MLS Micro", Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mls-font-numeric: "MLS Tifo Headline", Archivo, "Helvetica Neue", Arial, sans-serif;
+  --mls-font-mono: "JetBrains Mono", "SF Mono", "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+  --mls-fontWeight-light: 300;
+  --mls-fontWeight-regular: 400;
+  --mls-fontWeight-medium: 500;
+  --mls-fontWeight-semibold: 600;
+  --mls-fontWeight-bold: 700;
+  --mls-fontWeight-extrabold: 800;
+  --mls-fontSize-3xs: 0.625rem;
+  --mls-fontSize-2xs: 0.6875rem;
+  --mls-fontSize-xs: 0.75rem;
+  --mls-fontSize-sm: 0.875rem;
+  --mls-fontSize-base: 1rem;
+  --mls-fontSize-lg: 1.125rem;
+  --mls-fontSize-xl: 1.25rem;
+  --mls-fontSize-2xl: 1.5rem;
+  --mls-fontSize-3xl: 1.875rem;
+  --mls-fontSize-4xl: 2.25rem;
+  --mls-fontSize-5xl: 3rem;
+  --mls-fontSize-6xl: 3.75rem;
+  --mls-fontSize-7xl: 4.5rem;
+  --mls-fontSize-8xl: 6rem;
+  --mls-fontSize-9xl: 8rem;
+  --mls-lineHeight-none: 1;
+  --mls-lineHeight-tight: 1.1;
+  --mls-lineHeight-snug: 1.25;
+  --mls-lineHeight-normal: 1.5;
+  --mls-lineHeight-relaxed: 1.65;
+  --mls-letterSpacing-tighter: -0.03em;
+  --mls-letterSpacing-tight: -0.015em;
+  --mls-letterSpacing-normal: 0em;
+  --mls-letterSpacing-wide: 0.02em;
+  --mls-letterSpacing-wider: 0.06em;
+  --mls-letterSpacing-widest: 0.12em;
+  --mls-space-0: 0;
+  --mls-space-1: 0.25rem;
+  --mls-space-2: 0.5rem;
+  --mls-space-3: 0.75rem;
+  --mls-space-4: 1rem;
+  --mls-space-5: 1.25rem;
+  --mls-space-6: 1.5rem;
+  --mls-space-8: 2rem;
+  --mls-space-10: 2.5rem;
+  --mls-space-12: 3rem;
+  --mls-space-16: 4rem;
+  --mls-space-20: 5rem;
+  --mls-space-24: 6rem;
+  --mls-space-32: 8rem;
+  --mls-space-40: 10rem;
+  --mls-space-48: 12rem;
+  --mls-space-64: 16rem;
+  --mls-space-px: 1px;
+  --mls-radius-none: 0;
+  --mls-radius-xs: 2px;
+  --mls-radius-sm: 3px;
+  --mls-radius-md: 4px;
+  --mls-radius-lg: 6px;
+  --mls-radius-xl: 10px;
+  --mls-radius-full: 9999px;
+  --mls-radius-notch: 10px;
+  --mls-borderWidth-0: 0;
+  --mls-borderWidth-1: 1px;
+  --mls-borderWidth-2: 2px;
+  --mls-borderWidth-3: 3px;
+  --mls-borderWidth-4: 4px;
+  --mls-shadow-none: none;
+  --mls-shadow-xs: 0 1px 2px rgba(11, 15, 22, 0.06);
+  --mls-shadow-sm: 0 1px 3px rgba(11, 15, 22, 0.10), 0 1px 2px rgba(11, 15, 22, 0.06);
+  --mls-shadow-md: 0 4px 10px rgba(11, 15, 22, 0.08), 0 1px 3px rgba(11, 15, 22, 0.06);
+  --mls-shadow-lg: 0 12px 24px rgba(11, 15, 22, 0.10), 0 2px 6px rgba(11, 15, 22, 0.06);
+  --mls-shadow-focus: 0 0 0 3px rgba(25, 78, 173, 0.45);
+  --mls-duration-instant: 0ms;
+  --mls-duration-fast: 120ms;
+  --mls-duration-base: 180ms;
+  --mls-duration-slow: 240ms;
+  --mls-duration-slower: 400ms;
+  --mls-easing-linear: cubic-bezier(0, 0, 1, 1);
+  --mls-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --mls-easing-enter: cubic-bezier(0, 0, 0, 1);
+  --mls-easing-exit: cubic-bezier(0.3, 0, 1, 1);
+  --mls-easing-drive: cubic-bezier(0.35, 0, 0.1, 1);
+  --mls-breakpoint-sm: 640px;
+  --mls-breakpoint-md: 768px;
+  --mls-breakpoint-lg: 1024px;
+  --mls-breakpoint-xl: 1280px;
+  --mls-breakpoint-2xl: 1536px;
+  --mls-zIndex-base: 0;
+  --mls-zIndex-raised: 10;
+  --mls-zIndex-sticky: 100;
+  --mls-zIndex-overlay: 500;
+  --mls-zIndex-modal: 1000;
+  --mls-zIndex-popover: 1100;
+  --mls-zIndex-toast: 1200;
+  --mls-geometry-slashAngle: 45;
+  --mls-geometry-crestClearSpace: 4;
+  --mls-geometry-crestMinWidth: 0.5in;
+  --mls-geometry-crestMinWidthPx: 32px;
+
+  /* semantic -- light (default) */
+  --mls-color-bg: #FFFFFF;
+  --mls-color-bg-subtle: #F2F4F8;
+  --mls-color-bg-muted: #E7EAEF;
+  --mls-color-bg-inverse: #001F5B;
+  --mls-color-surface: #FFFFFF;
+  --mls-color-surface-raised: #FFFFFF;
+  --mls-color-surface-sunken: #F2F4F8;
+  --mls-color-fg: #29313E;
+  --mls-color-fg-muted: #5B616C;
+  --mls-color-fg-subtle: #747A84;
+  --mls-color-fg-inverse: #FFFFFF;
+  --mls-color-fg-on-accent: #FFFFFF;
+  --mls-color-border: #D2D6DE;
+  --mls-color-border-strong: #8D939C;
+  --mls-color-border-accent: #E2231A;
+  --mls-color-focus: #194EAD;
+  --mls-color-success: #00782A;
+  --mls-color-success-bg: #E8FAEB;
+  --mls-color-warning: #703A00;
+  --mls-color-warning-bg: #FFF2DD;
+  --mls-color-danger: #AF160F;
+  --mls-color-danger-bg: #FFECE8;
+  --mls-color-info: #006DA1;
+  --mls-color-info-bg: #E5F8FF;
+  --mls-color-live: #E2231A;
+
+  /* accent slot -- overridden wholesale by any [data-club] theme */
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #FBE0DF;
+  --mls-color-accent-emphasis: #D30203;
+
+  color-scheme: light;
+}
+
+/* Explicit opt-in dark. Wins over the media query below. */
+[data-theme="dark"] {
+  --mls-color-bg: #0B0F16;
+  --mls-color-bg-subtle: #18212F;
+  --mls-color-bg-muted: #29313E;
+  --mls-color-bg-inverse: #F2F4F8;
+  --mls-color-surface: #18212F;
+  --mls-color-surface-raised: #29313E;
+  --mls-color-surface-sunken: #0B0F16;
+  --mls-color-fg: #F2F4F8;
+  --mls-color-fg-muted: #BDC2CA;
+  --mls-color-fg-subtle: #A5ABB5;
+  --mls-color-fg-inverse: #29313E;
+  --mls-color-fg-on-accent: #FFFFFF;
+  --mls-color-border: #424955;
+  --mls-color-border-strong: #747A84;
+  --mls-color-border-accent: #E2231A;
+  --mls-color-focus: #93B4ED;
+  --mls-color-success: #55C674;
+  --mls-color-success-bg: #002B05;
+  --mls-color-warning: #E29B00;
+  --mls-color-warning-bg: #371700;
+  --mls-color-danger: #F16A5A;
+  --mls-color-danger-bg: #480302;
+  --mls-color-info: #28BAEE;
+  --mls-color-info-bg: #002642;
+  --mls-color-live: #F16A5A;
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #291217;
+  --mls-color-accent-emphasis: #FF4738;
+  color-scheme: dark;
+}
+
+/* System preference, only when the author has not pinned a theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --mls-color-bg: #0B0F16;
+    --mls-color-bg-subtle: #18212F;
+    --mls-color-bg-muted: #29313E;
+    --mls-color-bg-inverse: #F2F4F8;
+    --mls-color-surface: #18212F;
+    --mls-color-surface-raised: #29313E;
+    --mls-color-surface-sunken: #0B0F16;
+    --mls-color-fg: #F2F4F8;
+    --mls-color-fg-muted: #BDC2CA;
+    --mls-color-fg-subtle: #A5ABB5;
+    --mls-color-fg-inverse: #29313E;
+    --mls-color-fg-on-accent: #FFFFFF;
+    --mls-color-border: #424955;
+    --mls-color-border-strong: #747A84;
+    --mls-color-border-accent: #E2231A;
+    --mls-color-focus: #93B4ED;
+    --mls-color-success: #55C674;
+    --mls-color-success-bg: #002B05;
+    --mls-color-warning: #E29B00;
+    --mls-color-warning-bg: #371700;
+    --mls-color-danger: #F16A5A;
+    --mls-color-danger-bg: #480302;
+    --mls-color-info: #28BAEE;
+    --mls-color-info-bg: #002642;
+    --mls-color-live: #F16A5A;
+    --mls-color-accent-base: #E2231A;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #291217;
+    --mls-color-accent-emphasis: #FF4738;
+    color-scheme: dark;
+  }
+}
+
+
+/* ---- css/reset.css ---- */
+/* MLS Design System -- reset
+ *
+ * Minimal and opinionated. Removes browser defaults that fight the system,
+ * leaves everything else alone. Not normalize.css -- we do not want to
+ * re-add defaults we then have to override.
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, pre {
+  margin: 0;
+}
+
+ul[role="list"], ol[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+a:not([class]) {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th { text-align: left; font-weight: inherit; }
+
+hr {
+  border: none;
+  border-top: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  margin: 0;
+}
+
+:where(:focus-visible) {
+  outline: 2px solid var(--mls-color-focus);
+  outline-offset: 2px;
+}
+
+/* Respect the user. Every transition and animation in this system is
+ * decorative; none of them carry meaning that is lost when removed. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ---- css/base.css ---- */
+/* MLS Design System -- base element styling and typography classes */
+
+body {
+  margin: 0;
+  background: var(--mls-color-bg);
+  color: var(--mls-color-fg);
+  font-family: var(--mls-font-text);
+  font-size: var(--mls-fontSize-base);
+  line-height: var(--mls-lineHeight-normal);
+  font-weight: var(--mls-fontWeight-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  transition: background-color var(--mls-duration-base) var(--mls-easing-standard),
+              color var(--mls-duration-base) var(--mls-easing-standard);
+}
+
+/* Any element that scopes a theme establishes its own foreground and
+ * background.
+ *
+ * Without this, <div data-theme="dark"> inside a light page swaps the token
+ * values but inherits body's `color`, so you get dark text on a dark
+ * surface. The tokens are right and the render is wrong, which is the
+ * worst kind of bug to chase. Scoping a theme should just work. */
+[data-theme] {
+  background-color: var(--mls-color-bg);
+  color: var(--mls-color-fg);
+}
+
+::selection {
+  background: var(--mls-color-accent-base);
+  color: var(--mls-color-accent-contrast);
+}
+
+/* ------------------------------------------------------------------ *
+ * Type roles
+ *
+ * Named by JOB, not by size. "mls-display-1" tells you where it goes;
+ * "text-6xl" only tells you how big it is, which is how design systems
+ * drift. Sizes are fluid via clamp so a scoreline behaves on a phone.
+ * ------------------------------------------------------------------ */
+
+.mls-display-1,
+.mls-display-2,
+.mls-display-3 {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-extrabold);
+  line-height: var(--mls-lineHeight-tight);
+  letter-spacing: var(--mls-letterSpacing-tighter);
+  text-transform: uppercase;
+}
+.mls-display-1 { font-size: clamp(2.5rem, 1.2rem + 5.5vw, var(--mls-fontSize-7xl)); }
+.mls-display-2 { font-size: clamp(2rem, 1.1rem + 3.8vw, var(--mls-fontSize-6xl)); }
+.mls-display-3 { font-size: clamp(1.75rem, 1.1rem + 2.6vw, var(--mls-fontSize-5xl)); }
+
+.mls-heading-1, .mls-heading-2, .mls-heading-3, .mls-heading-4 {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-bold);
+  line-height: var(--mls-lineHeight-snug);
+  letter-spacing: var(--mls-letterSpacing-tight);
+}
+.mls-heading-1 { font-size: var(--mls-fontSize-4xl); }
+.mls-heading-2 { font-size: var(--mls-fontSize-3xl); }
+.mls-heading-3 { font-size: var(--mls-fontSize-2xl); }
+.mls-heading-4 { font-size: var(--mls-fontSize-xl); }
+
+.mls-body-lg { font-size: var(--mls-fontSize-lg);  line-height: var(--mls-lineHeight-relaxed); }
+.mls-body    { font-size: var(--mls-fontSize-base);line-height: var(--mls-lineHeight-normal); }
+.mls-body-sm { font-size: var(--mls-fontSize-sm);  line-height: var(--mls-lineHeight-normal); }
+
+/* Long-form match reports and features. Measure is capped because MLS
+ * editorial runs long and an unbounded column is unreadable. */
+.mls-prose {
+  font-size: var(--mls-fontSize-lg);
+  line-height: var(--mls-lineHeight-relaxed);
+  max-width: 68ch;
+}
+.mls-prose > * + * { margin-top: var(--mls-space-5); }
+.mls-prose a { color: var(--mls-color-accent-base); text-underline-offset: 0.2em; }
+
+.mls-caption {
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-xs);
+  line-height: var(--mls-lineHeight-normal);
+  color: var(--mls-color-fg-subtle);
+}
+
+/* The eyebrow: small all-caps label above a headline. Tracked out, because
+ * caps below 13px without tracking are genuinely hard to read. */
+.mls-eyebrow {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-widest);
+  text-transform: uppercase;
+  line-height: var(--mls-lineHeight-none);
+  color: var(--mls-color-fg-subtle);
+}
+
+/* Any figure that sits in a column or ticks over in place. Without
+ * tabular-nums a live clock jitters and a standings table will not align. */
+.mls-numeric,
+.mls-tabular {
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.mls-tricode {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-extrabold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ---- css/utilities.css ---- */
+/* MLS Design System -- utilities
+ *
+ * Includes the two graphic devices that MLS's own partner brand guidelines
+ * name as part of the system independently of the crest: "The Slash" and
+ * "The Corners". They are the reason an MLS layout reads as MLS even when
+ * the crest is not in frame, so they are first-class here rather than
+ * left to individual designers to re-invent.
+ */
+
+/* ------------------------------------------------------------------ *
+ * THE SLASH
+ * A 45-degree diagonal driving upward. Per MLS: it "begins outside the
+ * perimeter and drives upward at a 45-degree angle to illustrate both the
+ * nonstop nature of our game and the rising trajectory of our league."
+ * The angle is not a preference. 45 degrees or it is off-brand.
+ * ------------------------------------------------------------------ */
+
+.mls-slash {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.mls-slash::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% 50%;
+  width: max(6%, 10px);
+  background: var(--mls-color-accent-base);
+  transform: skewX(-45deg);
+  transform-origin: bottom left;
+  z-index: -1;
+  pointer-events: none;
+}
+.mls-slash--left::after  { inset-inline: -5% auto; }
+.mls-slash--right::after { inset-inline: auto -5%; }
+.mls-slash--subtle::after { opacity: 0.12; }
+
+/* Full-bleed diagonal band. The workhorse for section dividers,
+ * hero backdrops and stat strips. */
+.mls-slash-band {
+  --mls-slash-band-color: var(--mls-color-accent-base);
+  position: relative;
+  background: var(--mls-slash-band-color);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+}
+.mls-slash-band--up {
+  clip-path: polygon(0 2.5rem, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Repeating diagonal hatch, for empty states, loading skeletons and
+ * "no data" cells. Reads as MLS rather than as a generic grey box. */
+.mls-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--mls-color-border) 0,
+    var(--mls-color-border) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * THE CORNERS
+ * The crest's corner geometry, abstracted. Use instead of a larger
+ * border-radius when a container needs personality -- the crest is built
+ * from straight lines and hard angles, and soft pills fight it.
+ * ------------------------------------------------------------------ */
+
+.mls-notch {
+  --notch: var(--mls-radius-notch);
+  clip-path: polygon(
+    var(--notch) 0, 100% 0, 100% calc(100% - var(--notch)),
+    calc(100% - var(--notch)) 100%, 0 100%, 0 var(--notch)
+  );
+}
+.mls-notch--tl { clip-path: polygon(var(--notch, 10px) 0, 100% 0, 100% 100%, 0 100%, 0 var(--notch, 10px)); }
+.mls-notch--br { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--notch, 10px)), calc(100% - var(--notch, 10px)) 100%, 0 100%); }
+
+/* Corner rules -- an L-bracket at two opposing corners. Frames stats,
+ * pull quotes and featured cards without a full border. */
+.mls-corners {
+  position: relative;
+}
+.mls-corners::before,
+.mls-corners::after {
+  content: "";
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: var(--mls-borderWidth-2) solid var(--mls-color-accent-base);
+  pointer-events: none;
+}
+.mls-corners::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.mls-corners::after  { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+/* ------------------------------------------------------------------ *
+ * DUOTONE PHOTOGRAPHY
+ * Named in MLS's own guidelines as a sanctioned photographic treatment.
+ * Maps image luminance onto two brand colours -- by default the club
+ * accent and near-black, so it re-tints automatically per club theme.
+ * ------------------------------------------------------------------ */
+
+.mls-duotone {
+  --duotone-shadow: var(--mls-color-brand-black);
+  --duotone-highlight: var(--mls-color-accent-base);
+  position: relative;
+  isolation: isolate;
+  background: var(--duotone-shadow);
+}
+.mls-duotone > img {
+  filter: grayscale(1) contrast(1.15);
+  mix-blend-mode: luminosity;
+  opacity: 0.85;
+}
+.mls-duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--duotone-highlight);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Layout
+ * ------------------------------------------------------------------ */
+
+.mls-container {
+  width: 100%;
+  max-width: var(--mls-breakpoint-xl);
+  margin-inline: auto;
+  padding-inline: var(--mls-space-4);
+}
+@media (min-width: 768px) { .mls-container { padding-inline: var(--mls-space-8); } }
+
+.mls-stack > * + * { margin-block-start: var(--mls-stack-gap, var(--mls-space-4)); }
+.mls-cluster { display: flex; flex-wrap: wrap; gap: var(--mls-cluster-gap, var(--mls-space-3)); align-items: center; }
+.mls-grid { display: grid; gap: var(--mls-grid-gap, var(--mls-space-4)); }
+.mls-grid--auto { grid-template-columns: repeat(auto-fit, minmax(var(--mls-grid-min, 16rem), 1fr)); }
+
+/* ------------------------------------------------------------------ *
+ * Helpers
+ * ------------------------------------------------------------------ */
+
+.mls-visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mls-surface {
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+}
+
+.mls-inverse {
+  background: var(--mls-color-bg-inverse);
+  color: var(--mls-color-fg-inverse);
+}
+
+.mls-accent-bar {
+  border-inline-start: var(--mls-borderWidth-3) solid var(--mls-color-accent-base);
+  padding-inline-start: var(--mls-space-4);
+}
+
+.mls-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mls-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.mls-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+
+/* ---- css/components/alert.css ---- */
+/* Alert, callout, empty state and skeleton */
+
+.mls-alert {
+  --alert-accent: var(--mls-color-info);
+  --alert-bg: var(--mls-color-info-bg);
+
+  display: flex;
+  gap: var(--mls-space-3);
+  padding: var(--mls-space-4);
+  background: var(--alert-bg);
+  border-inline-start: var(--mls-borderWidth-3) solid var(--alert-accent);
+  border-radius: var(--mls-radius-md);
+  font-size: var(--mls-fontSize-sm);
+}
+.mls-alert__title { font-weight: var(--mls-fontWeight-bold); color: var(--alert-accent); }
+.mls-alert__body { display: flex; flex-direction: column; gap: var(--mls-space-1); }
+
+.mls-alert--success { --alert-accent: var(--mls-color-success); --alert-bg: var(--mls-color-success-bg); }
+.mls-alert--warning { --alert-accent: var(--mls-color-warning); --alert-bg: var(--mls-color-warning-bg); }
+.mls-alert--danger  { --alert-accent: var(--mls-color-danger);  --alert-bg: var(--mls-color-danger-bg); }
+
+/* Empty state -- uses the diagonal hatch so a "no matches today" panel
+ * still feels like part of the brand rather than a hole in the page. */
+.mls-empty {
+  display: grid;
+  place-items: center;
+  gap: var(--mls-space-3);
+  padding: var(--mls-space-16) var(--mls-space-6);
+  text-align: center;
+  border: var(--mls-borderWidth-1) dashed var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  background-image: repeating-linear-gradient(-45deg,
+    var(--mls-color-border) 0, var(--mls-color-border) 1px,
+    transparent 1px, transparent 9px);
+}
+.mls-empty__title { font-family: var(--mls-font-display); font-weight: var(--mls-fontWeight-bold); font-size: var(--mls-fontSize-lg); }
+.mls-empty__body { color: var(--mls-color-fg-muted); font-size: var(--mls-fontSize-sm); max-width: 42ch; }
+
+/* Skeleton. The shimmer runs on the 45-degree angle, like everything else. */
+.mls-skeleton {
+  background: linear-gradient(-45deg,
+    var(--mls-color-bg-muted) 25%,
+    var(--mls-color-bg-subtle) 50%,
+    var(--mls-color-bg-muted) 75%);
+  background-size: 300% 100%;
+  border-radius: var(--mls-radius-sm);
+  animation: mls-shimmer 1.4s var(--mls-easing-standard) infinite;
+}
+@keyframes mls-shimmer { from { background-position: 150% 0; } to { background-position: -150% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .mls-skeleton { animation: none; background: var(--mls-color-bg-muted); }
+}
+.mls-skeleton--text { height: 1em; }
+.mls-skeleton--title { height: 1.5em; width: 60%; }
+
+
+/* ---- css/components/badge.css ---- */
+/* Badge, tag, pill and match-state indicators */
+
+.mls-badge {
+  --badge-bg: var(--mls-color-bg-muted);
+  --badge-fg: var(--mls-color-fg-muted);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mls-space-1);
+  padding: 0.25em 0.6em;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  border-radius: var(--mls-radius-sm);
+
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.mls-badge--accent  { --badge-bg: var(--mls-color-accent-muted); --badge-fg: var(--mls-color-accent-base); }
+.mls-badge--solid   { --badge-bg: var(--mls-color-accent-base);  --badge-fg: var(--mls-color-accent-contrast); }
+.mls-badge--success { --badge-bg: var(--mls-color-success-bg);   --badge-fg: var(--mls-color-success); }
+.mls-badge--warning { --badge-bg: var(--mls-color-warning-bg);   --badge-fg: var(--mls-color-warning); }
+.mls-badge--danger  { --badge-bg: var(--mls-color-danger-bg);    --badge-fg: var(--mls-color-danger); }
+.mls-badge--info    { --badge-bg: var(--mls-color-info-bg);      --badge-fg: var(--mls-color-info); }
+
+.mls-badge--outline {
+  --badge-bg: transparent;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* Live state.
+ *
+ * The pulse is reserved for genuinely live matches and nothing else. If
+ * everything pulses, nothing does. The dot animates; the label never
+ * moves, so a screen reader announcement is not disrupted, and the whole
+ * thing stops under prefers-reduced-motion where the dot stays solid.
+ */
+.mls-badge--live {
+  --badge-bg: var(--mls-color-danger-bg);
+  --badge-fg: var(--mls-color-live);
+}
+.mls-badge--live::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--mls-radius-full);
+  background: currentColor;
+  animation: mls-pulse 1.6s var(--mls-easing-standard) infinite;
+}
+@keyframes mls-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.72); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mls-badge--live::before { animation: none; }
+}
+
+/* Form line: W / D / L. Deliberately not red-green only -- letters carry
+ * the meaning so it survives colour-blindness and greyscale print. */
+.mls-form {
+  display: inline-flex;
+  gap: var(--mls-space-1);
+}
+.mls-form__result {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--mls-radius-xs);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  color: #FFFFFF;
+}
+.mls-form__result[data-result="W"] { background: var(--mls-color-success); }
+.mls-form__result[data-result="D"] { background: var(--mls-color-fg-subtle); }
+.mls-form__result[data-result="L"] { background: var(--mls-color-danger); }
+
+/* Competition chip -- for tagging a match by competition. */
+.mls-competition {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mls-space-2);
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-2xs);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+}
+.mls-competition::before {
+  content: "";
+  width: 2px;
+  height: 0.9em;
+  background: var(--mls-color-accent-base);
+  transform: skewX(-20deg);
+}
+
+
+/* ---- css/components/button.css ---- */
+/* Button
+ *
+ * Variants: primary (accent), secondary, ghost, danger, inverse
+ * Sizes: sm, md (default), lg
+ * States: hover, active, focus-visible, disabled, loading, [aria-pressed]
+ *
+ * Primary inherits the club accent automatically inside any [data-club]
+ * scope, and the accent is contrast-corrected at build time, so a primary
+ * button is legible in all 30 club themes in both colour schemes.
+ */
+
+.mls-btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--mls-color-fg);
+  --btn-border: transparent;
+  --btn-pad-x: var(--mls-space-5);
+  --btn-pad-y: var(--mls-space-3);
+  --btn-size: var(--mls-fontSize-sm);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mls-space-2);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  font-family: var(--mls-font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wide);
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: var(--mls-borderWidth-1) solid var(--btn-border);
+  border-radius: var(--mls-radius-md);
+
+  transition: background-color var(--mls-duration-fast) var(--mls-easing-standard),
+              color var(--mls-duration-fast) var(--mls-easing-standard),
+              border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              transform var(--mls-duration-fast) var(--mls-easing-drive);
+}
+
+.mls-btn:active:not(:disabled) { transform: translateY(1px); }
+
+.mls-btn:focus-visible {
+  outline: 2px solid var(--mls-color-focus);
+  outline-offset: 2px;
+}
+
+.mls-btn:disabled,
+.mls-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Variants ---------------------------------------------------------- */
+
+.mls-btn--primary {
+  --btn-bg: var(--mls-color-accent-base);
+  --btn-fg: var(--mls-color-accent-contrast);
+  --btn-border: var(--mls-color-accent-base);
+}
+.mls-btn--primary:hover:not(:disabled) {
+  --btn-bg: color-mix(in oklab, var(--mls-color-accent-base) 86%, var(--mls-color-fg));
+  --btn-border: var(--btn-bg);
+}
+
+.mls-btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--mls-color-fg);
+  --btn-border: var(--mls-color-border-strong);
+}
+.mls-btn--secondary:hover:not(:disabled) {
+  --btn-bg: var(--mls-color-bg-muted);
+  --btn-border: var(--mls-color-fg-subtle);
+}
+
+.mls-btn--ghost {
+  --btn-fg: var(--mls-color-fg-muted);
+}
+.mls-btn--ghost:hover:not(:disabled) {
+  --btn-bg: var(--mls-color-bg-muted);
+  --btn-fg: var(--mls-color-fg);
+}
+
+.mls-btn--danger {
+  --btn-bg: var(--mls-color-danger);
+  --btn-fg: #FFFFFF;
+  --btn-border: var(--mls-color-danger);
+}
+
+.mls-btn--inverse {
+  --btn-bg: var(--mls-color-fg);
+  --btn-fg: var(--mls-color-bg);
+  --btn-border: var(--mls-color-fg);
+}
+
+/* Notched variant -- uses The Corners geometry rather than a rounder
+ * radius when a call to action needs more presence. */
+.mls-btn--notch {
+  --notch: 8px;
+  border-radius: 0;
+  clip-path: polygon(var(--notch) 0, 100% 0, 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, 0 100%, 0 var(--notch));
+}
+
+/* Sizes ------------------------------------------------------------- */
+
+.mls-btn--sm { --btn-pad-x: var(--mls-space-3); --btn-pad-y: var(--mls-space-2); --btn-size: var(--mls-fontSize-xs); }
+.mls-btn--lg { --btn-pad-x: var(--mls-space-8); --btn-pad-y: var(--mls-space-4); --btn-size: var(--mls-fontSize-base); }
+
+.mls-btn--block { display: flex; width: 100%; }
+
+.mls-btn--icon {
+  --btn-pad-x: var(--mls-space-3);
+  --btn-pad-y: var(--mls-space-3);
+  aspect-ratio: 1;
+}
+
+/* Loading ----------------------------------------------------------- */
+
+.mls-btn[data-loading="true"] {
+  cursor: progress;
+  pointer-events: none;
+}
+.mls-btn[data-loading="true"]::before {
+  content: "";
+  width: 1em; height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--mls-radius-full);
+  animation: mls-spin 640ms linear infinite;
+}
+@keyframes mls-spin { to { transform: rotate(360deg); } }
+
+/* Group ------------------------------------------------------------- */
+
+.mls-btn-group { display: inline-flex; }
+.mls-btn-group .mls-btn { border-radius: 0; }
+.mls-btn-group .mls-btn:first-child { border-start-start-radius: var(--mls-radius-md); border-end-start-radius: var(--mls-radius-md); }
+.mls-btn-group .mls-btn:last-child  { border-start-end-radius: var(--mls-radius-md); border-end-end-radius: var(--mls-radius-md); }
+.mls-btn-group .mls-btn + .mls-btn  { margin-inline-start: -1px; }
+.mls-btn-group .mls-btn[aria-pressed="true"] {
+  --btn-bg: var(--mls-color-accent-base);
+  --btn-fg: var(--mls-color-accent-contrast);
+  --btn-border: var(--mls-color-accent-base);
+  z-index: 1;
+}
+
+
+/* ---- css/components/card.css ---- */
+/* Card, media card, and the crest slot */
+
+.mls-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  overflow: hidden;
+  transition: border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              transform var(--mls-duration-base) var(--mls-easing-drive),
+              box-shadow var(--mls-duration-base) var(--mls-easing-standard);
+}
+
+.mls-card__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--mls-color-bg-muted); }
+.mls-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.mls-card__body { display: flex; flex-direction: column; gap: var(--mls-space-2); padding: var(--mls-space-5); flex: 1; }
+.mls-card__title { font-family: var(--mls-font-display); font-size: var(--mls-fontSize-lg); font-weight: var(--mls-fontWeight-bold); line-height: var(--mls-lineHeight-snug); }
+.mls-card__meta { display: flex; gap: var(--mls-space-3); align-items: center; }
+.mls-card__footer { padding: var(--mls-space-4) var(--mls-space-5); border-top: var(--mls-borderWidth-1) solid var(--mls-color-border); }
+
+/* Interactive card. The lift is small and the accent border does the real
+ * work -- a big hover translate on a grid of 30 club cards is nauseating. */
+.mls-card--link { cursor: pointer; }
+.mls-card--link:hover { border-color: var(--mls-color-accent-base); transform: translateY(-2px); box-shadow: var(--mls-shadow-md); }
+.mls-card--link:focus-within { outline: 2px solid var(--mls-color-focus); outline-offset: 2px; }
+
+/* Accent-topped card: a 3px club-coloured rule along the top edge. The
+ * cheapest way to make a generic card unmistakably club-specific. */
+.mls-card--accent { border-top: var(--mls-borderWidth-3) solid var(--mls-color-accent-base); }
+
+/* Feature card: uses the slash as a background device. */
+.mls-card--feature {
+  position: relative;
+  background: var(--mls-color-bg-inverse);
+  color: var(--mls-color-fg-inverse);
+  border-color: transparent;
+}
+.mls-card--feature::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 60%;
+  width: 40%;
+  background: var(--mls-color-accent-base);
+  opacity: 0.16;
+  transform: skewX(-45deg);
+  transform-origin: bottom left;
+  pointer-events: none;
+}
+.mls-card--feature > * { position: relative; }
+
+/* ------------------------------------------------------------------ *
+ * CREST SLOT
+ *
+ * This repo ships NO official MLS or club marks -- they are trademarks and
+ * are not ours to redistribute. This component is the socket they drop
+ * into, and it enforces the two published rules while it waits:
+ *   - clear space = 4x the X measurement on all sides
+ *   - minimum size (32px digital / 0.5in print)
+ * See assets/logo/README.md and docs/02-logo-and-crest.md.
+ * ------------------------------------------------------------------ */
+
+.mls-crest {
+  --crest-size: 3rem;
+  --crest-x: calc(var(--crest-size) / 16);
+
+  display: inline-grid;
+  place-items: center;
+  /* content-box is deliberate: --crest-size is the size of the MARK, and the
+   * 4x-X clear space is added around it. With border-box the clear space
+   * would eat into the mark, which is the opposite of what the rule says --
+   * at 2rem it would crush a 32px crest down to 16px, below the published
+   * minimum. */
+  box-sizing: content-box;
+  inline-size: var(--crest-size);
+  block-size: var(--crest-size);
+  min-inline-size: var(--mls-geometry-crestMinWidthPx);
+  padding: calc(var(--crest-x) * 4);
+  flex: none;
+}
+.mls-crest > img,
+.mls-crest > svg { inline-size: 100%; block-size: 100%; object-fit: contain; }
+
+.mls-crest--sm { --crest-size: 2rem; }
+.mls-crest--lg { --crest-size: 5rem; }
+.mls-crest--xl { --crest-size: 8rem; }
+
+/* Visible until a real asset is dropped in. Deliberately ugly -- a
+ * placeholder that looks finished is a placeholder that ships. */
+.mls-crest:empty::after,
+.mls-crest[data-placeholder]::after {
+  content: attr(data-tricode);
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  border: 2px dashed var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-sm);
+  font-family: var(--mls-font-display);
+  font-size: max(9px, calc(var(--crest-size) * 0.24));
+  font-weight: var(--mls-fontWeight-extrabold);
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--mls-color-fg-subtle);
+  background: var(--mls-color-bg-muted);
+  overflow: hidden;
+}
+
+
+/* ---- css/components/form.css ---- */
+/* Form controls */
+
+.mls-field { display: flex; flex-direction: column; gap: var(--mls-space-2); }
+
+.mls-label {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-muted);
+}
+.mls-label[data-required]::after { content: " *"; color: var(--mls-color-danger); }
+
+.mls-input,
+.mls-select,
+.mls-textarea {
+  width: 100%;
+  padding: var(--mls-space-3) var(--mls-space-4);
+  font-family: var(--mls-font-text);
+  font-size: var(--mls-fontSize-base);
+  line-height: var(--mls-lineHeight-normal);
+  color: var(--mls-color-fg);
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-md);
+  transition: border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              box-shadow var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-input::placeholder,
+.mls-textarea::placeholder { color: var(--mls-color-fg-subtle); }
+
+.mls-input:focus-visible,
+.mls-select:focus-visible,
+.mls-textarea:focus-visible {
+  outline: none;
+  border-color: var(--mls-color-focus);
+  box-shadow: var(--mls-shadow-focus);
+}
+
+.mls-input:disabled,
+.mls-select:disabled,
+.mls-textarea:disabled { opacity: 0.5; cursor: not-allowed; background: var(--mls-color-bg-muted); }
+
+/* Invalid state carries a border colour AND an icon-bearing message
+ * below. aria-invalid is what actually drives it, so the styling and the
+ * assistive-tech announcement can never drift apart. */
+.mls-input[aria-invalid="true"],
+.mls-select[aria-invalid="true"],
+.mls-textarea[aria-invalid="true"] { border-color: var(--mls-color-danger); }
+
+.mls-help  { font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-subtle); }
+.mls-error { font-size: var(--mls-fontSize-xs); color: var(--mls-color-danger); font-weight: var(--mls-fontWeight-medium); }
+.mls-error::before { content: "\26A0\FE0E  "; }
+
+.mls-textarea { min-height: 7rem; resize: vertical; }
+
+.mls-select {
+  appearance: none;
+  padding-inline-end: var(--mls-space-10);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) 55%, calc(100% - 0.85rem) 55%;
+  background-size: 0.4rem 0.4rem;
+  background-repeat: no-repeat;
+}
+
+/* Checkbox and radio. Uses accent-color so the club theme flows through
+ * with no custom control markup. */
+.mls-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mls-space-3);
+  font-size: var(--mls-fontSize-sm);
+  cursor: pointer;
+}
+.mls-check input {
+  accent-color: var(--mls-color-accent-base);
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0.15rem 0 0;
+  flex: none;
+}
+
+.mls-switch { display: inline-flex; align-items: center; gap: var(--mls-space-3); cursor: pointer; }
+.mls-switch input { position: absolute; opacity: 0; pointer-events: none; }
+.mls-switch__track {
+  position: relative;
+  width: 2.5rem; height: 1.4rem;
+  background: var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-full);
+  transition: background-color var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 1rem; height: 1rem;
+  background: #FFFFFF;
+  border-radius: var(--mls-radius-full);
+  transition: transform var(--mls-duration-fast) var(--mls-easing-drive);
+}
+.mls-switch input:checked + .mls-switch__track { background: var(--mls-color-accent-base); }
+.mls-switch input:checked + .mls-switch__track::after { transform: translateX(1.1rem); }
+.mls-switch input:focus-visible + .mls-switch__track { outline: 2px solid var(--mls-color-focus); outline-offset: 2px; }
+
+
+/* ---- css/components/nav.css ---- */
+/* Header, primary nav, tabs and breadcrumb */
+
+.mls-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--mls-zIndex-sticky);
+  background: var(--mls-color-bg-inverse);
+  color: var(--mls-color-fg-inverse);
+  border-bottom: var(--mls-borderWidth-3) solid var(--mls-color-accent-base);
+}
+.mls-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--mls-space-6);
+  min-height: 4rem;
+}
+.mls-header__brand { display: flex; align-items: center; gap: var(--mls-space-3); font-family: var(--mls-font-display); font-weight: var(--mls-fontWeight-extrabold); text-transform: uppercase; letter-spacing: var(--mls-letterSpacing-wide); }
+.mls-header__spacer { flex: 1; }
+
+.mls-nav { display: flex; align-items: center; gap: var(--mls-space-1); }
+.mls-nav__link {
+  position: relative;
+  padding: var(--mls-space-3) var(--mls-space-3);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-sm);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.72;
+  transition: opacity var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-nav__link:hover { opacity: 1; }
+.mls-nav__link[aria-current] { opacity: 1; }
+/* The active indicator is a slash, not a straight underline. Small detail,
+ * but it is the thing that makes the nav read as MLS. */
+.mls-nav__link[aria-current]::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--mls-space-2);
+  bottom: 0;
+  height: var(--mls-borderWidth-3);
+  background: var(--mls-color-accent-base);
+  transform: skewX(-45deg);
+}
+
+/* Tabs */
+.mls-tabs { display: flex; gap: var(--mls-space-1); border-bottom: var(--mls-borderWidth-1) solid var(--mls-color-border); overflow-x: auto; }
+.mls-tab {
+  padding: var(--mls-space-3) var(--mls-space-4);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-sm);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wide);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+  border-bottom: var(--mls-borderWidth-2) solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  background: none;
+  transition: color var(--mls-duration-fast) var(--mls-easing-standard),
+              border-color var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-tab:hover { color: var(--mls-color-fg); }
+.mls-tab[aria-selected="true"] { color: var(--mls-color-fg); border-bottom-color: var(--mls-color-accent-base); }
+
+/* Breadcrumb */
+.mls-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: var(--mls-space-2); font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-subtle); }
+.mls-breadcrumb a { color: inherit; text-decoration: none; }
+.mls-breadcrumb a:hover { color: var(--mls-color-fg); text-decoration: underline; }
+.mls-breadcrumb li + li::before { content: "/"; margin-inline-end: var(--mls-space-2); opacity: 0.5; }
+.mls-breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: var(--mls-space-2); list-style: none; margin: 0; padding: 0; }
+
+/* Skip link -- first focusable element on every page. */
+.mls-skip-link {
+  position: absolute;
+  top: var(--mls-space-2);
+  left: var(--mls-space-2);
+  z-index: var(--mls-zIndex-toast);
+  padding: var(--mls-space-3) var(--mls-space-4);
+  background: var(--mls-color-accent-base);
+  color: var(--mls-color-accent-contrast);
+  font-weight: var(--mls-fontWeight-bold);
+  border-radius: var(--mls-radius-md);
+  transform: translateY(-200%);
+  transition: transform var(--mls-duration-fast) var(--mls-easing-standard);
+}
+.mls-skip-link:focus { transform: translateY(0); }
+
+
+/* ---- css/components/scoreline.css ---- */
+/* Scoreline and fixture card
+ *
+ * The single most-used component in any league product, and the one most
+ * often built badly. Rules encoded here:
+ *
+ *   1. Numerals are tabular. A live score that reflows as it ticks over
+ *      from 9 to 10 looks broken.
+ *   2. Home team goes FIRST in fixtures, matchups and hashtags,
+ *      independent of venue. (Winner-first ordering applies to reported
+ *      final scores in editorial prose, not to this component.)
+ *   3. Match state is carried by a data attribute, not by colour alone.
+ *   4. The clock is a live region so a screen reader announces score
+ *      changes without the user re-navigating.
+ */
+
+.mls-scoreline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--mls-space-4);
+  padding: var(--mls-space-4) var(--mls-space-5);
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+}
+
+.mls-scoreline__team {
+  display: flex;
+  align-items: center;
+  gap: var(--mls-space-3);
+  min-width: 0;
+}
+.mls-scoreline__team--home { justify-content: flex-end; text-align: end; flex-direction: row-reverse; }
+.mls-scoreline__team--away { justify-content: flex-start; text-align: start; }
+
+.mls-scoreline__name {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-bold);
+  font-size: var(--mls-fontSize-sm);
+  letter-spacing: var(--mls-letterSpacing-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Below 640px the full club name never fits. Swap to the tricode rather
+ * than truncating "Vancouver Whitecaps FC" to "Vancouver Whit...". */
+.mls-scoreline__name--full { display: none; }
+.mls-scoreline__name--code { display: inline; }
+@media (min-width: 640px) {
+  .mls-scoreline__name--full { display: inline; }
+  .mls-scoreline__name--code { display: none; }
+}
+
+.mls-scoreline__score {
+  display: flex;
+  align-items: center;
+  gap: var(--mls-space-2);
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-size: var(--mls-fontSize-3xl);
+  font-weight: var(--mls-fontWeight-extrabold);
+  line-height: 1;
+  letter-spacing: var(--mls-letterSpacing-tight);
+  white-space: nowrap;
+}
+/* Smaller and lighter than the digits. At display sizes an en-dash set at the
+ * same weight as the numerals reads as a strikethrough between them. */
+.mls-scoreline__separator {
+  color: var(--mls-color-fg-subtle);
+  font-weight: var(--mls-fontWeight-light);
+  font-size: 0.55em;
+  transform: translateY(-0.06em);
+}
+
+/* Losing side dims. Colour is not the only signal -- the winning side also
+ * carries a weight difference, so this survives greyscale. */
+.mls-scoreline[data-state="final"] .mls-scoreline__team[data-outcome="loss"] { opacity: 0.55; }
+.mls-scoreline[data-state="final"] .mls-scoreline__team[data-outcome="win"] .mls-scoreline__name { font-weight: var(--mls-fontWeight-extrabold); }
+
+.mls-scoreline__status {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mls-space-3);
+  padding-top: var(--mls-space-3);
+  margin-top: var(--mls-space-1);
+  border-top: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-2xs);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+}
+
+.mls-scoreline__clock {
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--mls-fontWeight-bold);
+}
+.mls-scoreline[data-state="live"] { border-color: var(--mls-color-live); }
+.mls-scoreline[data-state="live"] .mls-scoreline__clock { color: var(--mls-color-live); }
+
+/* Upcoming fixtures have no score yet -- show the kickoff time in the
+ * score slot at a smaller size so the grid does not jump when it goes live. */
+.mls-scoreline[data-state="upcoming"] .mls-scoreline__score {
+  font-size: var(--mls-fontSize-lg);
+  font-weight: var(--mls-fontWeight-bold);
+  color: var(--mls-color-fg-muted);
+}
+
+/* Compact row, for a list of fixtures. */
+.mls-scoreline--compact {
+  padding: var(--mls-space-3) var(--mls-space-4);
+  border-radius: var(--mls-radius-md);
+}
+.mls-scoreline--compact .mls-scoreline__score { font-size: var(--mls-fontSize-xl); }
+
+/* Hero scoreline, for a match centre header. Uses the display scale --
+ * this is where the 8xl step earns its place. */
+.mls-scoreline--hero {
+  gap: var(--mls-space-8);
+  padding: var(--mls-space-10) var(--mls-space-6);
+  background: var(--mls-color-bg-inverse);
+  color: var(--mls-color-fg-inverse);
+  border-color: transparent;
+}
+.mls-scoreline--hero .mls-scoreline__score { font-size: clamp(2.5rem, 1rem + 7vw, var(--mls-fontSize-8xl)); }
+.mls-scoreline--hero .mls-scoreline__name { font-size: var(--mls-fontSize-lg); }
+.mls-scoreline--hero .mls-scoreline__status { border-top-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.72); }
+
+
+/* ---- css/components/stat.css ---- */
+/* Stat tile, stat bar and stat grid */
+
+.mls-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mls-space-1);
+  padding: var(--mls-space-5);
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+}
+
+.mls-stat__label {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-widest);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+}
+
+.mls-stat__value {
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-size: var(--mls-fontSize-4xl);
+  font-weight: var(--mls-fontWeight-extrabold);
+  line-height: var(--mls-lineHeight-none);
+  letter-spacing: var(--mls-letterSpacing-tight);
+}
+.mls-stat__unit { font-size: 0.5em; font-weight: var(--mls-fontWeight-medium); color: var(--mls-color-fg-subtle); margin-inline-start: 0.15em; }
+.mls-stat__detail { font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-muted); }
+
+.mls-stat--accent { border-inline-start: var(--mls-borderWidth-3) solid var(--mls-color-accent-base); }
+.mls-stat--lg .mls-stat__value { font-size: clamp(2.5rem, 1rem + 5vw, var(--mls-fontSize-6xl)); }
+
+.mls-stat__delta { display: inline-flex; align-items: center; gap: var(--mls-space-1); font-size: var(--mls-fontSize-xs); font-weight: var(--mls-fontWeight-semibold); }
+/* Arrows carry direction so the meaning survives without colour. */
+.mls-stat__delta[data-direction="up"]   { color: var(--mls-color-success); }
+.mls-stat__delta[data-direction="down"] { color: var(--mls-color-danger); }
+.mls-stat__delta[data-direction="up"]::before   { content: "\2191"; }
+.mls-stat__delta[data-direction="down"]::before { content: "\2193"; }
+.mls-stat__delta[data-direction="flat"]::before { content: "\2192"; }
+
+/* Head-to-head comparison bar. Two values sharing 100%. */
+.mls-statbar { display: grid; gap: var(--mls-space-2); }
+.mls-statbar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-xs);
+  letter-spacing: var(--mls-letterSpacing-wide);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+}
+.mls-statbar__head strong { font-family: var(--mls-font-numeric); font-variant-numeric: tabular-nums; font-size: var(--mls-fontSize-sm); color: var(--mls-color-fg); }
+.mls-statbar__track {
+  display: flex;
+  height: 0.5rem;
+  border-radius: var(--mls-radius-full);
+  overflow: hidden;
+  background: var(--mls-color-bg-muted);
+}
+.mls-statbar__fill { height: 100%; transition: inline-size var(--mls-duration-slow) var(--mls-easing-drive); }
+.mls-statbar__fill--home { background: var(--mls-color-accent-base); }
+.mls-statbar__fill--away { background: var(--mls-color-fg-subtle); }
+
+.mls-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--mls-space-4);
+}
+
+
+/* ---- css/components/table.css ---- */
+/* Standings table and generic data table
+ *
+ * Qualification lines (playoff cut, Champions Cup places, wooden spoon)
+ * are marked with a coloured inline rule AND a legend, never colour alone.
+ * A supporter with deuteranopia should still be able to read the table.
+ */
+
+.mls-table-wrap {
+  overflow-x: auto;
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  background: var(--mls-color-surface);
+}
+
+.mls-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--mls-fontSize-sm);
+}
+
+.mls-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: var(--mls-zIndex-raised);
+  background: var(--mls-color-surface-sunken);
+  padding: var(--mls-space-3) var(--mls-space-3);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+  border-bottom: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  white-space: nowrap;
+}
+
+.mls-table tbody td {
+  padding: var(--mls-space-3);
+  border-bottom: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  vertical-align: middle;
+}
+.mls-table tbody tr:last-child td { border-bottom: none; }
+.mls-table tbody tr:hover { background: var(--mls-color-bg-subtle); }
+
+/* Every numeric column is tabular and right-aligned. Non-negotiable:
+ * a standings table with proportional figures does not line up. */
+.mls-table [data-numeric],
+.mls-table th[data-numeric] {
+  text-align: right;
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.mls-table [data-numeric="emphasis"] { font-weight: var(--mls-fontWeight-bold); }
+
+.mls-table__pos {
+  width: 2.5rem;
+  text-align: center;
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums;
+  color: var(--mls-color-fg-subtle);
+}
+
+.mls-table__club {
+  display: flex;
+  align-items: center;
+  gap: var(--mls-space-3);
+  min-width: 0;
+}
+.mls-table__club-name { font-weight: var(--mls-fontWeight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Qualification zones. The left rule is the visual cue; data-qualifies
+ * is the semantic one; the legend spells it out in words. */
+.mls-table tbody tr[data-qualifies] td:first-child { position: relative; }
+.mls-table tbody tr[data-qualifies] td:first-child::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--mls-borderWidth-3);
+}
+.mls-table tbody tr[data-qualifies="champions"] td:first-child::before { background: var(--mls-color-info); }
+.mls-table tbody tr[data-qualifies="playoff"]   td:first-child::before { background: var(--mls-color-success); }
+.mls-table tbody tr[data-qualifies="wildcard"]  td:first-child::before { background: var(--mls-color-warning); }
+
+/* The team the user follows. Accent-tinted so it re-colours per club. */
+.mls-table tbody tr[data-focus="true"] {
+  background: var(--mls-color-accent-muted);
+  box-shadow: inset var(--mls-borderWidth-3) 0 0 var(--mls-color-accent-base);
+}
+
+.mls-table__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mls-space-4);
+  padding: var(--mls-space-3) var(--mls-space-4);
+  border-top: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-xs);
+  color: var(--mls-color-fg-muted);
+}
+.mls-table__legend span { display: inline-flex; align-items: center; gap: var(--mls-space-2); }
+.mls-table__legend span::before { content: ""; width: 3px; height: 1em; background: currentColor; }
+.mls-table__legend [data-qualifies="champions"]::before { background: var(--mls-color-info); }
+.mls-table__legend [data-qualifies="playoff"]::before   { background: var(--mls-color-success); }
+.mls-table__legend [data-qualifies="wildcard"]::before  { background: var(--mls-color-warning); }
+
+.mls-table--compact tbody td,
+.mls-table--compact thead th { padding: var(--mls-space-2) var(--mls-space-3); }
+
+
+/* ---- club themes ---- */
+
+/* Club themes.
+ *
+ * Usage:  <div data-club="por"> ... </div>
+ *
+ * Two distinct values per club, and the distinction is load-bearing:
+ *   --mls-club-primary        the club's TRUE brand colour, never altered.
+ *                             Use for crests, badges, kit swatches, anywhere
+ *                             fidelity is a brand or licensing requirement.
+ *   --mls-color-accent-base   a contrast-corrected derivative for UI chrome.
+ *                             Guaranteed >= 3.2:1 on the active background.
+ *
+ * Correcting the first would be a brand violation. Not correcting the
+ * second would make 24 of 30 club themes fail WCAG.
+ */
+/* Atlanta United FC -- Eastern, since 2017. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="atl"] {
+  --mls-club-name: "Atlanta United FC";
+  --mls-club-tricode: "ATL";
+  --mls-club-primary: #9D2235;
+  --mls-club-secondary: #2D2A26;
+  --mls-club-tertiary: #A89968;
+  --mls-color-accent-base: #9D2235;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F3E4E7;
+  --mls-color-border-accent: #9D2235;
+}
+[data-club="atl"][data-theme="dark"],
+[data-theme="dark"] [data-club="atl"] {
+  --mls-color-accent-base: #B23745;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #25121C;
+  --mls-color-border-accent: #B23745;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="atl"],
+  [data-club="atl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #B23745;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #25121C;
+    --mls-color-border-accent: #B23745;
+  }
+}
+
+/* Austin FC -- Western, since 2021. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="atx"] {
+  --mls-club-name: "Austin FC";
+  --mls-club-tricode: "ATX";
+  --mls-club-primary: #00B140;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #00A432;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E0F6E8;
+  --mls-color-border-accent: #00A432;
+}
+[data-club="atx"][data-theme="dark"],
+[data-theme="dark"] [data-club="atx"] {
+  --mls-color-accent-base: #00B140;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #092C1E;
+  --mls-color-border-accent: #00B140;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="atx"],
+  [data-club="atx"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #00B140;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #092C1E;
+    --mls-color-border-accent: #00B140;
+  }
+}
+
+/* Charlotte FC -- Eastern, since 2022. Colour confidence: high. */
+[data-club="clt"] {
+  --mls-club-name: "Charlotte FC";
+  --mls-club-tricode: "CLT";
+  --mls-club-primary: #0085CA;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #000000;
+  --mls-color-accent-base: #0085CA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E0F0F9;
+  --mls-color-border-accent: #0085CA;
+}
+[data-club="clt"][data-theme="dark"],
+[data-theme="dark"] [data-club="clt"] {
+  --mls-color-accent-base: #0085CA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #092436;
+  --mls-color-border-accent: #0085CA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="clt"],
+  [data-club="clt"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #0085CA;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #092436;
+    --mls-color-border-accent: #0085CA;
+  }
+}
+
+/* Chicago Fire FC -- Eastern, since 1998. Colour confidence: high. */
+[data-club="chi"] {
+  --mls-club-name: "Chicago Fire FC";
+  --mls-club-tricode: "CHI";
+  --mls-club-primary: #FF0000;
+  --mls-club-secondary: #141946;
+  --mls-club-tertiary: #7CCDEF;
+  --mls-color-accent-base: #FF0000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFE0E0;
+  --mls-color-border-accent: #FF0000;
+}
+[data-club="chi"][data-theme="dark"],
+[data-theme="dark"] [data-club="chi"] {
+  --mls-color-accent-base: #FF0000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #370C12;
+  --mls-color-border-accent: #FF0000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="chi"],
+  [data-club="chi"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FF0000;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #370C12;
+    --mls-color-border-accent: #FF0000;
+  }
+}
+
+/* FC Cincinnati -- Eastern, since 2019. Colour confidence: high. */
+[data-club="cin"] {
+  --mls-club-name: "FC Cincinnati";
+  --mls-club-tricode: "CIN";
+  --mls-club-primary: #FE5000;
+  --mls-club-secondary: #003087;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #FE5000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFEAE0;
+  --mls-color-border-accent: #FE5000;
+}
+[data-club="cin"][data-theme="dark"],
+[data-theme="dark"] [data-club="cin"] {
+  --mls-color-accent-base: #FE5000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #371B12;
+  --mls-color-border-accent: #FE5000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="cin"],
+  [data-club="cin"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FE5000;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #371B12;
+    --mls-color-border-accent: #FE5000;
+  }
+}
+
+/* Colorado Rapids -- Western, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="col"] {
+  --mls-club-name: "Colorado Rapids";
+  --mls-club-tricode: "COL";
+  --mls-club-primary: #8A2432;
+  --mls-club-secondary: #8AB7E9;
+  --mls-club-tertiary: #C1C5C8;
+  --mls-color-accent-base: #8A2432;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F1E5E6;
+  --mls-color-border-accent: #8A2432;
+}
+[data-club="col"][data-theme="dark"],
+[data-theme="dark"] [data-club="col"] {
+  --mls-color-accent-base: #AB434D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #22131B;
+  --mls-color-border-accent: #AB434D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="col"],
+  [data-club="col"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #AB434D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #22131B;
+    --mls-color-border-accent: #AB434D;
+  }
+}
+
+/* Columbus Crew -- Eastern, since 1996. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="clb"] {
+  --mls-club-name: "Columbus Crew";
+  --mls-club-tricode: "CLB";
+  --mls-club-primary: #FEDD00;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #000000;
+  --mls-color-accent-base: #AD8C00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFFBE0;
+  --mls-color-border-accent: #AD8C00;
+}
+[data-club="clb"][data-theme="dark"],
+[data-theme="dark"] [data-club="clb"] {
+  --mls-color-accent-base: #FEDD00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #373412;
+  --mls-color-border-accent: #FEDD00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="clb"],
+  [data-club="clb"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FEDD00;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #373412;
+    --mls-color-border-accent: #FEDD00;
+  }
+}
+
+/* D.C. United -- Eastern, since 1996. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="dc"] {
+  --mls-club-name: "D.C. United";
+  --mls-club-tricode: "DC";
+  --mls-club-primary: #000000;
+  --mls-club-secondary: #EF3E42;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #000000;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E0E0;
+  --mls-color-border-accent: #000000;
+}
+[data-club="dc"][data-theme="dark"],
+[data-theme="dark"] [data-club="dc"] {
+  --mls-color-accent-base: #EF3E42;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #090C12;
+  --mls-color-border-accent: #EF3E42;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="dc"],
+  [data-club="dc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #EF3E42;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #090C12;
+    --mls-color-border-accent: #EF3E42;
+  }
+}
+
+/* FC Dallas -- Western, since 1996. Colour confidence: medium. */
+[data-club="dal"] {
+  --mls-club-name: "FC Dallas";
+  --mls-club-tricode: "DAL";
+  --mls-club-primary: #C6093B;
+  --mls-club-secondary: #001F5B;
+  --mls-club-tertiary: #C1C6C8;
+  --mls-color-accent-base: #C6093B;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F8E1E7;
+  --mls-color-border-accent: #C6093B;
+}
+[data-club="dal"][data-theme="dark"],
+[data-theme="dark"] [data-club="dal"] {
+  --mls-color-accent-base: #C6093B;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #2D0E1D;
+  --mls-color-border-accent: #C6093B;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="dal"],
+  [data-club="dal"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C6093B;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #2D0E1D;
+    --mls-color-border-accent: #C6093B;
+  }
+}
+
+/* Houston Dynamo FC -- Western, since 2006. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="hou"] {
+  --mls-club-name: "Houston Dynamo FC";
+  --mls-club-tricode: "HOU";
+  --mls-club-primary: #FF6B00;
+  --mls-club-secondary: #101820;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #F46100;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FFEDE0;
+  --mls-color-border-accent: #F46100;
+}
+[data-club="hou"][data-theme="dark"],
+[data-theme="dark"] [data-club="hou"] {
+  --mls-color-accent-base: #FF6B00;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #372012;
+  --mls-color-border-accent: #FF6B00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="hou"],
+  [data-club="hou"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #FF6B00;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #372012;
+    --mls-color-border-accent: #FF6B00;
+  }
+}
+
+/* Inter Miami CF -- Eastern, since 2020. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="mia"] {
+  --mls-club-name: "Inter Miami CF";
+  --mls-club-tricode: "MIA";
+  --mls-club-primary: #F7B5CD;
+  --mls-club-secondary: #231F20;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #BB7D95;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FEF6F9;
+  --mls-color-border-accent: #BB7D95;
+}
+[data-club="mia"][data-theme="dark"],
+[data-theme="dark"] [data-club="mia"] {
+  --mls-color-accent-base: #F7B5CD;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #352D37;
+  --mls-color-border-accent: #F7B5CD;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mia"],
+  [data-club="mia"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #F7B5CD;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #352D37;
+    --mls-color-border-accent: #F7B5CD;
+  }
+}
+
+/* LA Galaxy -- Western, since 1996. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="la"] {
+  --mls-club-name: "LA Galaxy";
+  --mls-club-tricode: "LA";
+  --mls-club-primary: #00245D;
+  --mls-club-secondary: #FFD200;
+  --mls-club-tertiary: #0065A4;
+  --mls-color-accent-base: #00245D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E5EC;
+  --mls-color-border-accent: #00245D;
+}
+[data-club="la"][data-theme="dark"],
+[data-theme="dark"] [data-club="la"] {
+  --mls-color-accent-base: #3E65A4;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091323;
+  --mls-color-border-accent: #3E65A4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="la"],
+  [data-club="la"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #3E65A4;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091323;
+    --mls-color-border-accent: #3E65A4;
+  }
+}
+
+/* Los Angeles Football Club -- Western, since 2018. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="lafc"] {
+  --mls-club-name: "Los Angeles Football Club";
+  --mls-club-tricode: "LAFC";
+  --mls-club-primary: #000000;
+  --mls-club-secondary: #C39E6D;
+  --mls-club-tertiary: #E31837;
+  --mls-color-accent-base: #000000;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E0E0;
+  --mls-color-border-accent: #000000;
+}
+[data-club="lafc"][data-theme="dark"],
+[data-theme="dark"] [data-club="lafc"] {
+  --mls-color-accent-base: #C39E6D;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #090C12;
+  --mls-color-border-accent: #C39E6D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="lafc"],
+  [data-club="lafc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C39E6D;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #090C12;
+    --mls-color-border-accent: #C39E6D;
+  }
+}
+
+/* Minnesota United FC -- Western, since 2017. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="min"] {
+  --mls-club-name: "Minnesota United FC";
+  --mls-club-tricode: "MIN";
+  --mls-club-primary: #9BCDE4;
+  --mls-club-secondary: #231F20;
+  --mls-club-tertiary: #E2E2DE;
+  --mls-color-accent-base: #6494AA;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F3F9FC;
+  --mls-color-border-accent: #6494AA;
+}
+[data-club="min"][data-theme="dark"],
+[data-theme="dark"] [data-club="min"] {
+  --mls-color-accent-base: #9BCDE4;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #25313B;
+  --mls-color-border-accent: #9BCDE4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="min"],
+  [data-club="min"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #9BCDE4;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #25313B;
+    --mls-color-border-accent: #9BCDE4;
+  }
+}
+
+/* CF Montreal (CF Montréal) -- Eastern, since 2012. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="mtl"] {
+  --mls-club-name: "CF Montréal";
+  --mls-club-tricode: "MTL";
+  --mls-club-primary: #003DA5;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #C1C6C8;
+  --mls-color-accent-base: #003DA5;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E8F4;
+  --mls-color-border-accent: #003DA5;
+}
+[data-club="mtl"][data-theme="dark"],
+[data-theme="dark"] [data-club="mtl"] {
+  --mls-color-accent-base: #255FCA;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091730;
+  --mls-color-border-accent: #255FCA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mtl"],
+  [data-club="mtl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #255FCA;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091730;
+    --mls-color-border-accent: #255FCA;
+  }
+}
+
+/* Nashville SC -- Eastern, since 2020. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="nsh"] {
+  --mls-club-name: "Nashville SC";
+  --mls-club-tricode: "NSH";
+  --mls-club-primary: #ECE83A;
+  --mls-club-secondary: #1F1646;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #979000;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #FDFCE7;
+  --mls-color-border-accent: #979000;
+}
+[data-club="nsh"][data-theme="dark"],
+[data-theme="dark"] [data-club="nsh"] {
+  --mls-color-accent-base: #ECE83A;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #34361C;
+  --mls-color-border-accent: #ECE83A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="nsh"],
+  [data-club="nsh"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #ECE83A;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #34361C;
+    --mls-color-border-accent: #ECE83A;
+  }
+}
+
+/* New England Revolution -- Eastern, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="ne"] {
+  --mls-club-name: "New England Revolution";
+  --mls-club-tricode: "NE";
+  --mls-club-primary: #0A2240;
+  --mls-club-secondary: #CE0E2D;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #0A2240;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E2E4E8;
+  --mls-color-border-accent: #0A2240;
+}
+[data-club="ne"][data-theme="dark"],
+[data-theme="dark"] [data-club="ne"] {
+  --mls-color-accent-base: #4B6588;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0B121E;
+  --mls-color-border-accent: #4B6588;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="ne"],
+  [data-club="ne"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #4B6588;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0B121E;
+    --mls-color-border-accent: #4B6588;
+  }
+}
+
+/* New York City FC -- Eastern, since 2015. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="nyc"] {
+  --mls-club-name: "New York City FC";
+  --mls-club-tricode: "NYC";
+  --mls-club-primary: #9FD2FF;
+  --mls-club-secondary: #000229;
+  --mls-club-tertiary: #FF5E36;
+  --mls-color-accent-base: #6293BD;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F3FAFF;
+  --mls-color-border-accent: #6293BD;
+}
+[data-club="nyc"][data-theme="dark"],
+[data-theme="dark"] [data-club="nyc"] {
+  --mls-color-accent-base: #9FD2FF;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #263240;
+  --mls-color-border-accent: #9FD2FF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="nyc"],
+  [data-club="nyc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #9FD2FF;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #263240;
+    --mls-color-border-accent: #9FD2FF;
+  }
+}
+
+/* New York Red Bulls -- Eastern, since 1996. Colour confidence: low. */
+[data-club="rbny"] {
+  --mls-club-name: "New York Red Bulls";
+  --mls-club-tricode: "RBNY";
+  --mls-club-primary: #C8102E;
+  --mls-club-secondary: #FFC72C;
+  --mls-club-tertiary: #182852;
+  --mls-color-accent-base: #C8102E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F8E2E6;
+  --mls-color-border-accent: #C8102E;
+}
+[data-club="rbny"][data-theme="dark"],
+[data-theme="dark"] [data-club="rbny"] {
+  --mls-color-accent-base: #C8102E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #2D0F1A;
+  --mls-color-border-accent: #C8102E;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="rbny"],
+  [data-club="rbny"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #C8102E;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #2D0F1A;
+    --mls-color-border-accent: #C8102E;
+  }
+}
+
+/* Orlando City SC -- Eastern, since 2015. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="orl"] {
+  --mls-club-name: "Orlando City SC";
+  --mls-club-tricode: "ORL";
+  --mls-club-primary: #60269E;
+  --mls-club-secondary: #F0D283;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #60269E;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #ECE5F3;
+  --mls-color-border-accent: #60269E;
+}
+[data-club="orl"][data-theme="dark"],
+[data-theme="dark"] [data-club="orl"] {
+  --mls-color-accent-base: #7C47BF;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #1A132E;
+  --mls-color-border-accent: #7C47BF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="orl"],
+  [data-club="orl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #7C47BF;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #1A132E;
+    --mls-color-border-accent: #7C47BF;
+  }
+}
+
+/* Philadelphia Union -- Eastern, since 2010. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="phi"] {
+  --mls-club-name: "Philadelphia Union";
+  --mls-club-tricode: "PHI";
+  --mls-club-primary: #051C2C;
+  --mls-club-secondary: #E0D0A6;
+  --mls-club-tertiary: #3E8EDE;
+  --mls-color-accent-base: #051C2C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E1E4E6;
+  --mls-color-border-accent: #051C2C;
+}
+[data-club="phi"][data-theme="dark"],
+[data-theme="dark"] [data-club="phi"] {
+  --mls-color-accent-base: #50697C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0A111A;
+  --mls-color-border-accent: #50697C;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="phi"],
+  [data-club="phi"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #50697C;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0A111A;
+    --mls-color-border-accent: #50697C;
+  }
+}
+
+/* Portland Timbers -- Western, since 2011. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="por"] {
+  --mls-club-name: "Portland Timbers";
+  --mls-club-tricode: "POR";
+  --mls-club-primary: #2C5234;
+  --mls-club-secondary: #C99700;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #2C5234;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E6EAE7;
+  --mls-color-border-accent: #2C5234;
+}
+[data-club="por"][data-theme="dark"],
+[data-theme="dark"] [data-club="por"] {
+  --mls-color-accent-base: #486E4F;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #111B1B;
+  --mls-color-border-accent: #486E4F;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="por"],
+  [data-club="por"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #486E4F;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #111B1B;
+    --mls-color-border-accent: #486E4F;
+  }
+}
+
+/* Real Salt Lake -- Western, since 2005. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="rsl"] {
+  --mls-club-name: "Real Salt Lake";
+  --mls-club-tricode: "RSL";
+  --mls-club-primary: #A32035;
+  --mls-club-secondary: #001E61;
+  --mls-club-tertiary: #DAAA00;
+  --mls-color-accent-base: #A32035;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F4E4E7;
+  --mls-color-border-accent: #A32035;
+}
+[data-club="rsl"][data-theme="dark"],
+[data-theme="dark"] [data-club="rsl"] {
+  --mls-color-accent-base: #B83645;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #26121C;
+  --mls-color-border-accent: #B83645;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="rsl"],
+  [data-club="rsl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #B83645;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #26121C;
+    --mls-color-border-accent: #B83645;
+  }
+}
+
+/* San Diego FC -- Western, since 2025. Colour confidence: unverified. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sd"] {
+  --mls-club-name: "San Diego FC";
+  --mls-club-tricode: "SD";
+  --mls-club-primary: #697A7C;
+  --mls-club-secondary: #697A7C;
+  --mls-club-tertiary: #697A7C;
+  --mls-color-accent-base: #667779;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #EDEFEF;
+  --mls-color-border-accent: #667779;
+}
+[data-club="sd"][data-theme="dark"],
+[data-theme="dark"] [data-club="sd"] {
+  --mls-color-accent-base: #667779;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #1C2228;
+  --mls-color-border-accent: #667779;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sd"],
+  [data-club="sd"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #667779;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #1C2228;
+    --mls-color-border-accent: #667779;
+  }
+}
+
+/* San Jose Earthquakes -- Western, since 1996. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sj"] {
+  --mls-club-name: "San Jose Earthquakes";
+  --mls-club-tricode: "SJ";
+  --mls-club-primary: #003DA5;
+  --mls-club-secondary: #000000;
+  --mls-club-tertiary: #C8102E;
+  --mls-color-accent-base: #003DA5;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E0E8F4;
+  --mls-color-border-accent: #003DA5;
+}
+[data-club="sj"][data-theme="dark"],
+[data-theme="dark"] [data-club="sj"] {
+  --mls-color-accent-base: #255FCA;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #091730;
+  --mls-color-border-accent: #255FCA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sj"],
+  [data-club="sj"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #255FCA;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #091730;
+    --mls-color-border-accent: #255FCA;
+  }
+}
+
+/* Seattle Sounders FC -- Western, since 2009. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="sea"] {
+  --mls-club-name: "Seattle Sounders FC";
+  --mls-club-tricode: "SEA";
+  --mls-club-primary: #2CC84D;
+  --mls-club-secondary: #0033A0;
+  --mls-club-tertiary: #7CE0D3;
+  --mls-color-accent-base: #00A729;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #E6F8EA;
+  --mls-color-border-accent: #00A729;
+}
+[data-club="sea"][data-theme="dark"],
+[data-theme="dark"] [data-club="sea"] {
+  --mls-color-accent-base: #2CC84D;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #113020;
+  --mls-color-border-accent: #2CC84D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="sea"],
+  [data-club="sea"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #2CC84D;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #113020;
+    --mls-color-border-accent: #2CC84D;
+  }
+}
+
+/* Sporting Kansas City -- Western, since 1996. Colour confidence: high. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="skc"] {
+  --mls-club-name: "Sporting Kansas City";
+  --mls-club-tricode: "SKC";
+  --mls-club-primary: #A7C6ED;
+  --mls-club-secondary: #0C2340;
+  --mls-club-tertiary: #898D8D;
+  --mls-color-accent-base: #7391B6;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #F4F8FD;
+  --mls-color-border-accent: #7391B6;
+}
+[data-club="skc"][data-theme="dark"],
+[data-theme="dark"] [data-club="skc"] {
+  --mls-color-accent-base: #A7C6ED;
+  --mls-color-accent-contrast: #0B0F16;
+  --mls-color-accent-muted: #27303D;
+  --mls-color-border-accent: #A7C6ED;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="skc"],
+  [data-club="skc"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #A7C6ED;
+    --mls-color-accent-contrast: #0B0F16;
+    --mls-color-accent-muted: #27303D;
+    --mls-color-border-accent: #A7C6ED;
+  }
+}
+
+/* St. Louis CITY SC -- Western, since 2023. Colour confidence: low. */
+[data-club="stl"] {
+  --mls-club-name: "St. Louis CITY SC";
+  --mls-club-tricode: "STL";
+  --mls-club-primary: #E0004D;
+  --mls-club-secondary: #0C2340;
+  --mls-club-tertiary: #0C2340;
+  --mls-color-accent-base: #E0004D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #FBE0EA;
+  --mls-color-border-accent: #E0004D;
+}
+[data-club="stl"][data-theme="dark"],
+[data-theme="dark"] [data-club="stl"] {
+  --mls-color-accent-base: #E0004D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #310C20;
+  --mls-color-border-accent: #E0004D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="stl"],
+  [data-club="stl"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #E0004D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #310C20;
+    --mls-color-border-accent: #E0004D;
+  }
+}
+
+/* Toronto FC -- Eastern, since 2007. Colour confidence: low. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="tor"] {
+  --mls-club-name: "Toronto FC";
+  --mls-club-tricode: "TOR";
+  --mls-club-primary: #AA182C;
+  --mls-club-secondary: #333F48;
+  --mls-club-tertiary: #A2AAAD;
+  --mls-color-accent-base: #AA182C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #F5E3E6;
+  --mls-color-border-accent: #AA182C;
+}
+[data-club="tor"][data-theme="dark"],
+[data-theme="dark"] [data-club="tor"] {
+  --mls-color-accent-base: #BB2D3A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #28111A;
+  --mls-color-border-accent: #BB2D3A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="tor"],
+  [data-club="tor"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #BB2D3A;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #28111A;
+    --mls-color-border-accent: #BB2D3A;
+  }
+}
+
+/* Vancouver Whitecaps FC -- Western, since 2011. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
+[data-club="van"] {
+  --mls-club-name: "Vancouver Whitecaps FC";
+  --mls-club-tricode: "VAN";
+  --mls-club-primary: #12284C;
+  --mls-club-secondary: #8AB7E9;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-color-accent-base: #12284C;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #E3E5EA;
+  --mls-color-border-accent: #12284C;
+}
+[data-club="van"][data-theme="dark"],
+[data-theme="dark"] [data-club="van"] {
+  --mls-color-accent-base: #4B648D;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #0C1420;
+  --mls-color-border-accent: #4B648D;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="van"],
+  [data-club="van"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #4B648D;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #0C1420;
+    --mls-color-border-accent: #4B648D;
+  }
+}
+

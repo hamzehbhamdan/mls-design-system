@@ -1,0 +1,108 @@
+/* Standings table and generic data table
+ *
+ * Qualification lines (playoff cut, Champions Cup places, wooden spoon)
+ * are marked with a coloured inline rule AND a legend, never colour alone.
+ * A supporter with deuteranopia should still be able to read the table.
+ */
+
+.mls-table-wrap {
+  overflow-x: auto;
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  background: var(--mls-color-surface);
+}
+
+.mls-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--mls-fontSize-sm);
+}
+
+.mls-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: var(--mls-zIndex-raised);
+  background: var(--mls-color-surface-sunken);
+  padding: var(--mls-space-3) var(--mls-space-3);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+  border-bottom: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  white-space: nowrap;
+}
+
+.mls-table tbody td {
+  padding: var(--mls-space-3);
+  border-bottom: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  vertical-align: middle;
+}
+.mls-table tbody tr:last-child td { border-bottom: none; }
+.mls-table tbody tr:hover { background: var(--mls-color-bg-subtle); }
+
+/* Every numeric column is tabular and right-aligned. Non-negotiable:
+ * a standings table with proportional figures does not line up. */
+.mls-table [data-numeric],
+.mls-table th[data-numeric] {
+  text-align: right;
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.mls-table [data-numeric="emphasis"] { font-weight: var(--mls-fontWeight-bold); }
+
+.mls-table__pos {
+  width: 2.5rem;
+  text-align: center;
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums;
+  color: var(--mls-color-fg-subtle);
+}
+
+.mls-table__club {
+  display: flex;
+  align-items: center;
+  gap: var(--mls-space-3);
+  min-width: 0;
+}
+.mls-table__club-name { font-weight: var(--mls-fontWeight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Qualification zones. The left rule is the visual cue; data-qualifies
+ * is the semantic one; the legend spells it out in words. */
+.mls-table tbody tr[data-qualifies] td:first-child { position: relative; }
+.mls-table tbody tr[data-qualifies] td:first-child::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--mls-borderWidth-3);
+}
+.mls-table tbody tr[data-qualifies="champions"] td:first-child::before { background: var(--mls-color-info); }
+.mls-table tbody tr[data-qualifies="playoff"]   td:first-child::before { background: var(--mls-color-success); }
+.mls-table tbody tr[data-qualifies="wildcard"]  td:first-child::before { background: var(--mls-color-warning); }
+
+/* The team the user follows. Accent-tinted so it re-colours per club. */
+.mls-table tbody tr[data-focus="true"] {
+  background: var(--mls-color-accent-muted);
+  box-shadow: inset var(--mls-borderWidth-3) 0 0 var(--mls-color-accent-base);
+}
+
+.mls-table__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mls-space-4);
+  padding: var(--mls-space-3) var(--mls-space-4);
+  border-top: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-xs);
+  color: var(--mls-color-fg-muted);
+}
+.mls-table__legend span { display: inline-flex; align-items: center; gap: var(--mls-space-2); }
+.mls-table__legend span::before { content: ""; width: 3px; height: 1em; background: currentColor; }
+.mls-table__legend [data-qualifies="champions"]::before { background: var(--mls-color-info); }
+.mls-table__legend [data-qualifies="playoff"]::before   { background: var(--mls-color-success); }
+.mls-table__legend [data-qualifies="wildcard"]::before  { background: var(--mls-color-warning); }
+
+.mls-table--compact tbody td,
+.mls-table--compact thead th { padding: var(--mls-space-2) var(--mls-space-3); }

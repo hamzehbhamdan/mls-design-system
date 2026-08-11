@@ -1,0 +1,28 @@
+{
+  "name": "mls-design-system",
+  "version": "1.0.0",
+  "description": "Unofficial design system and brand reference for Major League Soccer. Tokens, docs, component CSS and 30 club themes, built to be consumed by Claude Design and read by people.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["design-system", "design-tokens", "mls", "brand-guidelines", "claude-design", "css", "soccer"],
+  "files": ["dist", "tokens", "data", "docs", "css", "claude", "README.md", "NOTICE.md"],
+  "exports": {
+    ".": "./dist/mls.tokens.js",
+    "./css": "./dist/mls.css",
+    "./tokens.css": "./dist/mls.tokens.css",
+    "./tokens.scss": "./dist/mls.tokens.scss",
+    "./clubs.css": "./dist/mls.clubs.css",
+    "./clubs.json": "./dist/mls.clubs.json",
+    "./tailwind": "./dist/tailwind.preset.js"
+  },
+  "types": "./dist/mls.tokens.d.ts",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "ramps": "python3 scripts/gen_ramps.py",
+    "start": "npx --yes http-server . -p 4173 -c-1 -o /index.html",
+    "prepublishOnly": "npm run build && npm run verify"
+  },
+  "engines": { "node": ">=18" },
+  "sideEffects": ["*.css"]
+}

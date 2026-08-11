@@ -1,0 +1,86 @@
+/* MLS Design System -- reset
+ *
+ * Minimal and opinionated. Removes browser defaults that fight the system,
+ * leaves everything else alone. Not normalize.css -- we do not want to
+ * re-add defaults we then have to override.
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, pre {
+  margin: 0;
+}
+
+ul[role="list"], ol[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+a:not([class]) {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th { text-align: left; font-weight: inherit; }
+
+hr {
+  border: none;
+  border-top: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  margin: 0;
+}
+
+:where(:focus-visible) {
+  outline: 2px solid var(--mls-color-focus);
+  outline-offset: 2px;
+}
+
+/* Respect the user. Every transition and animation in this system is
+ * decorative; none of them carry meaning that is lost when removed. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,101 @@
+/* Badge, tag, pill and match-state indicators */
+
+.mls-badge {
+  --badge-bg: var(--mls-color-bg-muted);
+  --badge-fg: var(--mls-color-fg-muted);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mls-space-1);
+  padding: 0.25em 0.6em;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  border-radius: var(--mls-radius-sm);
+
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.mls-badge--accent  { --badge-bg: var(--mls-color-accent-muted); --badge-fg: var(--mls-color-accent-base); }
+.mls-badge--solid   { --badge-bg: var(--mls-color-accent-base);  --badge-fg: var(--mls-color-accent-contrast); }
+.mls-badge--success { --badge-bg: var(--mls-color-success-bg);   --badge-fg: var(--mls-color-success); }
+.mls-badge--warning { --badge-bg: var(--mls-color-warning-bg);   --badge-fg: var(--mls-color-warning); }
+.mls-badge--danger  { --badge-bg: var(--mls-color-danger-bg);    --badge-fg: var(--mls-color-danger); }
+.mls-badge--info    { --badge-bg: var(--mls-color-info-bg);      --badge-fg: var(--mls-color-info); }
+
+.mls-badge--outline {
+  --badge-bg: transparent;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* Live state.
+ *
+ * The pulse is reserved for genuinely live matches and nothing else. If
+ * everything pulses, nothing does. The dot animates; the label never
+ * moves, so a screen reader announcement is not disrupted, and the whole
+ * thing stops under prefers-reduced-motion where the dot stays solid.
+ */
+.mls-badge--live {
+  --badge-bg: var(--mls-color-danger-bg);
+  --badge-fg: var(--mls-color-live);
+}
+.mls-badge--live::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--mls-radius-full);
+  background: currentColor;
+  animation: mls-pulse 1.6s var(--mls-easing-standard) infinite;
+}
+@keyframes mls-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.72); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mls-badge--live::before { animation: none; }
+}
+
+/* Form line: W / D / L. Deliberately not red-green only -- letters carry
+ * the meaning so it survives colour-blindness and greyscale print. */
+.mls-form {
+  display: inline-flex;
+  gap: var(--mls-space-1);
+}
+.mls-form__result {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--mls-radius-xs);
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  color: #FFFFFF;
+}
+.mls-form__result[data-result="W"] { background: var(--mls-color-success); }
+.mls-form__result[data-result="D"] { background: var(--mls-color-fg-subtle); }
+.mls-form__result[data-result="L"] { background: var(--mls-color-danger); }
+
+/* Competition chip -- for tagging a match by competition. */
+.mls-competition {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mls-space-2);
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-2xs);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  color: var(--mls-color-fg-subtle);
+}
+.mls-competition::before {
+  content: "";
+  width: 2px;
+  height: 0.9em;
+  background: var(--mls-color-accent-base);
+  transform: skewX(-20deg);
+}

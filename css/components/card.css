@@ -1,0 +1,107 @@
+/* Card, media card, and the crest slot */
+
+.mls-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--mls-color-surface);
+  border: var(--mls-borderWidth-1) solid var(--mls-color-border);
+  border-radius: var(--mls-radius-lg);
+  overflow: hidden;
+  transition: border-color var(--mls-duration-fast) var(--mls-easing-standard),
+              transform var(--mls-duration-base) var(--mls-easing-drive),
+              box-shadow var(--mls-duration-base) var(--mls-easing-standard);
+}
+
+.mls-card__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--mls-color-bg-muted); }
+.mls-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.mls-card__body { display: flex; flex-direction: column; gap: var(--mls-space-2); padding: var(--mls-space-5); flex: 1; }
+.mls-card__title { font-family: var(--mls-font-display); font-size: var(--mls-fontSize-lg); font-weight: var(--mls-fontWeight-bold); line-height: var(--mls-lineHeight-snug); }
+.mls-card__meta { display: flex; gap: var(--mls-space-3); align-items: center; }
+.mls-card__footer { padding: var(--mls-space-4) var(--mls-space-5); border-top: var(--mls-borderWidth-1) solid var(--mls-color-border); }
+
+/* Interactive card. The lift is small and the accent border does the real
+ * work -- a big hover translate on a grid of 30 club cards is nauseating. */
+.mls-card--link { cursor: pointer; }
+.mls-card--link:hover { border-color: var(--mls-color-accent-base); transform: translateY(-2px); box-shadow: var(--mls-shadow-md); }
+.mls-card--link:focus-within { outline: 2px solid var(--mls-color-focus); outline-offset: 2px; }
+
+/* Accent-topped card: a 3px club-coloured rule along the top edge. The
+ * cheapest way to make a generic card unmistakably club-specific. */
+.mls-card--accent { border-top: var(--mls-borderWidth-3) solid var(--mls-color-accent-base); }
+
+/* Feature card: uses the slash as a background device. */
+.mls-card--feature {
+  position: relative;
+  background: var(--mls-color-bg-inverse);
+  color: var(--mls-color-fg-inverse);
+  border-color: transparent;
+}
+.mls-card--feature::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 60%;
+  width: 40%;
+  background: var(--mls-color-accent-base);
+  opacity: 0.16;
+  transform: skewX(-45deg);
+  transform-origin: bottom left;
+  pointer-events: none;
+}
+.mls-card--feature > * { position: relative; }
+
+/* ------------------------------------------------------------------ *
+ * CREST SLOT
+ *
+ * This repo ships NO official MLS or club marks -- they are trademarks and
+ * are not ours to redistribute. This component is the socket they drop
+ * into, and it enforces the two published rules while it waits:
+ *   - clear space = 4x the X measurement on all sides
+ *   - minimum size (32px digital / 0.5in print)
+ * See assets/logo/README.md and docs/02-logo-and-crest.md.
+ * ------------------------------------------------------------------ */
+
+.mls-crest {
+  --crest-size: 3rem;
+  --crest-x: calc(var(--crest-size) / 16);
+
+  display: inline-grid;
+  place-items: center;
+  /* content-box is deliberate: --crest-size is the size of the MARK, and the
+   * 4x-X clear space is added around it. With border-box the clear space
+   * would eat into the mark, which is the opposite of what the rule says --
+   * at 2rem it would crush a 32px crest down to 16px, below the published
+   * minimum. */
+  box-sizing: content-box;
+  inline-size: var(--crest-size);
+  block-size: var(--crest-size);
+  min-inline-size: var(--mls-geometry-crestMinWidthPx);
+  padding: calc(var(--crest-x) * 4);
+  flex: none;
+}
+.mls-crest > img,
+.mls-crest > svg { inline-size: 100%; block-size: 100%; object-fit: contain; }
+
+.mls-crest--sm { --crest-size: 2rem; }
+.mls-crest--lg { --crest-size: 5rem; }
+.mls-crest--xl { --crest-size: 8rem; }
+
+/* Visible until a real asset is dropped in. Deliberately ugly -- a
+ * placeholder that looks finished is a placeholder that ships. */
+.mls-crest:empty::after,
+.mls-crest[data-placeholder]::after {
+  content: attr(data-tricode);
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  border: 2px dashed var(--mls-color-border-strong);
+  border-radius: var(--mls-radius-sm);
+  font-family: var(--mls-font-display);
+  font-size: max(9px, calc(var(--crest-size) * 0.24));
+  font-weight: var(--mls-fontWeight-extrabold);
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--mls-color-fg-subtle);
+  background: var(--mls-color-bg-muted);
+  overflow: hidden;
+}

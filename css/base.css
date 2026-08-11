@@ -1,0 +1,115 @@
+/* MLS Design System -- base element styling and typography classes */
+
+body {
+  margin: 0;
+  background: var(--mls-color-bg);
+  color: var(--mls-color-fg);
+  font-family: var(--mls-font-text);
+  font-size: var(--mls-fontSize-base);
+  line-height: var(--mls-lineHeight-normal);
+  font-weight: var(--mls-fontWeight-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  transition: background-color var(--mls-duration-base) var(--mls-easing-standard),
+              color var(--mls-duration-base) var(--mls-easing-standard);
+}
+
+/* Any element that scopes a theme establishes its own foreground and
+ * background.
+ *
+ * Without this, <div data-theme="dark"> inside a light page swaps the token
+ * values but inherits body's `color`, so you get dark text on a dark
+ * surface. The tokens are right and the render is wrong, which is the
+ * worst kind of bug to chase. Scoping a theme should just work. */
+[data-theme] {
+  background-color: var(--mls-color-bg);
+  color: var(--mls-color-fg);
+}
+
+::selection {
+  background: var(--mls-color-accent-base);
+  color: var(--mls-color-accent-contrast);
+}
+
+/* ------------------------------------------------------------------ *
+ * Type roles
+ *
+ * Named by JOB, not by size. "mls-display-1" tells you where it goes;
+ * "text-6xl" only tells you how big it is, which is how design systems
+ * drift. Sizes are fluid via clamp so a scoreline behaves on a phone.
+ * ------------------------------------------------------------------ */
+
+.mls-display-1,
+.mls-display-2,
+.mls-display-3 {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-extrabold);
+  line-height: var(--mls-lineHeight-tight);
+  letter-spacing: var(--mls-letterSpacing-tighter);
+  text-transform: uppercase;
+}
+.mls-display-1 { font-size: clamp(2.5rem, 1.2rem + 5.5vw, var(--mls-fontSize-7xl)); }
+.mls-display-2 { font-size: clamp(2rem, 1.1rem + 3.8vw, var(--mls-fontSize-6xl)); }
+.mls-display-3 { font-size: clamp(1.75rem, 1.1rem + 2.6vw, var(--mls-fontSize-5xl)); }
+
+.mls-heading-1, .mls-heading-2, .mls-heading-3, .mls-heading-4 {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-bold);
+  line-height: var(--mls-lineHeight-snug);
+  letter-spacing: var(--mls-letterSpacing-tight);
+}
+.mls-heading-1 { font-size: var(--mls-fontSize-4xl); }
+.mls-heading-2 { font-size: var(--mls-fontSize-3xl); }
+.mls-heading-3 { font-size: var(--mls-fontSize-2xl); }
+.mls-heading-4 { font-size: var(--mls-fontSize-xl); }
+
+.mls-body-lg { font-size: var(--mls-fontSize-lg);  line-height: var(--mls-lineHeight-relaxed); }
+.mls-body    { font-size: var(--mls-fontSize-base);line-height: var(--mls-lineHeight-normal); }
+.mls-body-sm { font-size: var(--mls-fontSize-sm);  line-height: var(--mls-lineHeight-normal); }
+
+/* Long-form match reports and features. Measure is capped because MLS
+ * editorial runs long and an unbounded column is unreadable. */
+.mls-prose {
+  font-size: var(--mls-fontSize-lg);
+  line-height: var(--mls-lineHeight-relaxed);
+  max-width: 68ch;
+}
+.mls-prose > * + * { margin-top: var(--mls-space-5); }
+.mls-prose a { color: var(--mls-color-accent-base); text-underline-offset: 0.2em; }
+
+.mls-caption {
+  font-family: var(--mls-font-micro);
+  font-size: var(--mls-fontSize-xs);
+  line-height: var(--mls-lineHeight-normal);
+  color: var(--mls-color-fg-subtle);
+}
+
+/* The eyebrow: small all-caps label above a headline. Tracked out, because
+ * caps below 13px without tracking are genuinely hard to read. */
+.mls-eyebrow {
+  font-family: var(--mls-font-display);
+  font-size: var(--mls-fontSize-2xs);
+  font-weight: var(--mls-fontWeight-bold);
+  letter-spacing: var(--mls-letterSpacing-widest);
+  text-transform: uppercase;
+  line-height: var(--mls-lineHeight-none);
+  color: var(--mls-color-fg-subtle);
+}
+
+/* Any figure that sits in a column or ticks over in place. Without
+ * tabular-nums a live clock jitters and a standings table will not align. */
+.mls-numeric,
+.mls-tabular {
+  font-family: var(--mls-font-numeric);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.mls-tricode {
+  font-family: var(--mls-font-display);
+  font-weight: var(--mls-fontWeight-extrabold);
+  letter-spacing: var(--mls-letterSpacing-wider);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
