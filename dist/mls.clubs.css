@@ -25,6 +25,14 @@
   --mls-club-primary: #9D2235;
   --mls-club-secondary: #2D2A26;
   --mls-club-tertiary: #A89968;
+  --mls-club-accent-light: #9D2235;
+  --mls-club-accent-dark: #B23745;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #2D2A26;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #A89968;
   --mls-color-accent-base: #9D2235;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F3E4E7;
@@ -54,6 +62,14 @@
   --mls-club-primary: #00B140;
   --mls-club-secondary: #000000;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #00A432;
+  --mls-club-accent-dark: #00B140;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #00B140;
   --mls-color-accent-base: #00A432;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #E0F6E8;
@@ -83,6 +99,14 @@
   --mls-club-primary: #0085CA;
   --mls-club-secondary: #000000;
   --mls-club-tertiary: #000000;
+  --mls-club-accent-light: #0085CA;
+  --mls-club-accent-dark: #0085CA;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #0085CA;
   --mls-color-accent-base: #0085CA;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #E0F0F9;
@@ -112,6 +136,14 @@
   --mls-club-primary: #FF0000;
   --mls-club-secondary: #141946;
   --mls-club-tertiary: #7CCDEF;
+  --mls-club-accent-light: #FF0000;
+  --mls-club-accent-dark: #FF0000;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #141946;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FF0000;
   --mls-color-accent-base: #FF0000;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FFE0E0;
@@ -141,6 +173,14 @@
   --mls-club-primary: #FE5000;
   --mls-club-secondary: #003087;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #FE5000;
+  --mls-club-accent-dark: #FE5000;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #003087;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FE5000;
   --mls-color-accent-base: #FE5000;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FFEAE0;
@@ -170,6 +210,14 @@
   --mls-club-primary: #8A2432;
   --mls-club-secondary: #8AB7E9;
   --mls-club-tertiary: #C1C5C8;
+  --mls-club-accent-light: #8A2432;
+  --mls-club-accent-dark: #AB434D;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #8A2432;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #8AB7E9;
   --mls-color-accent-base: #8A2432;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F1E5E6;
@@ -199,6 +247,14 @@
   --mls-club-primary: #FEDD00;
   --mls-club-secondary: #000000;
   --mls-club-tertiary: #000000;
+  --mls-club-accent-light: #AD8C00;
+  --mls-club-accent-dark: #FEDD00;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FEDD00;
   --mls-color-accent-base: #AD8C00;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FFFBE0;
@@ -228,6 +284,14 @@
   --mls-club-primary: #000000;
   --mls-club-secondary: #EF3E42;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #000000;
+  --mls-club-accent-dark: #EF3E42;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #EF3E42;
   --mls-color-accent-base: #000000;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E0E0E0;
@@ -257,6 +321,14 @@
   --mls-club-primary: #C6093B;
   --mls-club-secondary: #001F5B;
   --mls-club-tertiary: #C1C6C8;
+  --mls-club-accent-light: #C6093B;
+  --mls-club-accent-dark: #C6093B;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #001F5B;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #C1C6C8;
   --mls-color-accent-base: #C6093B;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F8E1E7;
@@ -286,6 +358,14 @@
   --mls-club-primary: #FF6B00;
   --mls-club-secondary: #101820;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #F46100;
+  --mls-club-accent-dark: #FF6B00;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #101820;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FF6B00;
   --mls-color-accent-base: #F46100;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FFEDE0;
@@ -315,6 +395,14 @@
   --mls-club-primary: #F7B5CD;
   --mls-club-secondary: #231F20;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #BB7D95;
+  --mls-club-accent-dark: #F7B5CD;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #231F20;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #F7B5CD;
   --mls-color-accent-base: #BB7D95;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FEF6F9;
@@ -344,6 +432,14 @@
   --mls-club-primary: #00245D;
   --mls-club-secondary: #FFD200;
   --mls-club-tertiary: #0065A4;
+  --mls-club-accent-light: #00245D;
+  --mls-club-accent-dark: #3E65A4;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #00245D;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FFD200;
   --mls-color-accent-base: #00245D;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E0E5EC;
@@ -373,6 +469,14 @@
   --mls-club-primary: #000000;
   --mls-club-secondary: #C39E6D;
   --mls-club-tertiary: #E31837;
+  --mls-club-accent-light: #000000;
+  --mls-club-accent-dark: #C39E6D;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #C39E6D;
   --mls-color-accent-base: #000000;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E0E0E0;
@@ -402,6 +506,14 @@
   --mls-club-primary: #9BCDE4;
   --mls-club-secondary: #231F20;
   --mls-club-tertiary: #E2E2DE;
+  --mls-club-accent-light: #6494AA;
+  --mls-club-accent-dark: #9BCDE4;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #231F20;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #9BCDE4;
   --mls-color-accent-base: #6494AA;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #F3F9FC;
@@ -431,6 +543,14 @@
   --mls-club-primary: #003DA5;
   --mls-club-secondary: #000000;
   --mls-club-tertiary: #C1C6C8;
+  --mls-club-accent-light: #003DA5;
+  --mls-club-accent-dark: #255FCA;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #C1C6C8;
   --mls-color-accent-base: #003DA5;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E0E8F4;
@@ -460,6 +580,14 @@
   --mls-club-primary: #ECE83A;
   --mls-club-secondary: #1F1646;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #979000;
+  --mls-club-accent-dark: #ECE83A;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #1F1646;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #ECE83A;
   --mls-color-accent-base: #979000;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #FDFCE7;
@@ -489,6 +617,14 @@
   --mls-club-primary: #0A2240;
   --mls-club-secondary: #CE0E2D;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #0A2240;
+  --mls-club-accent-dark: #4B6588;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #0A2240;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FFFFFF;
   --mls-color-accent-base: #0A2240;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E2E4E8;
@@ -518,6 +654,14 @@
   --mls-club-primary: #9FD2FF;
   --mls-club-secondary: #000229;
   --mls-club-tertiary: #FF5E36;
+  --mls-club-accent-light: #6293BD;
+  --mls-club-accent-dark: #9FD2FF;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000229;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #9FD2FF;
   --mls-color-accent-base: #6293BD;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #F3FAFF;
@@ -547,6 +691,14 @@
   --mls-club-primary: #C8102E;
   --mls-club-secondary: #FFC72C;
   --mls-club-tertiary: #182852;
+  --mls-club-accent-light: #C8102E;
+  --mls-club-accent-dark: #C8102E;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #182852;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #FFC72C;
   --mls-color-accent-base: #C8102E;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F8E2E6;
@@ -576,6 +728,14 @@
   --mls-club-primary: #60269E;
   --mls-club-secondary: #F0D283;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #60269E;
+  --mls-club-accent-dark: #7C47BF;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #60269E;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #F0D283;
   --mls-color-accent-base: #60269E;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #ECE5F3;
@@ -605,6 +765,14 @@
   --mls-club-primary: #051C2C;
   --mls-club-secondary: #E0D0A6;
   --mls-club-tertiary: #3E8EDE;
+  --mls-club-accent-light: #051C2C;
+  --mls-club-accent-dark: #50697C;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #051C2C;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #E0D0A6;
   --mls-color-accent-base: #051C2C;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E1E4E6;
@@ -634,6 +802,14 @@
   --mls-club-primary: #2C5234;
   --mls-club-secondary: #C99700;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #2C5234;
+  --mls-club-accent-dark: #486E4F;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #2C5234;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #C99700;
   --mls-color-accent-base: #2C5234;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E6EAE7;
@@ -663,6 +839,14 @@
   --mls-club-primary: #A32035;
   --mls-club-secondary: #001E61;
   --mls-club-tertiary: #DAAA00;
+  --mls-club-accent-light: #A32035;
+  --mls-club-accent-dark: #B83645;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #001E61;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #DAAA00;
   --mls-color-accent-base: #A32035;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F4E4E7;
@@ -692,6 +876,14 @@
   --mls-club-primary: #697A7C;
   --mls-club-secondary: #697A7C;
   --mls-club-tertiary: #697A7C;
+  --mls-club-accent-light: #667779;
+  --mls-club-accent-dark: #667779;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #001F5B;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #697A7C;
   --mls-color-accent-base: #667779;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #EDEFEF;
@@ -721,6 +913,14 @@
   --mls-club-primary: #003DA5;
   --mls-club-secondary: #000000;
   --mls-club-tertiary: #C8102E;
+  --mls-club-accent-light: #003DA5;
+  --mls-club-accent-dark: #255FCA;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #000000;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #C8102E;
   --mls-color-accent-base: #003DA5;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E0E8F4;
@@ -750,6 +950,14 @@
   --mls-club-primary: #2CC84D;
   --mls-club-secondary: #0033A0;
   --mls-club-tertiary: #7CE0D3;
+  --mls-club-accent-light: #00A729;
+  --mls-club-accent-dark: #2CC84D;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #0033A0;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #2CC84D;
   --mls-color-accent-base: #00A729;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #E6F8EA;
@@ -779,6 +987,14 @@
   --mls-club-primary: #A7C6ED;
   --mls-club-secondary: #0C2340;
   --mls-club-tertiary: #898D8D;
+  --mls-club-accent-light: #7391B6;
+  --mls-club-accent-dark: #A7C6ED;
+  --mls-club-on-accent-light: #0B0F16;
+  --mls-club-on-accent-dark: #0B0F16;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #0C2340;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #A7C6ED;
   --mls-color-accent-base: #7391B6;
   --mls-color-accent-contrast: #0B0F16;
   --mls-color-accent-muted: #F4F8FD;
@@ -808,6 +1024,14 @@
   --mls-club-primary: #E0004D;
   --mls-club-secondary: #0C2340;
   --mls-club-tertiary: #0C2340;
+  --mls-club-accent-light: #E0004D;
+  --mls-club-accent-dark: #E0004D;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #0C2340;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #E0004D;
   --mls-color-accent-base: #E0004D;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #FBE0EA;
@@ -837,6 +1061,14 @@
   --mls-club-primary: #AA182C;
   --mls-club-secondary: #333F48;
   --mls-club-tertiary: #A2AAAD;
+  --mls-club-accent-light: #AA182C;
+  --mls-club-accent-dark: #BB2D3A;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #333F48;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #A2AAAD;
   --mls-color-accent-base: #AA182C;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #F5E3E6;
@@ -866,6 +1098,14 @@
   --mls-club-primary: #12284C;
   --mls-club-secondary: #8AB7E9;
   --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #12284C;
+  --mls-club-accent-dark: #4B648D;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: #12284C;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #8AB7E9;
   --mls-color-accent-base: #12284C;
   --mls-color-accent-contrast: #FFFFFF;
   --mls-color-accent-muted: #E3E5EA;

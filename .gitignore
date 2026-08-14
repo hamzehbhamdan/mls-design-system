@@ -1,4 +1,5 @@
 node_modules/
+.thmx-build/
 .DS_Store
 *.log
 .render-check.json

@@ -45,6 +45,7 @@
       <a class="mls-nav__link" href="#foundations" aria-current="page">Foundations</a>
       <a class="mls-nav__link" href="#components">Components</a>
       <a class="mls-nav__link" href="#clubs">Clubs</a>
+      <a class="mls-nav__link" href="#output">Output</a>
       <a class="mls-nav__link" href="#docs">Docs</a>
     </nav>
     <span class="mls-header__spacer"></span>
@@ -190,10 +191,43 @@
     <p style="margin-top:var(--mls-space-5)"><a class="mls-btn mls-btn--secondary mls-btn--sm" href="previews/clubs/themes.html">Full club preview, light and dark</a></p>
   </section>
 
+  <section class="section" id="output">
+    <div class="section__head">
+      <h2 class="mls-heading-2">Documents &amp; decks</h2>
+      <p>Word and PowerPoint are first-class outputs, generated from these same tokens rather than exported from the web layer. A slide is read from the back of a room and a document at arm's length, so each gets its own point-based scale.</p>
+    </div>
+    <div class="mls-grid mls-grid--auto" style="--mls-grid-min: 17rem">
+      <div class="mls-surface" style="padding:var(--mls-space-6)">
+        <p class="mls-eyebrow" style="margin-bottom:var(--mls-space-3)">PowerPoint</p>
+        <p class="mls-body-sm" style="color:var(--mls-color-fg-muted)">Nine layouts, native editable charts, real speaker notes, and the 45&deg; field at compositional scale. Re-themes on one club slug.</p>
+        <p class="mls-caption" style="margin-top:var(--mls-space-3)"><code>templates/js/mls-deck.cjs</code></p>
+      </div>
+      <div class="mls-surface" style="padding:var(--mls-space-6)">
+        <p class="mls-eyebrow" style="margin-bottom:var(--mls-space-3)">Word</p>
+        <p class="mls-body-sm" style="color:var(--mls-color-fg-muted)">Real Word heading styles, so the TOC and navigation pane work. Letter page, DXA table widths that survive Google Docs.</p>
+        <p class="mls-caption" style="margin-top:var(--mls-space-3)"><code>templates/js/mls-doc.cjs</code></p>
+      </div>
+      <div class="mls-surface" style="padding:var(--mls-space-6)">
+        <p class="mls-eyebrow" style="margin-bottom:var(--mls-space-3)">Office theme</p>
+        <p class="mls-body-sm" style="color:var(--mls-color-fg-muted)">One <code>.thmx</code> applies MLS colour and type to any Word, PowerPoint or Excel file, including native chart colours.</p>
+        <p class="mls-caption" style="margin-top:var(--mls-space-3)"><code>templates/office/mls-theme.thmx</code></p>
+      </div>
+      <div class="mls-surface" style="padding:var(--mls-space-6)">
+        <p class="mls-eyebrow" style="margin-bottom:var(--mls-space-3)">Charts</p>
+        <p class="mls-body-sm" style="color:var(--mls-color-fg-muted)">Eight categorical hues, derived by search and validated. Worst adjacent pair 16.2 under simulated colour-vision deficiency, against a target of 8.</p>
+        <p class="mls-caption" style="margin-top:var(--mls-space-3)"><code>npm run palette</code></p>
+      </div>
+    </div>
+    <p style="margin-top:var(--mls-space-5)">
+      <a class="mls-btn mls-btn--secondary mls-btn--sm" href="previews/documents/slides.html">Slide layouts</a>
+      <a class="mls-btn mls-btn--secondary mls-btn--sm" href="previews/charts/palette.html">Chart palette</a>
+    </p>
+  </section>
+
   <section class="section" id="docs">
     <div class="section__head">
       <h2 class="mls-heading-2">Documentation</h2>
-      <p>Sixteen chapters. The verbal half — voice, vocabulary, editorial style — is the part most often got wrong, and arguably the most valuable to a language model consuming this as context.</p>
+      <p>Nineteen chapters. The verbal half — voice, vocabulary, editorial style — is the part most often got wrong, and arguably the most valuable to a language model consuming this as context.</p>
     </div>
     <div class="doclist" id="docs-list"></div>
   </section>
@@ -228,6 +262,9 @@ const DOCS = [
   ['13-clubs','Clubs','All 30, generated from the data'],
   ['14-the-2027-transition','The 2027 transition','Sprint Season, new calendar, new commissioner'],
   ['15-sourcing-and-confidence','Sourcing & confidence','What is known, what is not'],
+  ['16-presentations','Presentations','Slide layouts, fonts, deck QA'],
+  ['17-documents','Documents','Word styles, tables, print CSS'],
+  ['18-charts','Charts','The searched palette and its rules'],
 ];
 document.getElementById('docs-list').innerHTML = DOCS.map(([f,t,d]) =>
   `<a href="docs/${f}.md"><b>${t}</b><span>${d}</span></a>`).join('');

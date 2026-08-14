@@ -1,0 +1,128 @@
+/* MLS Design System — paged media
+ *
+ * For HTML that becomes a PDF: match programmes, board packs, media guides,
+ * anything printed. Loaded automatically by dist/mls.css; nothing here affects
+ * the screen.
+ *
+ * Print is a different medium, not a smaller screen. Three things change:
+ * the type scale moves to points, dark mode is forced off, and colour stops
+ * being a reliable channel because a document that matters gets photocopied.
+ */
+
+@page {
+  size: Letter;
+  margin: 1in;
+}
+@page :first { margin-top: 1.4in; }
+
+@media print {
+  /* Dark mode never prints. A dark background either wastes a cartridge or is
+   * dropped by the driver, taking the light text with it. */
+  :root,
+  :root[data-theme="dark"],
+  [data-theme="dark"] {
+    --mls-color-bg: #FFFFFF;
+    --mls-color-bg-subtle: #FFFFFF;
+    --mls-color-bg-muted: #F2F4F8;
+    --mls-color-surface: #FFFFFF;
+    --mls-color-surface-raised: #FFFFFF;
+    --mls-color-surface-sunken: #F2F4F8;
+    --mls-color-fg: #0B0F16;
+    --mls-color-fg-muted: #29313E;
+    --mls-color-fg-subtle: #424955;
+    --mls-color-border: #BDC2CA;
+    --mls-color-border-strong: #747A84;
+    color-scheme: light;
+  }
+
+  html { font-size: 11pt; }
+
+  body {
+    background: #FFFFFF;
+    color: #0B0F16;
+    line-height: 1.45;
+  }
+
+  /* Ink economy: large filled areas are dropped to their outline. */
+  .mls-header,
+  .mls-card--feature,
+  .mls-scoreline--hero,
+  .mls-inverse {
+    background: #FFFFFF !important;
+    color: #0B0F16 !important;
+    border: 1px solid var(--mls-color-border) !important;
+  }
+  .mls-slash::after,
+  .mls-slash-band,
+  .mls-card--feature::before { display: none !important; }
+  .mls-duotone > img { filter: grayscale(1) contrast(1.1); mix-blend-mode: normal; opacity: 1; }
+  .mls-duotone::after { display: none; }
+
+  /* Anything that only exists to be clicked. */
+  .mls-btn,
+  .mls-nav,
+  .mls-tabs,
+  .mls-skip-link,
+  .mls-switch,
+  [data-print="hide"] { display: none !important; }
+
+  /* The accent survives print, because it is what makes the page MLS's. Force
+   * exact colour so the driver does not helpfully desaturate it. */
+  .mls-badge,
+  .mls-form__result,
+  .mls-table thead th,
+  .mls-stat__value,
+  .mls-accent-bar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Type scale in points. Screen sizes set in rem come out wrong on paper --
+   * a 3rem display heading is 48px, which is 36pt, which is a poster. */
+  .mls-display-1 { font-size: 30pt; }
+  .mls-display-2 { font-size: 24pt; }
+  .mls-display-3 { font-size: 20pt; }
+  .mls-heading-1 { font-size: 18pt; }
+  .mls-heading-2 { font-size: 14pt; }
+  .mls-heading-3 { font-size: 12pt; }
+  .mls-heading-4 { font-size: 11pt; }
+  .mls-body, .mls-prose { font-size: 11pt; }
+  .mls-body-sm { font-size: 10pt; }
+  .mls-caption, .mls-eyebrow { font-size: 8.5pt; }
+  .mls-stat__value { font-size: 26pt; }
+  .mls-scoreline__score { font-size: 20pt; }
+
+  /* Measure. On an 8.5in page with 1in margins a full-width line is ~95
+   * characters, which is past the point where the eye reliably finds the
+   * start of the next line. */
+  .mls-prose { max-width: 88ch; }
+
+  /* Pagination */
+  h1, h2, h3, .mls-heading-1, .mls-heading-2, .mls-heading-3,
+  .mls-display-1, .mls-display-2, .mls-display-3 {
+    break-after: avoid-page;
+    break-inside: avoid;
+  }
+  p, li, blockquote, figure, .mls-alert, .mls-stat, .mls-scoreline { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+  .mls-card, .mls-table-wrap { break-inside: avoid; }
+  [data-print="break-before"] { break-before: page; }
+
+  /* A table that spans pages needs its header on every page. */
+  .mls-table thead { display: table-header-group; }
+  .mls-table tfoot { display: table-footer-group; }
+  .mls-table tr { break-inside: avoid; }
+  .mls-table-wrap { overflow: visible; }
+
+  /* Print the destination of a link, since a printed link is otherwise a dead
+   * end. Internal anchors and javascript: are skipped -- they would be noise. */
+  .mls-prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: var(--mls-color-fg-subtle);
+    word-break: break-all;
+  }
+
+  /* Crest placeholders should not print as dashed boxes. */
+  .mls-crest[data-placeholder]::after { border-style: solid; border-color: var(--mls-color-border); }
+}

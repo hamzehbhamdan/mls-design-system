@@ -50,6 +50,7 @@ Neutrals carry a navy cast borrowed from the league navy, so greys read as MLS g
 
 - `--mls-club-primary` — the club's true colour, **never altered**. Crests, badges, kit swatches.
 - `--mls-color-accent-base` — a contrast-corrected derivative, guaranteed ≥3.2:1 on the active background. UI chrome.
+- `--mls-club-field` / `--mls-club-spark-on-field` — for FULL-BLEED surfaces (slide grounds, inverse heroes). **Never fill a surface with `--mls-club-accent-dark`**: that token is a club colour lightened until it reads ON dark (Columbus's is `#FEDD00`), so filling with it gives a bright gold slide. The anchor is dark and the bright colour is a spark; a saturated field breaks the same rule a red one does. `field` is the darkest published club colour that can carry white text, navy where a club has none — Columbus resolves to black and gold, Seattle to Pacific Blue and Rave Green.
 
 24 of 30 clubs need correction. Where a club's primary is achromatic (LAFC and D.C. United are both black) the accent is promoted to a chromatic club colour — gold for LAFC, red for D.C. — because lightening black yields grey, which is an absence of a brand colour rather than one.
 
@@ -97,6 +98,60 @@ Two devices are named in MLS's own partner guidelines as part of the system inde
 Use one device per composition. Slash plus notch plus corners plus duotone at once is noise.
 
 ---
+
+## 6b. Documents and decks — read this before generating either
+
+Word and PowerPoint are first-class outputs, not exports of the web layer. Use the modules; do not hand-roll a deck.
+
+```js
+const { createDeck } = require('./templates/js/mls-deck.cjs');
+const { createDoc }  = require('./templates/js/mls-doc.cjs');
+```
+
+Deck layouts (30): `title titleSplit section chapter agenda closing` · `statement quote bullets twoColumn explainerPair band` · `stats heroStat table splitTable standings chart chartPair` · `ranked sixUp tileGrid crestWall formation bracket matchup` · `timeline compare process` · `logoWall blank`
+
+Doc elements: `cover toc h1 h2 h3 eyebrow p lead bullets numbered callout table stats quote divider pageBreak raw`
+
+Both read `dist/` at require time, so tokens propagate with no edit. Both re-theme on `club`.
+
+**Fonts.** Office resolves ONE family name, not a stack — there is no fallback. `fonts: 'safe'` (Arial) is the default and is correct for anything leaving MLS. `fonts: 'licensed'` (MLS Tifo) is correct only when every viewer has Tifo installed. Never Aptos.
+
+**Slide scale is not document scale is not web scale.** Slides: body 17pt, title 38pt, hero stat 200pt, nothing below 10pt. Documents: body 11pt, H1 18pt, hero figure 30pt. Reusing slide sizes in a document makes every heading shout.
+
+**Slides come in THREE DESIGNS.** `createDeck({ design })` takes `report`, `kickoff` or `press` (default). Not three colour schemes — three ideas about what a slide is, each carried across all 30 layouts.
+
+| | `report` | `kickoff` | `press` (default) |
+|---|---|---|---|
+| stage (openers, statements, dividers) | light | photography | navy + 45° corner slash |
+| page (content) | light | navy | white paper |
+| data (tables, charts) | white | white | white |
+| display | regular weight, sentence case | bold, sentence case | bold, UPPERCASE |
+| needs imagery | no | **yes** | no |
+
+A layout NEVER picks its own colours: it asks for a surface by role (`stage`/`page`/`data`) and draws with whatever that surface provides. Adding a design is one object in `DESIGNS`, not 30 edits. **Documents are always light** — paper is white.
+
+`kickoff` needs photography, which this repo does not ship (trademarked). Pass `image:` to any opener for a full-bleed image with a scrim; without it you get a labelled placeholder frame.
+
+Muted and subtle steps are SOLVED for contrast, not fixed mixes: 0.28 toward the ground clears 4.5:1 on navy and misses on Portland green. `fitRatio()` nudges until it clears. Verified across 3 designs x 3 surfaces x 31 palettes.
+
+**Red on navy.** `#E2231A` and `#001F5B` are official and neither changes. But they are close in luminance and buzz at a shared edge, so on a dark ground the spark is lifted toward white until it clears 3:1, and red is never a field and never large — a rule, a numeral, a hairline, a corner mark.
+
+**Text is measured, never estimated.** pptxgenjs cannot measure text. The module carries a real Arial advance-width table and wraps greedily as PowerPoint does. An average-character-width estimate over-measures a lowercase title ~12% (phantom line, gap under every heading) and under-measures digits (`3.28M` breaks as `3.2`/`8M` — a wrong number). Size boxes from `textH()`/`wrapCount()`, never a constant. `balanceWidth()` kills orphans and must never return less than the longest word.
+
+**Three traps this module has already hit, in case you extend it:**
+1. `lineSpacingMultiple` multiplies the FONT's line height (~1.17em), not the point size. Measure with lead L, render `lsm(L) = L/1.17`, or every block is 17% taller than its reserved space.
+2. A list's gap BETWEEN items must be ~1.5x the line gap INSIDE one, or it reads as a paragraph with numbers in it. Shrink the type before crowding.
+3. Columns are n columns and n−1 gutters with dividers centred in the gutters. Insetting all but the first gives uneven accent-mark intervals and a short last column.
+
+**Documents:** headings are real Word styles so the TOC and navigation pane work; page is US Letter, stated explicitly because docx-js defaults to A4; table widths in DXA on both the table and every cell, because percentages break in Google Docs; `ShadingType.CLEAR`, never `SOLID`, which renders black.
+
+**Charts:** eight categorical hues in fixed order, never cycled. Light and dark are different steps, not a flip. One axis, never dual. Colour follows the entity, not its rank. A ninth series folds into Other. Never a value label on every point. Status colours are reserved and never become "series 4". Club colours are not chart colours — Portland green and Seattle green collapse under deuteranopia.
+
+**Office theme.** `templates/office/mls-theme.thmx` applies MLS colour and type to any Word/PowerPoint/Excel file. Its six accents are the first six CHART colours, deliberately not brand red, because Office assigns accents to series in order.
+
+**Always validate and look at it.** `validate.py` for the file, then convert to PDF, rasterise, and inspect every page. Text overflow at a box edge is the most common defect and it is always user-visible.
+
+Full detail: [16 Presentations](../docs/16-presentations.md) · [17 Documents](../docs/17-documents.md) · [18 Charts](../docs/18-charts.md)
 
 ## 7. Components
 

@@ -253,6 +253,103 @@
       "3": "3px",
       "4": "4px"
     },
+    "chart": {
+      "categorical": {
+        "light": {
+          "1": "#1844B9",
+          "2": "#E77412",
+          "3": "#07A4A4",
+          "4": "#AC0311",
+          "5": "#BC70EE",
+          "6": "#03A14A",
+          "7": "#9B0065",
+          "8": "#B78D19"
+        },
+        "dark": {
+          "1": "#2959CF",
+          "2": "#DE6C00",
+          "3": "#00A0A1",
+          "4": "#BE2323",
+          "5": "#B468E6",
+          "6": "#02AE50",
+          "7": "#B22578",
+          "8": "#B48A12"
+        }
+      },
+      "sequential": {
+        "1": "#D7E3F9",
+        "2": "#93B4ED",
+        "3": "#5182D7",
+        "4": "#194EAD",
+        "5": "#003690",
+        "6": "#001F5B"
+      },
+      "diverging": {
+        "negative3": "#8C0E09",
+        "negative2": "#E2231A",
+        "negative1": "#FA8F80",
+        "mid": "#D2D6DE",
+        "positive1": "#93B4ED",
+        "positive2": "#3569C5",
+        "positive3": "#003690"
+      },
+      "axis": "#747A84",
+      "gridline": "#D2D6DE"
+    },
+    "page": {
+      "letterWidth": "8.5in",
+      "letterHeight": "11in",
+      "a4Width": "8.27in",
+      "a4Height": "11.69in",
+      "marginTop": "1in",
+      "marginBottom": "1in",
+      "marginInner": "1in",
+      "marginOuter": "1in",
+      "measure": 88
+    },
+    "slide": {
+      "width": "13.333in",
+      "height": "7.5in",
+      "margin": "0.7in",
+      "gutter": "0.35in",
+      "titleTop": "0.62in",
+      "bodyTop": "1.85in",
+      "footerY": "6.95in",
+      "columns": 12
+    },
+    "typePrint": {
+      "coverTitle": "36pt",
+      "coverSubtitle": "14pt",
+      "title": "26pt",
+      "h1": "18pt",
+      "h2": "14pt",
+      "h3": "12pt",
+      "body": "11pt",
+      "bodyLead": "12.5pt",
+      "small": "10pt",
+      "caption": "9pt",
+      "tableHeader": "9pt",
+      "tableCell": "10pt",
+      "footer": "8.5pt"
+    },
+    "typeSlide": {
+      "heroStat": "66pt",
+      "sectionTitle": "44pt",
+      "title": "36pt",
+      "subtitle": "20pt",
+      "cardTitle": "18pt",
+      "body": "16pt",
+      "bodySmall": "14pt",
+      "eyebrow": "12pt",
+      "caption": "11pt",
+      "footer": "10pt"
+    },
+    "office": {
+      "licensedHeading": "MLS Tifo Headline",
+      "licensedBody": "MLS Tifo Standard",
+      "safeHeading": "Arial",
+      "safeBody": "Arial"
+    },
     "shadow": {
       "none": "none",
       "xs": "0 1px 2px rgba(11, 15, 22, 0.06)",

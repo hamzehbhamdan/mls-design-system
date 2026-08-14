@@ -1,0 +1,236 @@
+<!-- @dsCard group="Documents" name="Slide designs" subtitle="Three designs, 30 layouts" width="1120" height="1320" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — slide designs</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>
+  /* Each slide is a true 16:9 box, so proportions match the generated .pptx
+     exactly. Sizes are a fraction of slide width (13.333in), which is how the
+     pptxgenjs module computes them too. */
+  .deck { display: grid; gap: var(--mls-space-4); grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+  .s {
+    position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+    container-type: inline-size; font-family: var(--mls-font-display);
+    border-radius: var(--mls-radius-sm);
+    /* The ground of a full-bleed club surface is --mls-club-field, NOT the
+       dark-mode accent: that token is a club colour lightened until it reads
+       ON dark, so filling with it gives Columbus a bright gold slide. */
+    --navy:  var(--mls-club-field, var(--mls-color-bg-inverse));
+    --spark: var(--mls-club-spark-on-field, var(--mls-color-primitive-red-400));
+    --paper: #fff;
+    --page:  var(--mls-color-primitive-neutral-50);
+  }
+  .s * { box-sizing: border-box; font-size: inherit; }
+
+  .eb    { font-size: 1.02cqw; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+  .in    { position: absolute; inset: 9% 6%; display: flex; flex-direction: column; justify-content: center; }
+  .mk    { width: 11.3%; height: .55cqw; background: var(--spark); }
+  .foot  { position: absolute; left: 6%; right: 6%; bottom: 6%; display: flex; justify-content: space-between;
+           font-family: var(--mls-font-text); font-size: .84cqw; }
+
+  /* ---- surfaces ---- */
+  .navy  { background: var(--navy); color: #fff; }
+  .navy .eb, .navy .foot { color: rgba(255,255,255,.66); }
+  .light { background: var(--page); color: var(--mls-color-fg); }
+  .paper { background: var(--paper); color: var(--mls-color-fg); }
+  .light .eb, .paper .eb, .light .foot, .paper .foot { color: var(--mls-color-fg-subtle); }
+
+  /* PRESS: the 45deg corner slash, entering from off-canvas. */
+  .slash::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(135deg,
+      transparent 0 4.6cqw, var(--spark) 4.6cqw 5.9cqw,
+      transparent 5.9cqw 7.2cqw, color-mix(in srgb, var(--spark) 45%, transparent) 7.2cqw 8.0cqw,
+      transparent 8.0cqw 9.0cqw, color-mix(in srgb, var(--spark) 20%, transparent) 9.0cqw 9.6cqw,
+      transparent 9.6cqw 22cqw);
+    clip-path: polygon(68% 0, 100% 0, 100% 44%);
+  }
+  /* KICKOFF: photography, evenly darkened. No MLS imagery ships here. */
+  .photo::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(0deg, rgba(0,6,15,.42), rgba(0,6,15,.42)),
+      radial-gradient(60% 100% at 78% 8%, rgba(255,255,255,.14), transparent 66%),
+      var(--navy);
+  }
+  .photo > * { position: relative; }
+  .photo .tag { position: absolute; right: 4%; bottom: 5%; font-size: .8cqw; letter-spacing: .14em;
+                text-transform: uppercase; color: rgba(255,255,255,.34); }
+
+  /* ---- type per design ---- */
+  .d-report h3 { font-weight: 400; font-size: 4.6cqw; line-height: 1.06; letter-spacing: -.028em; margin: 1.3cqw 0 0; }
+  .d-kickoff h3 { font-weight: 800; font-size: 4.9cqw; line-height: 1.0; letter-spacing: -.03em; margin: 1.3cqw 0 0; }
+  .d-press h3 { font-weight: 800; font-size: 5.2cqw; line-height: .96; letter-spacing: -.035em; margin: 1.3cqw 0 0;
+                text-transform: uppercase; max-width: 62%; }
+  .sub { font-family: var(--mls-font-text); font-size: 1.36cqw; line-height: 1.5; margin-top: 2.4cqw; max-width: 56%; opacity: .82; }
+
+  /* ---- head + numbered list, shared by every content slide ---- */
+  .head  { position: absolute; left: 6%; right: 6%; top: 8%; }
+  .headrule { height: .38cqw; background: currentColor; opacity: .9; }
+  .head h4 { font-size: 2.6cqw; font-weight: 700; letter-spacing: -.015em; margin: 1.0cqw 0 0; }
+  ol.pts { position: absolute; left: 6%; right: 6%; top: 34%; bottom: 12%;
+           list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; gap: 3.1cqw; }
+  ol.pts li { position: relative; padding-left: 4.4cqw; font-family: var(--mls-font-text); font-size: 1.5cqw; line-height: 1.5; }
+  ol.pts li::before { counter-increment: n; content: "0" counter(n); position: absolute; left: 0; top: .15em;
+                      font-family: var(--mls-font-display); font-size: .92cqw; font-weight: 700; letter-spacing: .09em; color: var(--spark); }
+  ol.pts { counter-reset: n; }
+
+  table.rec { position: absolute; left: 6%; right: 6%; top: 32%; border-collapse: collapse; width: 88%; }
+  table.rec th { font-size: .82cqw; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+                 color: var(--mls-color-fg-subtle); text-align: right; padding-bottom: 1.0cqw;
+                 border-bottom: 1px solid var(--mls-color-fg); }
+  table.rec th:first-child, table.rec td:first-child { text-align: left; }
+  table.rec td { font-size: 1.24cqw; padding: 1.35cqw 0; border-bottom: 1px solid var(--mls-color-border); text-align: right; }
+  table.rec td:last-child { font-weight: 700; }
+
+  .cap { font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-subtle); margin-top: var(--mls-space-2); font-family: var(--mls-font-text); }
+  .pv__label small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--mls-color-fg-muted); }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Documents</p>
+    <h1 class="pv__title">Slide designs</h1>
+    <p class="pv__note">The deck layer in <code class="pv__code">templates/js/mls-deck.cjs</code> carries thirty layouts in <strong>three designs</strong>. Not three colour schemes — three ideas about what a slide is. Each design resolves three <strong>surfaces</strong> and maps every layout to one by <strong>role</strong>: <code class="pv__code">stage</code> for openers and statements, <code class="pv__code">page</code> for content, <code class="pv__code">data</code> for tables. A layout never picks its own colours, which is why one set of functions serves all three. <code class="pv__code">press</code> is the default: poster-scale type with the Record Book's restraint, and no dependency on imagery.</p>
+  </header>
+
+  <section class="pv__section" data-club="por">
+    <h2 class="pv__label">press <small>— navy type pages alternate with white paper pages. The default.</small></h2>
+    <div class="deck">
+      <div>
+        <div class="s navy slash d-press">
+          <div class="in">
+            <div class="eb">Unofficial reference · 2026</div>
+            <h3>Thirty clubs. One template.</h3>
+          </div>
+          <div class="foot"><span>Not an official MLS product</span></div>
+        </div>
+        <p class="cap">stage — uppercase, corner slash</p>
+      </div>
+      <div>
+        <div class="s paper d-press">
+          <div class="head"><div class="headrule"></div><div class="eb" style="margin-top:1.1cqw">Consequences</div><h4>What follows from a colourable crest</h4></div>
+          <ol class="pts">
+            <li>The accent is a slot. Nothing references the league red directly.</li>
+            <li>One attribute re-themes an entire deck, document or product.</li>
+            <li>Club colours are preserved exactly for crests and kit swatches.</li>
+          </ol>
+          <div class="foot"><span>Portland Timbers</span><span>6</span></div>
+        </div>
+        <p class="cap">page — evidence goes on paper</p>
+      </div>
+      <div>
+        <div class="s paper d-press">
+          <div class="head"><div class="headrule"></div><div class="eb" style="margin-top:1.1cqw">Eastern Conference</div><h4>Standings, Matchday 24</h4></div>
+          <table class="rec">
+            <tr><th>Club</th><th>MP</th><th>W</th><th>D</th><th>GD</th><th>PTS</th></tr>
+            <tr><td>Columbus Crew</td><td>24</td><td>17</td><td>7</td><td>+29</td><td>58</td></tr>
+            <tr><td>Inter Miami CF</td><td>24</td><td>16</td><td>5</td><td>+24</td><td>53</td></tr>
+            <tr><td>FC Cincinnati</td><td>24</td><td>15</td><td>4</td><td>+18</td><td>49</td></tr>
+          </table>
+          <div class="foot"><span>Portland Timbers</span><span>13</span></div>
+        </div>
+        <p class="cap">data — the Fact &amp; Record Book register</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section" data-club="por">
+    <h2 class="pv__label">kickoff <small>— photography opens, navy argues, data drops to paper. Needs images.</small></h2>
+    <div class="deck">
+      <div>
+        <div class="s photo d-kickoff">
+          <div class="in" style="justify-content:flex-end;inset:9% 6% 12%">
+            <div class="eb" style="color:rgba(255,255,255,.74)">Board of Governors · 2026</div>
+            <h3 style="color:#fff">The season that changed the calendar</h3>
+          </div>
+          <span class="tag">Photography</span>
+        </div>
+        <p class="cap">stage — <code>image:</code> or a labelled placeholder</p>
+      </div>
+      <div>
+        <div class="s navy d-kickoff">
+          <div class="head"><div class="headrule" style="opacity:.85"></div><div class="eb" style="margin-top:1.1cqw">Consequences</div><h4>What follows from a colourable crest</h4></div>
+          <ol class="pts">
+            <li>The accent is a slot. Nothing references the league red directly.</li>
+            <li>One attribute re-themes an entire deck, document or product.</li>
+            <li>Club colours are preserved exactly for crests and kit swatches.</li>
+          </ol>
+          <div class="foot"><span>Portland Timbers</span><span>6</span></div>
+        </div>
+        <p class="cap">page — argument on navy</p>
+      </div>
+      <div>
+        <div class="s paper d-kickoff">
+          <div class="head"><div class="headrule"></div><div class="eb" style="margin-top:1.1cqw">Eastern Conference</div><h4>Standings, Matchday 24</h4></div>
+          <table class="rec">
+            <tr><th>Club</th><th>MP</th><th>W</th><th>D</th><th>GD</th><th>PTS</th></tr>
+            <tr><td>Columbus Crew</td><td>24</td><td>17</td><td>7</td><td>+29</td><td>58</td></tr>
+            <tr><td>Inter Miami CF</td><td>24</td><td>16</td><td>5</td><td>+24</td><td>53</td></tr>
+            <tr><td>FC Cincinnati</td><td>24</td><td>15</td><td>4</td><td>+18</td><td>49</td></tr>
+          </table>
+          <div class="foot"><span>Portland Timbers</span><span>13</span></div>
+        </div>
+        <p class="cap">data — paper, inside a dark deck</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section" data-club="por">
+    <h2 class="pv__label">report <small>— light throughout, regular display weight, wide margins.</small></h2>
+    <div class="deck">
+      <div>
+        <div class="s light d-report">
+          <div class="in">
+            <div class="mk" style="margin-bottom:1.4cqw"></div>
+            <div class="eb">Unofficial reference · August 2026</div>
+            <h3>Colour is a <b>slot</b>, not a value</h3>
+            <p class="sub">The crest was designed in 2014 as a flexible template. Thirty clubs receive it in their own colours.</p>
+          </div>
+        </div>
+        <p class="cap">stage — the calmest of the three</p>
+      </div>
+      <div>
+        <div class="s light d-report">
+          <div class="head"><div class="headrule"></div><div class="eb" style="margin-top:1.1cqw">Consequences</div><h4>What follows from a colourable crest</h4></div>
+          <ol class="pts">
+            <li>The accent is a slot. Nothing references the league red directly.</li>
+            <li>One attribute re-themes an entire deck, document or product.</li>
+            <li>Club colours are preserved exactly for crests and kit swatches.</li>
+          </ol>
+          <div class="foot"><span>Portland Timbers</span><span>6</span></div>
+        </div>
+        <p class="cap">page</p>
+      </div>
+      <div>
+        <div class="s paper d-report">
+          <div class="head"><div class="headrule"></div><div class="eb" style="margin-top:1.1cqw">Eastern Conference</div><h4>Standings, Matchday 24</h4></div>
+          <table class="rec">
+            <tr><th>Club</th><th>MP</th><th>W</th><th>D</th><th>GD</th><th>PTS</th></tr>
+            <tr><td>Columbus Crew</td><td>24</td><td>17</td><td>7</td><td>+29</td><td>58</td></tr>
+            <tr><td>Inter Miami CF</td><td>24</td><td>16</td><td>5</td><td>+24</td><td>53</td></tr>
+            <tr><td>FC Cincinnati</td><td>24</td><td>15</td><td>4</td><td>+18</td><td>49</td></tr>
+          </table>
+          <div class="foot"><span>Portland Timbers</span><span>13</span></div>
+        </div>
+        <p class="cap">data — white against the light page</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Any design re-themes to a club <small>— one option changes, nothing else does.</small></h2>
+    <div class="deck" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
+      <div data-club="clb"><div class="s navy slash d-press"><div class="in"><div class="eb">Eastern Conference</div><h3 style="max-width:76%">Columbus Crew</h3></div></div><p class="cap">Black · Gold</p></div>
+      <div data-club="sea"><div class="s navy slash d-press"><div class="in"><div class="eb">Cascadia</div><h3 style="max-width:76%">Seattle Sounders</h3></div></div><p class="cap">Pacific Blue · Rave Green</p></div>
+      <div data-club="por"><div class="s navy slash d-press"><div class="in"><div class="eb">Cascadia</div><h3 style="max-width:76%">Portland Timbers</h3></div></div><p class="cap">Ponderosa Green · Timbers Gold</p></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

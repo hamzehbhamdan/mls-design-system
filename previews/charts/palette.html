@@ -1,0 +1,115 @@
+<!-- @dsCard group="Charts" name="Chart palette" subtitle="8 categorical, sequential, diverging, light and dark" width="1120" height="820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLS Design System — chart palette</title>
+<link rel="stylesheet" href="../../dist/mls.css">
+<link rel="stylesheet" href="../preview.css">
+<style>
+  .slots { display: grid; grid-template-columns: repeat(8, 1fr); gap: var(--mls-space-2); }
+  .slot { border-radius: var(--mls-radius-sm); overflow: hidden; border: 1px solid var(--mls-color-border); }
+  .slot i { display: block; height: 3.4rem; }
+  .slot b { display: block; padding: var(--mls-space-2); font-family: var(--mls-font-mono); font-size: 10px; color: var(--mls-color-fg-subtle); font-weight: 400; }
+  .slot b span { display: block; font-family: var(--mls-font-display); font-size: 11px; font-weight: 700; color: var(--mls-color-fg); text-transform: uppercase; letter-spacing: .06em; }
+  .ramp { display: flex; border-radius: var(--mls-radius-sm); overflow: hidden; }
+  .ramp i { flex: 1; height: 2.6rem; }
+  /* A bar chart built in plain CSS, so the palette is judged in situ rather
+     than as isolated swatches. Adjacent series are what the CVD check gates. */
+  .chart { display: grid; grid-template-columns: 3rem 1fr; gap: var(--mls-space-3); align-items: end; }
+  .plot { display: flex; align-items: flex-end; gap: var(--mls-space-4); height: 11rem; border-bottom: 1px solid var(--mls-color-border); padding-bottom: 1px; }
+  .group { display: flex; align-items: flex-end; gap: 2px; flex: 1; }
+  .bar { flex: 1; border-radius: 3px 3px 0 0; }
+  .ticks { display: flex; justify-content: space-between; font-family: var(--mls-font-micro); font-size: 10px; color: var(--mls-color-fg-subtle); margin-top: 6px; }
+  .legend { display: flex; flex-wrap: wrap; gap: var(--mls-space-4); margin-top: var(--mls-space-3); font-size: var(--mls-fontSize-xs); color: var(--mls-color-fg-muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 10px; height: 10px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<main class="pv">
+  <header class="pv__head">
+    <p class="mls-eyebrow">Charts</p>
+    <h1 class="pv__title">Chart palette</h1>
+    <p class="pv__note">Eight hues in fixed order, assigned in sequence and never cycled. Derived by search in <code class="pv__code">scripts/gen_chart_palette.mjs</code>, then validated: worst adjacent pair 16.2 light and 16.3 dark under simulated protanopia and deuteranopia, against a target of 8. Light and dark are different steps of the same hues, because no single hex clears 3:1 on both white and near-black.</p>
+  </header>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Categorical — light</h2>
+    <div class="slots" id="cat-light"></div>
+    <div class="chart" style="margin-top:var(--mls-space-5)">
+      <div></div>
+      <div>
+        <div class="plot" id="plot-light"></div>
+        <div class="ticks"><span>East</span><span>West</span><span>Leagues Cup</span><span>Open Cup</span><span>Playoffs</span></div>
+        <div class="legend" id="legend-light"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Categorical — dark</h2>
+    <div class="pv__dark" data-theme="dark">
+      <div class="slots" id="cat-dark"></div>
+      <div class="chart" style="margin-top:var(--mls-space-5)">
+        <div></div>
+        <div>
+          <div class="plot" id="plot-dark"></div>
+          <div class="ticks"><span>East</span><span>West</span><span>Leagues Cup</span><span>Open Cup</span><span>Playoffs</span></div>
+          <div class="legend" id="legend-dark"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Sequential — magnitude. One hue, light to dark.</h2>
+    <div class="ramp" id="seq"></div>
+  </section>
+
+  <section class="pv__section">
+    <h2 class="pv__label">Diverging — polarity. Two hues, neutral grey midpoint, never a hue in the middle.</h2>
+    <div class="ramp" id="div"></div>
+  </section>
+</main>
+
+<script>
+const cs = (el) => getComputedStyle(el);
+const NAMES = ['blue','orange','teal','red','purple','green','magenta','gold'];
+const get = (scope, name) => cs(scope).getPropertyValue(name).trim();
+
+function slots(targetId, scope, mode) {
+  const el = document.getElementById(targetId);
+  el.innerHTML = NAMES.map((n, i) => {
+    const v = get(scope, `--mls-chart-categorical-${mode}-${i + 1}`);
+    return `<div class="slot"><i style="background:${v}"></i><b><span>${i + 1} ${n}</span>${v}</b></div>`;
+  }).join('');
+}
+
+const DATA = [[42, 31, 8], [38, 34, 7], [12, 10, 14], [6, 4, 3], [9, 7, 5]];
+const SERIES = ['Home', 'Away', 'Neutral'];
+const MAX = 45;
+
+function chart(plotId, legendId, scope, mode) {
+  const cols = SERIES.map((_, i) => get(scope, `--mls-chart-categorical-${mode}-${i + 1}`));
+  document.getElementById(plotId).innerHTML = DATA.map((g) =>
+    `<div class="group">${g.map((v, i) =>
+      `<div class="bar" style="height:${(v / MAX) * 100}%;background:${cols[i]}"></div>`).join('')}</div>`).join('');
+  document.getElementById(legendId).innerHTML = SERIES.map((s, i) =>
+    `<span><i style="background:${cols[i]}"></i>${s}</span>`).join('');
+}
+
+slots('cat-light', document.documentElement, 'light');
+chart('plot-light', 'legend-light', document.documentElement, 'light');
+const dark = document.querySelector('[data-theme="dark"]');
+slots('cat-dark', dark, 'dark');
+chart('plot-dark', 'legend-dark', dark, 'dark');
+
+document.getElementById('seq').innerHTML = [1,2,3,4,5,6]
+  .map((i) => `<i style="background:${get(document.documentElement, `--mls-chart-sequential-${i}`)}"></i>`).join('');
+document.getElementById('div').innerHTML = ['negative3','negative2','negative1','mid','positive1','positive2','positive3']
+  .map((k) => `<i style="background:${get(document.documentElement, `--mls-chart-diverging-${k}`)}"></i>`).join('');
+</script>
+</body>
+</html>

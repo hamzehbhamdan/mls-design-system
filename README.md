@@ -14,6 +14,23 @@ Point Claude Design at this repository and every design it produces will inherit
 
 That button is now Ponderosa Green. Change `por` to `clb` and it is Columbus gold, contrast-corrected so the label stays legible. Nothing else in the markup changes.
 
+The same applies to documents and decks, which are first-class outputs here rather than exports of the web layer:
+
+```js
+const deck = createDeck({ club: 'por' });   // → .pptx, 30 layouts, native charts, speaker notes
+const doc  = createDoc({ club: 'por' });    // → .docx, real Word styles, working TOC
+```
+
+The deck ships **three designs**, each carried across all 30 layouts:
+
+| | Openers | Content | Data | Needs imagery |
+|---|---|---|---|---|
+| `report` | light, regular weight | light | white | no |
+| `kickoff` | photography | navy | white | **yes** |
+| `press` *(default)* | navy + 45° corner slash | white | white | no |
+
+`press` is the default: poster-scale type with the Record Book's restraint, and no asset dependency. Documents are always light; paper is white.
+
 ---
 
 ## Read this first
@@ -67,6 +84,9 @@ Or just use the built files — `dist/` is committed.
 | `dist/tailwind.preset.js` | Tailwind preset. |
 | `dist/mls.clubs.css` | Club themes only. |
 | `dist/mls.clubs.json` | Club data with computed accents and contrast ratios. |
+| `templates/js/mls-deck.cjs` | PowerPoint layer (pptxgenjs). 30 layouts, 3 designs. |
+| `templates/js/mls-doc.cjs` | Word layer (docx-js). |
+| `templates/office/mls-theme.thmx` | Office theme. Applies MLS colour and type to any Word/PowerPoint/Excel file. |
 
 Nothing in `dist/` is hand-edited. Sources are `tokens/tokens.json` and `data/clubs.json`.
 
@@ -77,7 +97,7 @@ Nothing in `dist/` is hand-edited. Sources are `tokens/tokens.json` and `data/cl
 Push it:
 
 ```bash
-git init && git add -A && git commit -m "MLS Design System v1.0.0"
+git init && git add -A && git commit -m "MLS Design System v2.0.0"
 gh repo create mls-design-system --private --source=. --push
 ```
 
@@ -91,7 +111,7 @@ Every file in `previews/` opens with a `@dsCard` marker, so each one registers a
 <!-- @dsCard group="Components" name="Buttons" subtitle="5 variants, 3 sizes" width="900" height="520" -->
 ```
 
-Groups used: `Brand`, `Colors`, `Type`, `Spacing`, `Components`, `Clubs`.
+Groups used: `Brand`, `Colors`, `Type`, `Spacing`, `Components`, `Clubs`, `Documents`, `Charts`.
 
 ---
 
@@ -99,16 +119,25 @@ Groups used: `Brand`, `Colors`, `Type`, `Spacing`, `Components`, `Clubs`.
 
 ```
 claude/CLAUDE.md          Machine-first brief. Claude reads this first.
-docs/                     The brand book. 16 chapters, human-readable.
+docs/                     The brand book. 19 chapters, human-readable.
 tokens/tokens.json        Token source of truth (W3C DTCG format).
 data/clubs.json           All 30 clubs: names, tricodes, colours, confidence ratings.
-css/                      Authored CSS: reset, base, utilities, 8 component files.
+css/                      Authored CSS: reset, base, utilities, print, 8 component files.
 previews/                 @dsCard preview pages, one per surface.
 dist/                     Generated. Do not edit.
 scripts/build.mjs         Token pipeline + club theme generator.
 scripts/verify.mjs        Contrast audit and integrity checks.
+templates/js/             Deck and document builders. Same tokens, different medium.
+templates/office/         Office theme (.thmx) and the raw theme part.
+templates/examples/       Reference deck and report generators.
 assets/                   Empty slots for logos and fonts, with instructions.
 index.html                Gallery. Open it to see the whole system at once.
+```
+
+Build the reference deck and report:
+
+```bash
+npm run examples          # → examples-out/*.pptx and *.docx
 ```
 
 ---
@@ -130,6 +159,11 @@ index.html                Gallery. Open it to see the whole system at once.
 [Vocabulary](docs/09-vocabulary.md) ·
 [Editorial style](docs/10-editorial-style.md) ·
 [Inclusive language](docs/11-inclusive-language.md)
+
+**Output formats**
+[Presentations](docs/16-presentations.md) ·
+[Documents](docs/17-documents.md) ·
+[Charts](docs/18-charts.md)
 
 **Reference**
 [Accessibility](docs/12-accessibility.md) ·

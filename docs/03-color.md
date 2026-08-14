@@ -70,8 +70,26 @@ That is the whole API. It re-themes the subtree, works nested, works in both col
 |---|---|---|
 | `--mls-club-primary` | The club's **true** colour, never altered | Crests, badges, kit swatches — anywhere fidelity is a brand or licensing requirement |
 | `--mls-color-accent-base` | A contrast-corrected derivative, ≥3.2:1 on the active background | Buttons, links, rules, focus, UI chrome |
+| `--mls-club-field` | The darkest published club colour that can carry white text | Full-bleed surfaces: inverse heroes, slide grounds, dark panels |
+| `--mls-club-spark-on-field` | The club's brightest identifiable colour, ≥3:1 on the field | Rules and marks sitting *on* the field |
 
 Altering the first would be a brand violation. Not correcting the second would make most of the league's themes illegible.
+
+### The field is not the dark-mode accent
+
+A common and very visible mistake. `--mls-club-accent-dark` is a club colour *lightened* until it reads **on** a dark ground; Columbus's is `#FEDD00`. Filling a surface **with** it gives you a bright gold slide.
+
+MLS's own logic is that the anchor is dark and the bright colour is a spark. A saturated field breaks that rule exactly the way a red one does. So `--mls-club-field` resolves to the darkest published club colour with at least 7:1 against white, and to MLS navy for a club that has none:
+
+| Club | Field | Spark |
+|---|---|---|
+| Columbus Crew | Black | Gold |
+| Seattle Sounders FC | Pacific Blue | Rave Green |
+| Portland Timbers | Ponderosa Green | Timbers Gold |
+| LAFC | Black | California Gold |
+| Inter Miami CF | Black | Pink |
+
+Which is how each of those clubs presents itself. The rule is enforced at build time and checked by `npm run verify`.
 
 ### Why correction is necessary
 

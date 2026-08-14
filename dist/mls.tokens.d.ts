@@ -257,6 +257,103 @@ declare const tokens: {
     "3": string;
     "4": string;
   };
+  chart: {
+    categorical: {
+      light: {
+        "1": string;
+        "2": string;
+        "3": string;
+        "4": string;
+        "5": string;
+        "6": string;
+        "7": string;
+        "8": string;
+      };
+      dark: {
+        "1": string;
+        "2": string;
+        "3": string;
+        "4": string;
+        "5": string;
+        "6": string;
+        "7": string;
+        "8": string;
+      };
+    };
+    sequential: {
+      "1": string;
+      "2": string;
+      "3": string;
+      "4": string;
+      "5": string;
+      "6": string;
+    };
+    diverging: {
+      negative3: string;
+      negative2: string;
+      negative1: string;
+      mid: string;
+      positive1: string;
+      positive2: string;
+      positive3: string;
+    };
+    axis: string;
+    gridline: string;
+  };
+  page: {
+    letterWidth: string;
+    letterHeight: string;
+    a4Width: string;
+    a4Height: string;
+    marginTop: string;
+    marginBottom: string;
+    marginInner: string;
+    marginOuter: string;
+    measure: number;
+  };
+  slide: {
+    width: string;
+    height: string;
+    margin: string;
+    gutter: string;
+    titleTop: string;
+    bodyTop: string;
+    footerY: string;
+    columns: number;
+  };
+  typePrint: {
+    coverTitle: string;
+    coverSubtitle: string;
+    title: string;
+    h1: string;
+    h2: string;
+    h3: string;
+    body: string;
+    bodyLead: string;
+    small: string;
+    caption: string;
+    tableHeader: string;
+    tableCell: string;
+    footer: string;
+  };
+  typeSlide: {
+    heroStat: string;
+    sectionTitle: string;
+    title: string;
+    subtitle: string;
+    cardTitle: string;
+    body: string;
+    bodySmall: string;
+    eyebrow: string;
+    caption: string;
+    footer: string;
+  };
+  office: {
+    licensedHeading: string;
+    licensedBody: string;
+    safeHeading: string;
+    safeBody: string;
+  };
   shadow: {
     none: string;
     xs: string;

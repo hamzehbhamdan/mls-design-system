@@ -143,6 +143,60 @@ for (const c of clubs) {
 }
 
 /* ---------- 5. previews ---------- */
+/* Full-bleed club surfaces. The failure this guards against is silent and
+ * severe: using the dark-mode ACCENT as a field turns a Columbus deck into
+ * bright gold slides, because that token is the club colour lightened to
+ * read ON dark, not a colour to fill WITH. */
+for (const c of clubs) {
+  const t = c.theme;
+  if (!HEX.test(t.field)) { fail(`${c.tricode}: theme.field "${t.field}" is not a 6-digit hex`); continue; }
+  const onFieldRatio = contrast(t.onField, t.field);
+  if (onFieldRatio < 4.5) {
+    fail(`${c.tricode}: onField ${t.onField} on field ${t.field} is ${onFieldRatio.toFixed(2)}:1, below 4.5`);
+  } else if (contrast(t.field, LIGHT) < 7) {
+    fail(`${c.tricode}: field ${t.field} is only ${contrast(t.field, LIGHT).toFixed(2)}:1 against white -- too light to be a full-bleed ground`);
+  } else if (contrast(t.sparkOnField, t.field) < 3) {
+    fail(`${c.tricode}: spark ${t.sparkOnField} on field ${t.field} is ${contrast(t.sparkOnField, t.field).toFixed(2)}:1, below 3`);
+  } else if (t.sparkOnField === t.field) {
+    fail(`${c.tricode}: spark and field are the same colour`);
+  } else pass();
+}
+
+section('Deck surfaces');
+{
+  /* Three designs x three surfaces x 31 palettes. The deck derives its muted
+   * and subtle steps by solving for contrast rather than by a fixed mix, so
+   * this is the check that keeps that promise honest across every club. */
+  const deckMod = await import('../templates/js/mls-deck.cjs').then((m) => m.default ?? m);
+  const { theme: deckTheme, DESIGNS } = deckMod;
+  const PAIRS = [
+    ['ink', 'bg', 4.5], ['inkMuted', 'bg', 4.5], ['inkSubtle', 'bg', 4.5],
+    ['onPanel', 'panel', 4.5], ['onPanelMuted', 'panel', 4.5],
+    ['spark', 'bg', 3], ['ruleStrong', 'bg', 3], ['figure', 'bg', 4.5],
+  ];
+  for (const design of Object.keys(DESIGNS)) {
+    let worst = Infinity, worstAt = '';
+    for (const slug of [null, ...clubs.map((c) => c.slug)]) {
+      const th = deckTheme({ club: slug, design });
+      for (const [name, surf] of Object.entries(th.surfaces)) {
+        for (const [fg, bg, min] of PAIRS) {
+          const r = contrast(`#${surf[fg]}`, `#${surf[bg]}`);
+          if (r < min) fail(`deck ${design}/${slug ?? 'league'}/${name}: ${fg} on ${bg} is ${r.toFixed(2)}:1, below ${min}`);
+          if (r / min < worst) { worst = r / min; worstAt = `${slug ?? 'league'} ${name} ${fg}/${bg} ${r.toFixed(2)}:1`; }
+        }
+      }
+    }
+    pass(`design "${design}": 31 palettes x 3 surfaces x ${PAIRS.length} pairs clear; tightest ${worstAt}`);
+  }
+  // Every design must map all three roles, or a layout asking for one silently
+  // falls back to `page` and the design quietly stops being itself.
+  for (const [name, D] of Object.entries(DESIGNS)) {
+    const missing = ['stage', 'page', 'data'].filter((r) => !D.roles[r]);
+    if (missing.length) fail(`design "${name}" is missing role(s): ${missing.join(', ')}`);
+    else pass();
+  }
+}
+
 section('Previews');
 const previews = [];
 const walkPv = (dir) => {
@@ -154,7 +208,7 @@ const walkPv = (dir) => {
 };
 walkPv('previews');
 
-const GROUPS = new Set(['Brand', 'Colors', 'Type', 'Spacing', 'Components', 'Clubs']);
+const GROUPS = new Set(['Brand', 'Colors', 'Type', 'Spacing', 'Components', 'Clubs', 'Documents', 'Charts']);
 for (const file of previews) {
   const first = read(file).split('\n')[0];
   const m = first.match(/^<!--\s*@dsCard\s+(.*?)-->/);
@@ -167,9 +221,41 @@ for (const file of previews) {
 }
 if (!previews.length) fail('no preview files found');
 
+/* ---------- 5b. Office layer ---------- */
+section('Office layer (decks and documents)');
+for (const f of ['templates/js/mls-deck.cjs', 'templates/js/mls-doc.cjs',
+                 'templates/examples/build-deck.cjs', 'templates/examples/build-doc.cjs',
+                 'templates/office/mls-theme.thmx', 'templates/office/theme1.xml',
+                 'css/print.css']) {
+  if (!existsSync(p(f))) fail(`missing ${f}`); else pass();
+}
+
+// The theme's six accent slots must match the first six categorical chart
+// colours. Office assigns accents to chart series in order, so a drift here
+// silently repaints every chart in the organisation.
+const themeXml = existsSync(p('templates/office/theme1.xml')) ? read('templates/office/theme1.xml') : '';
+const tokensObj = JSON.parse(read('dist/mls.tokens.json')).tokens;
+for (let i = 1; i <= 6; i++) {
+  const want = String(tokensObj.chart.categorical.light[String(i)]).replace('#', '').toUpperCase();
+  const got = themeXml.match(new RegExp(`<a:accent${i}><a:srgbClr val="([0-9A-F]{6})"`))?.[1];
+  if (got !== want) fail(`theme accent${i} is ${got}, expected chart slot ${i} (${want}) -- run npm run build`);
+  else pass();
+}
+
+// Every categorical slot must clear the chroma-free contrast floor on its own
+// surface, in both modes. The full six-check validation lives in
+// scripts/gen_chart_palette.mjs; this is the regression guard.
+for (const [mode, surface] of [['light', '#FFFFFF'], ['dark', tokensObj.color.brand.black]]) {
+  for (let i = 1; i <= 8; i++) {
+    const c = tokensObj.chart.categorical[mode][String(i)];
+    const r = contrast(c, surface);
+    if (r < 3.0) fail(`chart ${mode} slot ${i} (${c}) is ${r.toFixed(2)}:1 on ${surface}`); else pass();
+  }
+}
+
 /* ---------- 6. docs ---------- */
 section('Docs');
-const EXPECTED_DOCS = 16;
+const EXPECTED_DOCS = 19;
 const docs = readdirSync(p('docs')).filter((f) => f.endsWith('.md'));
 if (docs.length < EXPECTED_DOCS) fail(`expected ${EXPECTED_DOCS} docs, found ${docs.length}`); else pass();
 for (const f of ['README.md', 'NOTICE.md', 'claude/CLAUDE.md', 'assets/logo/README.md', 'assets/fonts/README.md']) {

@@ -222,6 +222,8 @@ ${emitBlock(lightTokens, semanticMap)}
 
   /* accent slot -- overridden wholesale by any [data-club] theme */
 ${accentBlock(LIGHT_BG_HEX)}
+  --mls-club-accent-light: ${fitContrast(accentBase, LIGHT_BG_HEX, 3.2)};
+  --mls-club-accent-dark: ${fitContrast(accentBase, DARK_BG_HEX, 3.2)};
 
   color-scheme: light;
 }
@@ -350,12 +352,34 @@ for (const club of clubsSrc.clubs) {
     warnings.push(`${club.tricode}: primary "${primary.name}" is achromatic; UI accent promoted to a chromatic club colour. --mls-club-primary still holds ${raw}.`);
   }
 
+  /* The FIELD is the colour a full-bleed club surface takes: a deck's navy
+   * panel, an inverse hero. It is deliberately NOT accentDark -- that token
+   * is a club colour lightened until it reads on a dark ground, so Columbus's
+   * is #FEDD00 and a field built from it is a bright gold slide. The league's
+   * anchor is dark and the bright colour is a spark; a saturated field breaks
+   * the same rule a red one does.
+   *
+   * So: the darkest published club colour that can carry white text, and MLS
+   * navy for a club that has none. Columbus resolves to black and gold,
+   * Seattle to Pacific Blue and Rave Green, Portland to Ponderosa Green and
+   * Timbers Gold -- which is how those clubs present themselves. */
+  const fieldCandidates = palette
+    .filter((h) => contrast(h, LIGHT_BG) >= 7)
+    .sort((a, b) => luminance(a) - luminance(b));
+  const field = fieldCandidates[0] ?? resolved['color.brand.navy'].value;
+  const onField = bestForeground(field);
+  const sparkOnField = palette.find((h) => h !== field && contrast(h, field) >= 3)
+    ?? palette.find((h) => h !== field) ?? accentDark;
+
   const entry = {
     ...club,
     theme: {
       raw,
       accentLight,
       accentDark,
+      field,
+      onField,
+      sparkOnField,
       onAccentLight: bestForeground(accentLight),
       onAccentDark: bestForeground(accentDark),
       mutedLight: mix(raw, LIGHT_BG, 0.88),
@@ -380,6 +404,14 @@ for (const club of clubsSrc.clubs) {
   --mls-club-primary: ${t.raw};
   --mls-club-secondary: ${secondary.hex ?? t.raw};
   --mls-club-tertiary: ${tertiary?.hex ?? secondary.hex ?? t.raw};
+  --mls-club-accent-light: ${t.accentLight};
+  --mls-club-accent-dark: ${t.accentDark};
+  --mls-club-on-accent-light: ${t.onAccentLight};
+  --mls-club-on-accent-dark: ${t.onAccentDark};
+  /* Full-bleed surfaces. Not accent-dark: see scripts/build.mjs. */
+  --mls-club-field: ${t.field};
+  --mls-club-on-field: ${t.onField};
+  --mls-club-spark-on-field: ${t.sparkOnField};
   --mls-color-accent-base: ${t.accentLight};
   --mls-color-accent-contrast: ${t.onAccentLight};
   --mls-color-accent-muted: ${t.mutedLight};
@@ -583,6 +615,7 @@ export default {
  * ------------------------------------------------------------------ */
 
 const CSS_ORDER = ['reset.css', 'base.css', 'utilities.css'];
+const CSS_LAST = ['print.css']; // must come after components so its overrides win
 const componentFiles = existsSync(p('css/components'))
   ? readdirSync(p('css/components')).filter((f) => f.endsWith('.css')).sort()
   : [];
@@ -595,6 +628,9 @@ for (const f of componentFiles) {
   bundle += `\n/* ---- css/components/${f} ---- */\n` + read(`css/components/${f}`) + '\n';
 }
 bundle += `\n/* ---- club themes ---- */\n` + read('dist/mls.clubs.css').replace(BANNER, '') + '\n';
+for (const f of CSS_LAST) {
+  if (existsSync(p('css', f))) bundle += `\n/* ---- css/${f} ---- */\n` + read(`css/${f}`) + '\n';
+}
 writeFileSync(p('dist/mls.css'), bundle);
 
 /* ------------------------------------------------------------------ *
@@ -604,7 +640,7 @@ writeFileSync(p('dist/mls.css'), bundle);
 const corrected = clubOut.filter((c) => c.theme.corrected);
 console.log(`tokens        ${Object.keys(resolved).length} resolved`);
 console.log(`club themes   ${clubOut.length}/${clubsSrc.clubs.length} emitted, ${corrected.length} contrast-corrected`);
-console.log(`css bundle    ${(bundle.length / 1024).toFixed(1)} kB from ${CSS_ORDER.length + componentFiles.length} files`);
+console.log(`css bundle    ${(bundle.length / 1024).toFixed(1)} kB from ${CSS_ORDER.length + componentFiles.length + CSS_LAST.length} files`);
 if (warnings.length) {
   console.log('\nwarnings:');
   warnings.forEach((w) => console.log('  ! ' + w));

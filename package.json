@@ -1,11 +1,34 @@
 {
   "name": "mls-design-system",
-  "version": "1.0.0",
-  "description": "Unofficial design system and brand reference for Major League Soccer. Tokens, docs, component CSS and 30 club themes, built to be consumed by Claude Design and read by people.",
+  "version": "2.0.0",
+  "description": "Unofficial design system and brand reference for Major League Soccer. Tokens, docs, component CSS, 30 club themes, and first-class PowerPoint and Word output.",
   "type": "module",
   "license": "MIT",
-  "keywords": ["design-system", "design-tokens", "mls", "brand-guidelines", "claude-design", "css", "soccer"],
-  "files": ["dist", "tokens", "data", "docs", "css", "claude", "README.md", "NOTICE.md"],
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "mls",
+    "brand-guidelines",
+    "claude-design",
+    "css",
+    "soccer",
+    "pptx",
+    "docx",
+    "powerpoint",
+    "word",
+    "presentations"
+  ],
+  "files": [
+    "dist",
+    "tokens",
+    "data",
+    "docs",
+    "css",
+    "claude",
+    "README.md",
+    "NOTICE.md",
+    "templates"
+  ],
   "exports": {
     ".": "./dist/mls.tokens.js",
     "./css": "./dist/mls.css",
@@ -13,16 +36,29 @@
     "./tokens.scss": "./dist/mls.tokens.scss",
     "./clubs.css": "./dist/mls.clubs.css",
     "./clubs.json": "./dist/mls.clubs.json",
-    "./tailwind": "./dist/tailwind.preset.js"
+    "./tailwind": "./dist/tailwind.preset.js",
+    "./deck": "./templates/js/mls-deck.cjs",
+    "./doc": "./templates/js/mls-doc.cjs",
+    "./theme.thmx": "./templates/office/mls-theme.thmx"
   },
   "types": "./dist/mls.tokens.d.ts",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-office-theme.mjs",
     "verify": "node scripts/verify.mjs",
     "ramps": "python3 scripts/gen_ramps.py",
     "start": "npx --yes http-server . -p 4173 -c-1 -o /index.html",
-    "prepublishOnly": "npm run build && npm run verify"
+    "prepublishOnly": "npm run build && npm run verify",
+    "palette": "node scripts/gen_chart_palette.mjs",
+    "example:deck": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-press.pptx --design press",
+    "example:doc": "node templates/examples/build-doc.cjs examples-out/mls-reference-report.docx",
+    "examples": "mkdir -p examples-out && npm run example:deck && npm run example:deck:report && npm run example:deck:kickoff && npm run example:doc",
+    "example:deck:report": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-report.pptx --design report",
+    "example:deck:kickoff": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-kickoff.pptx --design kickoff"
   },
-  "engines": { "node": ">=18" },
-  "sideEffects": ["*.css"]
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }
