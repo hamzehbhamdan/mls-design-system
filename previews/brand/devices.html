@@ -55,12 +55,18 @@
 
   <section class="pv__section">
     <h2 class="pv__label">Crest slot — no marks ship in this repo</h2>
-    <p class="pv__note">Enforces the published 4×-X clear space by computing padding from its own size, plus the 32px minimum. The placeholder is deliberately ugly: one that looks finished is one that ships.</p>
+    <p class="pv__note">Enforces the published 4×-X clear space by computing padding from its own size, plus the 32px minimum. A crest shows the mark for its own <code>data-tricode</code> once one is installed, and the lettered socket until then.</p>
+    <div class="pv__row" style="align-items:flex-end">
+      <span class="mls-crest mls-crest--sm" data-tricode="POR"></span>
+      <span class="mls-crest" data-tricode="SEA"></span>
+      <span class="mls-crest mls-crest--lg" data-tricode="CLB"></span>
+      <span class="mls-crest mls-crest--xl" data-tricode="MLS"></span>
+    </div>
+    <p class="pv__note">The socket, forced with <code>data-placeholder</code>. Deliberately ugly: a placeholder that looks finished is a placeholder that ships. It stays a socket even when the mark exists, because &ldquo;no asset here&rdquo; is a statement an author gets to make.</p>
     <div class="pv__row" style="align-items:flex-end">
       <span class="mls-crest mls-crest--sm" data-tricode="POR" data-placeholder></span>
       <span class="mls-crest" data-tricode="SEA" data-placeholder></span>
       <span class="mls-crest mls-crest--lg" data-tricode="CLB" data-placeholder></span>
-      <span class="mls-crest mls-crest--xl" data-tricode="MLS" data-placeholder></span>
     </div>
   </section>
 </main>

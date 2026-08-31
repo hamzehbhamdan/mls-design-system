@@ -197,6 +197,73 @@ section('Deck surfaces');
   }
 }
 
+section('Marks');
+{
+  /* No marks ship with this repository -- they are trademarks and are not
+   * ours to redistribute -- so ZERO installed is the expected state and is
+   * never a failure. What this checks is that whatever IS installed is
+   * coherent: every manifest entry points at a file that exists, and every
+   * club key is a real club. A manifest that references a deleted file is a
+   * broken deck, and it fails silently at render time. */
+  const mfPath = p('assets/logo/manifest.json');
+  if (!existsSync(mfPath)) {
+    pass('no marks installed (expected: none ship with this repository)');
+  } else {
+    const man = JSON.parse(read('assets/logo/manifest.json'));
+    const slugs = new Set(clubs.map((c) => c.slug));
+    let bad = 0;
+
+    /* Every path a record can carry, including the reversed twin and the
+     * deck-sized copy. A manifest that names a file nobody wrote renders as a
+     * silently missing crest, not an error. */
+    const checkRec = (label, rec) => {
+      for (const k of ['svg', 'png', 'deckPng']) {
+        if (rec[k] && !existsSync(p(rec[k]))) { fail(`manifest: ${label}.${k} points at a missing file (${rec[k]})`); bad++; }
+      }
+      if (!rec.svg && !rec.png) { fail(`manifest: ${label} has no file`); bad++; }
+      /* macOS zips ship an AppleDouble resource fork per file -- "._POR.png",
+       * a few kilobytes, a perfect token match and not an image. Installing
+       * one instead of the crest is the failure this size floor catches. */
+      const f = rec.png && p(rec.png);
+      if (f && existsSync(f) && statSync(f).size < 4096) {
+        fail(`manifest: ${label} is ${statSync(f).size} bytes -- almost certainly a resource fork, not a mark`);
+        bad++;
+      }
+      if (rec.onDark) checkRec(`${label}.onDark`, rec.onDark);
+    };
+
+    for (const [key, rec] of Object.entries(man.clubs || {})) {
+      if (!slugs.has(key)) { fail(`manifest: "${key}" is not a club slug in data/clubs.json`); bad++; continue; }
+      checkRec(key, rec);
+    }
+    for (const [k, rec] of Object.entries(man.league || {})) checkRec(`league.${k}`, rec);
+    for (const [k, rec] of Object.entries(man.properties || {})) checkRec(`properties.${k}`, rec);
+    for (const [k, rec] of Object.entries(man.nextClubs || {})) checkRec(`nextClubs.${k}`, rec);
+
+    /* The deck centres a mark at its own aspect ratio, which it can only do
+     * from recorded dimensions. Without them a landscape crest -- the Red
+     * Bulls one -- gets stretched into a square. */
+    const noDims = Object.entries(man.clubs || {}).filter(([, r]) => !(r.w > 0 && r.h > 0)).map(([k]) => k);
+    if (noDims.length) {
+      fail(`${noDims.length} club mark(s) have no recorded dimensions and will be drawn square: ${noDims.join(' ')}`);
+      bad++;
+    }
+    // The Office layer needs raster; an SVG-only club silently vanishes from
+    // every deck while still looking fine on the web.
+    const vectorOnly = Object.entries(man.clubs || {}).filter(([, r]) => r.svg && !r.png).map(([k]) => k);
+    if (vectorOnly.length) {
+      fail(`${vectorOnly.length} club mark(s) are SVG-only and will not appear in decks: ${vectorOnly.join(' ')} -- re-run install-logos.mjs with a rasteriser installed`);
+      bad++;
+    }
+    const n = Object.keys(man.clubs || {}).length;
+    const rev = Object.values(man.clubs || {}).filter((r) => r.onDark).length;
+    const props = Object.keys(man.properties || {}).length;
+    if (!bad) {
+      pass(`${n}/30 club marks (${rev} with a reversed variant), ${Object.keys(man.league || {}).length} league variant(s), ${props} propert${props === 1 ? 'y' : 'ies'} installed, all resolvable`);
+    }
+  }
+}
+
 section('Previews');
 const previews = [];
 const walkPv = (dir) => {

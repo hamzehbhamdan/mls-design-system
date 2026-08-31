@@ -101,7 +101,7 @@ document.getElementById('rows').innerHTML = DATA.map(([code,name,mp,w,d,l,gd,pts
   <tr data-qualifies="${q}"${focus ? ' data-focus="true"' : ''}>
     <td class="mls-table__pos">${i+1}</td>
     <th scope="row"><div class="mls-table__club">
-      <span class="mls-crest mls-crest--sm" style="--crest-size:1.75rem" data-tricode="${code}" data-placeholder></span>
+      <span class="mls-crest mls-crest--sm" style="--crest-size:1.75rem" data-tricode="${code}"></span>
       <span class="mls-table__club-name">${name}</span>
     </div></th>
     <td data-numeric>${mp}</td><td data-numeric>${w}</td><td data-numeric>${d}</td><td data-numeric>${l}</td>

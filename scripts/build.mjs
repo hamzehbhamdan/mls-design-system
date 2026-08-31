@@ -300,6 +300,55 @@ const DARK_BG = resolved['color.brand.black'].value;
 
 const clubOut = [];
 const clubCss = [];
+
+/**
+ * The league as an explicit theme value.
+ *
+ * `:root` already carries the league colours, so a page with no `data-club`
+ * is already MLS. That is fine until something wants to OFFER the theme as a
+ * choice -- a theme switcher, a tweak control, a club picker in a preview --
+ * because then "MLS" is the one option that works differently from the other
+ * thirty: you get it by removing the attribute rather than setting it.
+ *
+ * One special case in a list of thirty-one is a bug waiting to happen, and it
+ * is the option most likely to be dropped. So `data-club="mls"` is a real
+ * theme that restores the league values, and it works nested inside a club
+ * theme where removing the attribute would not. Thirty-one values, set the
+ * same way.
+ */
+const MLS_THEME_BLOCK = `/* Major League Soccer -- the league itself, as a selectable theme.
+ * :root is already MLS, so this exists so that "MLS" can be an explicit value
+ * anywhere the theme is offered as a choice, and so it can be restored inside
+ * a club-themed subtree. Keep it first in any list of themes. */
+[data-club="mls"] {
+  --mls-club-name: "Major League Soccer";
+  --mls-club-tricode: "MLS";
+  --mls-club-primary: ${resolved['color.brand.red'].value};
+  --mls-club-secondary: ${resolved['color.brand.navy'].value};
+  --mls-club-tertiary: ${resolved['color.brand.white'].value};
+  --mls-club-accent-light: ${fitContrast(accentBase, LIGHT_BG_HEX, 3.2)};
+  --mls-club-accent-dark: ${fitContrast(accentBase, DARK_BG_HEX, 3.2)};
+  --mls-club-on-accent-light: ${bestForeground(fitContrast(accentBase, LIGHT_BG_HEX, 3.2))};
+  --mls-club-on-accent-dark: ${bestForeground(fitContrast(accentBase, DARK_BG_HEX, 3.2))};
+  /* Full-bleed surfaces: navy carries white type, red is the spark on it. */
+  --mls-club-field: ${resolved['color.brand.navy'].value};
+  --mls-club-on-field: ${resolved['color.brand.white'].value};
+  --mls-club-spark-on-field: ${resolved['color.brand.red'].value};
+${accentBlock(LIGHT_BG_HEX)}
+  --mls-color-border-accent: ${fitContrast(accentBase, LIGHT_BG_HEX, 3.2)};
+}
+[data-club="mls"][data-theme="dark"],
+[data-theme="dark"] [data-club="mls"] {
+${accentBlock(DARK_BG_HEX)}
+  --mls-color-border-accent: ${fitContrast(accentBase, DARK_BG_HEX, 3.2)};
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mls"],
+  [data-club="mls"]:where(:root:not([data-theme="light"]) *) {
+${accentBlock(DARK_BG_HEX, '    ')}
+    --mls-color-border-accent: ${fitContrast(accentBase, DARK_BG_HEX, 3.2)};
+  }
+}`;
 const warnings = [];
 
 /** OKLab chroma. Near-zero means the colour is black, white or a grey. */
@@ -453,7 +502,7 @@ writeFileSync(
  * Correcting the first would be a brand violation. Not correcting the
  * second would make ${clubOut.filter(c => c.theme.corrected).length} of ${clubOut.length} club themes fail WCAG.
  */
-` + clubCss.join('\n\n') + '\n'
+` + [MLS_THEME_BLOCK, ...clubCss].join('\n\n') + '\n'
 );
 
 writeFileSync(
@@ -627,7 +676,94 @@ for (const f of CSS_ORDER) {
 for (const f of componentFiles) {
   bundle += `\n/* ---- css/components/${f} ---- */\n` + read(`css/components/${f}`) + '\n';
 }
+
+/* ------------------------------------------------------------------ *
+ * Crests
+ *
+ * No marks ship with this repository -- they are trademarks and are not ours
+ * to redistribute. `scripts/install-logos.mjs` writes assets/logo/manifest.json
+ * and this turns it into CSS. With nothing installed the file is still
+ * emitted, empty but for its header, so the bundle composition never changes
+ * depending on whether someone has run the installer.
+ * ------------------------------------------------------------------ */
+let crestCss = `/* Crest images, generated from assets/logo/manifest.json. */\n`;
+let crestCount = 0;
+{
+  const mf = p('assets/logo/manifest.json');
+  const man = existsSync(mf) ? JSON.parse(readFileSync(mf, 'utf8')) : { league: {}, clubs: {} };
+  const rel = (x) => `../${String(x).replace(/^\.\//, '')}`;   // dist/ -> repo root
+  const pick = (rec) => rec && (rec.svg || rec.png);
+  const tri = Object.fromEntries(clubsSrc.clubs.map((c) => [c.slug, c.tricode]));
+
+  /* A crest names the team it depicts; `data-club` on an ancestor is a THEME.
+   * Those are different things, and conflating them is a real bug: a scoreline
+   * carries one data-club but two crests, so keying on the ancestor paints the
+   * away side with the home club's mark. Rules are emitted in three layers,
+   * lowest specificity first:
+   *
+   *   .mls-crest                                  league mark, the default
+   *   .mls-crest[data-tricode="POR" i]            this crest IS Portland
+   *   [data-club="por"] .mls-crest:not([data-tricode])   inherit the theme
+   *
+   * The `i` flag is there because markup writes tricodes in caps and attribute
+   * values are case-sensitive in HTML. */
+  const socketOff = (sel) => `${sel}:empty:not([data-placeholder])::after { content: none; border: 0; }\n`;
+
+  const league = pick((man.league || {}).primary) || pick((man.league || {}).gradient);
+  if (league) {
+    crestCss += `.mls-crest { background-image: url("${rel(league)}"); }\n`;
+    crestCss += socketOff('.mls-crest');
+    crestCount++;
+  }
+  const rev = pick((man.league || {}).monoRev);
+  if (rev) crestCss += `[data-theme="dark"] .mls-crest:not([data-club]) { background-image: url("${rel(rev)}"); }\n`;
+
+  for (const [slug, rec] of Object.entries(man.clubs || {})) {
+    const f = pick(rec);
+    if (!f) continue;
+    const t = tri[slug] || slug;
+    crestCss += `.mls-crest[data-tricode="${t}" i] { background-image: url("${rel(f)}"); }\n`;
+    crestCss += `[data-club="${slug}"] .mls-crest:not([data-tricode]) { background-image: url("${rel(f)}"); }\n`;
+    crestCss += socketOff(`.mls-crest[data-tricode="${t}" i]`);
+    crestCss += socketOff(`[data-club="${slug}"] .mls-crest:not([data-tricode])`);
+    crestCount++;
+  }
+
+  /* Reversed club marks. A crest drawn for a light background can have a black
+   * wordmark that vanishes in dark mode -- Columbus ships exactly that pair --
+   * so where the manifest carries the twin, dark mode uses it. */
+  for (const [slug, rec] of Object.entries(man.clubs || {})) {
+    const f = pick(rec.onDark);
+    if (!f) continue;
+    const t = tri[slug] || slug;
+    crestCss += `[data-theme="dark"] .mls-crest[data-tricode="${t}" i] { background-image: url("${rel(f)}"); }\n`;
+    crestCss += `[data-theme="dark"] [data-club="${slug}"] .mls-crest:not([data-tricode]) { background-image: url("${rel(f)}"); }\n`;
+  }
+
+  /* League properties: MLS NEXT and its competition marks. Addressed by name
+   * rather than by club, because they belong to no club. */
+  for (const [key, rec] of Object.entries(man.properties || {})) {
+    const f = pick(rec);
+    if (!f) continue;
+    const name = String(key).replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+    crestCss += `.mls-mark[data-mark="${name}"] { background-image: url("${rel(f)}"); }\n`;
+    const d = pick(rec.onDark);
+    if (d) crestCss += `[data-theme="dark"] .mls-mark[data-mark="${name}"] { background-image: url("${rel(d)}"); }\n`;
+    crestCount++;
+  }
+  if (Object.keys(man.properties || {}).length) {
+    crestCss += `.mls-mark { display: inline-block; background-repeat: no-repeat; background-position: center; background-size: contain; block-size: 2.5rem; inline-size: 8rem; }\n`;
+  }
+
+  /* An explicit data-placeholder still forces the socket. It means "no asset
+   * here", and that is a statement the author gets to make even once marks
+   * are installed. */
+  if (crestCount) crestCss += `.mls-crest[data-placeholder] { background-image: none; }\n`;
+}
+writeFileSync(p('dist/mls.crests.css'), crestCss);
+
 bundle += `\n/* ---- club themes ---- */\n` + read('dist/mls.clubs.css').replace(BANNER, '') + '\n';
+bundle += `\n/* ---- crests ---- */\n` + crestCss + '\n';
 for (const f of CSS_LAST) {
   if (existsSync(p('css', f))) bundle += `\n/* ---- css/${f} ---- */\n` + read(`css/${f}`) + '\n';
 }

@@ -1,6 +1,6 @@
 {
   "name": "mls-design-system",
-  "version": "2.0.0",
+  "version": "2.3.0",
   "description": "Unofficial design system and brand reference for Major League Soccer. Tokens, docs, component CSS, 30 club themes, and first-class PowerPoint and Word output.",
   "type": "module",
   "license": "MIT",
@@ -53,7 +53,10 @@
     "example:doc": "node templates/examples/build-doc.cjs examples-out/mls-reference-report.docx",
     "examples": "mkdir -p examples-out && npm run example:deck && npm run example:deck:report && npm run example:deck:kickoff && npm run example:doc",
     "example:deck:report": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-report.pptx --design report",
-    "example:deck:kickoff": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-kickoff.pptx --design kickoff"
+    "example:deck:kickoff": "node templates/examples/build-deck.cjs examples-out/mls-reference-deck-kickoff.pptx --design kickoff",
+    "logos": "node scripts/install-logos.mjs",
+    "logos:fetch": "bash scripts/fetch-logos.sh",
+    "package": "node scripts/package.mjs"
   },
   "engines": {
     "node": ">=18"

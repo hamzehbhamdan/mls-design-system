@@ -71,6 +71,52 @@ const DESIGNS = {
 
 ---
 
+## Marks
+
+No marks are committed to git — the MLS crest and the club crests are trademarks. Install the ones you are entitled to use and they appear automatically:
+
+```bash
+node scripts/install-logos.mjs ~/Downloads/mls-brand-assets
+npm run build && npm run examples
+```
+
+The installer matches files to clubs by name, so it does not care whether you have `MLS crest logo RGB - Portland Timbers.svg`, `por.png`, `POR_Logo_PRI_FC_RGB_2160x2160.png` or `Timbers logo (1).png`.
+
+| Where | What appears |
+|---|---|
+| Openers, dividers, statements | Deck mark bottom-right: the club crest if the deck is club-themed, else the league crest. `crest: false` suppresses it. |
+| `crestWall()` | All thirty club marks. |
+| `matchup()` | Both club marks flanking the score — pass `club: 'por'` on each side. |
+| `deck.propertyMark(key)` | A league property mark: `next`, `nextCupHorizontal`, `nextCupVertical`, `nextFestHorizontal`, `nextFestVertical`. |
+
+Five rules the module holds to:
+
+**A missing club crest gives a lettered socket, never the league crest.** Thirty MLS crests standing in for thirty clubs looks like a bug; thirty sockets looks like a decision. A partial install is a supported state.
+
+**Dark grounds take the reversed variant** when one is installed, and light grounds take the primary. Most club crests carry their own keyline and need no twin, so one file serves both. A few genuinely do need both: Columbus ships a light-background crest whose black wordmark disappears on navy, and a dark-background crest whose white wordmark disappears on white. The manifest keeps both and the layout asks for the ground it is drawing on.
+
+**Marks are not resized to square.** `size` reserves a square box and the mark is centred inside it at its own aspect. The Red Bulls crest is landscape and San Diego's is portrait; forcing either into a square stretches it. The installer records pixel dimensions for exactly this, and `npm run verify` fails a mark that has none.
+
+**The crest wall is a data slide in all three designs.** It is the one layout whose surface is not ours to choose. Every club crest was drawn to sit on white, and a handful — the burgundy, the darker greens and navies — lose their outline against a dark ground. Putting the wall on paper shows each mark on the ground its owner designed it for.
+
+**PNG for the deck, SVG for the web.** PowerPoint's SVG support is inconsistent across versions, so a vector-only mark silently vanishes from every deck while still looking correct in a browser. `npm run verify` fails on any club that is SVG-only rather than letting that pass quietly. The deck also takes a 900px copy where the installer made one: a crest is never drawn above about 2.5in, so embedding the 2200px original thirty times costs six megabytes and buys nothing.
+
+`size` in `deck.crestOn()` is the *mark*, not the box: the published rule is a minimum of 4× the crest's "X" measurement of clear space on all sides, so callers reserve room around it.
+
+### League properties
+
+MLS NEXT is the league's youth development platform; MLS NEXT Cup and MLS NEXT Fest are its competition and event marks. They are league properties, not clubs, and they get their own bucket in the manifest so they can never stand in for a club crest. Ask for them by key:
+
+```js
+const next = deck.propertyMark('next', /* dark */ true);
+```
+
+MLS NEXT's full-colour mark has a near-black shield that goes muddy on navy, so the dark ground takes the cyan one-colour version rather than the white one — legible either way, but only one of them is still MLS NEXT.
+
+MLS NEXT member clubs are third-party youth organisations. The installer records them under `nextClubs` and wires them into no layout: their names collide with real MLS clubs, and a "Dallas Hornets" crest appearing where FC Dallas belongs is exactly the failure the separate bucket prevents.
+
+---
+
 ## Layouts
 
 Thirty, grouped by job, each carried in all three designs. Every one takes `notes`, which becomes real speaker notes rather than a text box on the slide. Layouts marked **stage** accept an `image` in `kickoff`.
@@ -116,7 +162,7 @@ Thirty, grouped by job, each carried in all three designs. Every one takes `note
 | `ranked()` | data | Power Rankings, 1–N with movement, two columns. |
 | `sixUp()` | page | Six items divided by hairlines. Six is MLS's number on its own site. |
 | `tileGrid()` | page | Flat grid of equal tiles. No hierarchy, no feature tile. |
-| `crestWall()` | page | Thirty crest sockets, square and equal. |
+| `crestWall()` | data | Thirty club marks, square and equal, on paper. |
 | `formation()` | page | Team of the Matchday on a drawn pitch. |
 | `bracket()` | data | Knockout progression with connectors. |
 | `matchup()` | stage | Match header. |

@@ -1156,6 +1156,15 @@ body {
   min-inline-size: var(--mls-geometry-crestMinWidthPx);
   padding: calc(var(--crest-x) * 4);
   flex: none;
+
+  /* An installed mark arrives as a background image from dist/mls.crests.css.
+   * `contain` keeps a non-square crest at its own aspect -- the Red Bulls mark
+   * is landscape, San Diego's portrait -- and the padding above is the
+   * clear space, so the image is drawn inside the content box, not across it. */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-origin: content-box;
 }
 .mls-crest > img,
 .mls-crest > svg { inline-size: 100%; block-size: 100%; object-fit: contain; }
@@ -1721,6 +1730,49 @@ body {
  * Correcting the first would be a brand violation. Not correcting the
  * second would make 24 of 30 club themes fail WCAG.
  */
+/* Major League Soccer -- the league itself, as a selectable theme.
+ * :root is already MLS, so this exists so that "MLS" can be an explicit value
+ * anywhere the theme is offered as a choice, and so it can be restored inside
+ * a club-themed subtree. Keep it first in any list of themes. */
+[data-club="mls"] {
+  --mls-club-name: "Major League Soccer";
+  --mls-club-tricode: "MLS";
+  --mls-club-primary: #E2231A;
+  --mls-club-secondary: #001F5B;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #E2231A;
+  --mls-club-accent-dark: #E2231A;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces: navy carries white type, red is the spark on it. */
+  --mls-club-field: #001F5B;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #E2231A;
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #FBE0DF;
+  --mls-color-accent-emphasis: #D30203;
+  --mls-color-border-accent: #E2231A;
+}
+[data-club="mls"][data-theme="dark"],
+[data-theme="dark"] [data-club="mls"] {
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #291217;
+  --mls-color-accent-emphasis: #FF4738;
+  --mls-color-border-accent: #E2231A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mls"],
+  [data-club="mls"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #E2231A;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #291217;
+    --mls-color-accent-emphasis: #FF4738;
+    --mls-color-border-accent: #E2231A;
+  }
+}
+
 /* Atlanta United FC -- Eastern, since 2017. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
 [data-club="atl"] {
   --mls-club-name: "Atlanta United FC";
@@ -2830,6 +2882,146 @@ body {
     --mls-color-border-accent: #4B648D;
   }
 }
+
+
+/* ---- crests ---- */
+/* Crest images, generated from assets/logo/manifest.json. */
+.mls-crest { background-image: url("../assets/logo/crest-league-gradient.png"); }
+.mls-crest:empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="ATL" i] { background-image: url("../assets/logo/clubs/atl.png"); }
+[data-club="atl"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/atl.png"); }
+.mls-crest[data-tricode="ATL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="atl"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="ATX" i] { background-image: url("../assets/logo/clubs/atx.png"); }
+[data-club="atx"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/atx.png"); }
+.mls-crest[data-tricode="ATX" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="atx"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="CHI" i] { background-image: url("../assets/logo/clubs/chi.png"); }
+[data-club="chi"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/chi.png"); }
+.mls-crest[data-tricode="CHI" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="chi"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="CIN" i] { background-image: url("../assets/logo/clubs/cin.png"); }
+[data-club="cin"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/cin.png"); }
+.mls-crest[data-tricode="CIN" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="cin"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="CLB" i] { background-image: url("../assets/logo/clubs/clb.png"); }
+[data-club="clb"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/clb.png"); }
+.mls-crest[data-tricode="CLB" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="clb"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="CLT" i] { background-image: url("../assets/logo/clubs/clt.png"); }
+[data-club="clt"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/clt.png"); }
+.mls-crest[data-tricode="CLT" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="clt"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="COL" i] { background-image: url("../assets/logo/clubs/col.png"); }
+[data-club="col"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/col.png"); }
+.mls-crest[data-tricode="COL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="col"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="DAL" i] { background-image: url("../assets/logo/clubs/dal.png"); }
+[data-club="dal"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/dal.png"); }
+.mls-crest[data-tricode="DAL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="dal"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="DC" i] { background-image: url("../assets/logo/clubs/dc.png"); }
+[data-club="dc"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/dc.png"); }
+.mls-crest[data-tricode="DC" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="dc"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="HOU" i] { background-image: url("../assets/logo/clubs/hou.png"); }
+[data-club="hou"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/hou.png"); }
+.mls-crest[data-tricode="HOU" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="hou"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="LA" i] { background-image: url("../assets/logo/clubs/la.png"); }
+[data-club="la"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/la.png"); }
+.mls-crest[data-tricode="LA" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="la"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="LAFC" i] { background-image: url("../assets/logo/clubs/lafc.png"); }
+[data-club="lafc"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/lafc.png"); }
+.mls-crest[data-tricode="LAFC" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="lafc"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="MIA" i] { background-image: url("../assets/logo/clubs/mia.png"); }
+[data-club="mia"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/mia.png"); }
+.mls-crest[data-tricode="MIA" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="mia"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="MIN" i] { background-image: url("../assets/logo/clubs/min.png"); }
+[data-club="min"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/min.png"); }
+.mls-crest[data-tricode="MIN" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="min"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="MTL" i] { background-image: url("../assets/logo/clubs/mtl.png"); }
+[data-club="mtl"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/mtl.png"); }
+.mls-crest[data-tricode="MTL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="mtl"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="NE" i] { background-image: url("../assets/logo/clubs/ne.png"); }
+[data-club="ne"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/ne.png"); }
+.mls-crest[data-tricode="NE" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="ne"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="NSH" i] { background-image: url("../assets/logo/clubs/nsh.png"); }
+[data-club="nsh"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/nsh.png"); }
+.mls-crest[data-tricode="NSH" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="nsh"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="NYC" i] { background-image: url("../assets/logo/clubs/nyc.png"); }
+[data-club="nyc"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/nyc.png"); }
+.mls-crest[data-tricode="NYC" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="nyc"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="ORL" i] { background-image: url("../assets/logo/clubs/orl.png"); }
+[data-club="orl"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/orl.png"); }
+.mls-crest[data-tricode="ORL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="orl"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="PHI" i] { background-image: url("../assets/logo/clubs/phi.png"); }
+[data-club="phi"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/phi.png"); }
+.mls-crest[data-tricode="PHI" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="phi"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="POR" i] { background-image: url("../assets/logo/clubs/por.png"); }
+[data-club="por"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/por.png"); }
+.mls-crest[data-tricode="POR" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="por"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="RBNY" i] { background-image: url("../assets/logo/clubs/rbny.png"); }
+[data-club="rbny"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/rbny.png"); }
+.mls-crest[data-tricode="RBNY" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="rbny"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="RSL" i] { background-image: url("../assets/logo/clubs/rsl.png"); }
+[data-club="rsl"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/rsl.png"); }
+.mls-crest[data-tricode="RSL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="rsl"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="SD" i] { background-image: url("../assets/logo/clubs/sd.png"); }
+[data-club="sd"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/sd.png"); }
+.mls-crest[data-tricode="SD" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="sd"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="SEA" i] { background-image: url("../assets/logo/clubs/sea.png"); }
+[data-club="sea"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/sea.png"); }
+.mls-crest[data-tricode="SEA" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="sea"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="SJ" i] { background-image: url("../assets/logo/clubs/sj.png"); }
+[data-club="sj"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/sj.png"); }
+.mls-crest[data-tricode="SJ" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="sj"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="SKC" i] { background-image: url("../assets/logo/clubs/skc.png"); }
+[data-club="skc"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/skc.png"); }
+.mls-crest[data-tricode="SKC" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="skc"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="STL" i] { background-image: url("../assets/logo/clubs/stl.png"); }
+[data-club="stl"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/stl.png"); }
+.mls-crest[data-tricode="STL" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="stl"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="TOR" i] { background-image: url("../assets/logo/clubs/tor.png"); }
+[data-club="tor"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/tor.png"); }
+.mls-crest[data-tricode="TOR" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="tor"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+.mls-crest[data-tricode="VAN" i] { background-image: url("../assets/logo/clubs/van.png"); }
+[data-club="van"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/van.png"); }
+.mls-crest[data-tricode="VAN" i]:empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-club="van"] .mls-crest:not([data-tricode]):empty:not([data-placeholder])::after { content: none; border: 0; }
+[data-theme="dark"] .mls-crest[data-tricode="CLB" i] { background-image: url("../assets/logo/clubs/clb-on-dark.png"); }
+[data-theme="dark"] [data-club="clb"] .mls-crest:not([data-tricode]) { background-image: url("../assets/logo/clubs/clb-on-dark.png"); }
+.mls-mark[data-mark="next"] { background-image: url("../assets/logo/properties/mls-next.png"); }
+[data-theme="dark"] .mls-mark[data-mark="next"] { background-image: url("../assets/logo/properties/mls-next-on-dark.png"); }
+.mls-mark[data-mark="next-cup-horizontal"] { background-image: url("../assets/logo/properties/mls-next-cup-horizontal.png"); }
+[data-theme="dark"] .mls-mark[data-mark="next-cup-horizontal"] { background-image: url("../assets/logo/properties/mls-next-cup-horizontal-on-dark.png"); }
+.mls-mark[data-mark="next-cup-vertical"] { background-image: url("../assets/logo/properties/mls-next-cup-vertical.png"); }
+[data-theme="dark"] .mls-mark[data-mark="next-cup-vertical"] { background-image: url("../assets/logo/properties/mls-next-cup-vertical-on-dark.png"); }
+.mls-mark[data-mark="next-fest-horizontal"] { background-image: url("../assets/logo/properties/mls-next-fest-horizontal.png"); }
+[data-theme="dark"] .mls-mark[data-mark="next-fest-horizontal"] { background-image: url("../assets/logo/properties/mls-next-fest-horizontal-on-dark.png"); }
+.mls-mark[data-mark="next-fest-vertical"] { background-image: url("../assets/logo/properties/mls-next-fest-vertical.png"); }
+[data-theme="dark"] .mls-mark[data-mark="next-fest-vertical"] { background-image: url("../assets/logo/properties/mls-next-fest-vertical-on-dark.png"); }
+.mls-mark { display: inline-block; background-repeat: no-repeat; background-position: center; background-size: contain; block-size: 2.5rem; inline-size: 8rem; }
+.mls-crest[data-placeholder] { background-image: none; }
 
 
 /* ---- css/print.css ---- */

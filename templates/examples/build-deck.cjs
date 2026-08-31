@@ -231,8 +231,8 @@ deck.tileGrid({
 deck.crestWall({
   eyebrow: 'Clubs',
   title: 'Thirty clubs, equal weight',
-  clubs: CLUBS.map((c) => ({ tricode: c.tricode })),
-  note: 'Crest sockets. MLS delivers crests in a square box; official assets drop straight in. No marks ship in this repository.',
+  clubs: CLUBS.map((c) => ({ slug: c.slug, tricode: c.tricode })),
+  note: 'Marks install with scripts/install-logos.mjs. Any club without one keeps its lettered socket.',
 });
 
 deck.formation({
@@ -268,8 +268,8 @@ deck.bracket({
 
 deck.matchup({
   competition: 'Cascadia Cup, Matchday 24',
-  home: { name: 'Portland Timbers', detail: '13W-5D-6L' },
-  away: { name: 'Seattle Sounders FC', detail: '11W-6D-7L' },
+  home: { name: 'Portland Timbers', club: 'por', detail: '13W-5D-6L' },
+  away: { name: 'Seattle Sounders FC', club: 'sea', detail: '11W-6D-7L' },
   score: '2 - 1',
   state: 'Full time', venue: 'Providence Park', date: 'Saturday, August 8',
 });

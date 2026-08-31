@@ -1,5 +1,76 @@
 # Changelog
 
+## 2.3.0 — 2026-08-30
+
+The installer meets real asset packs, and the marks stop being hypothetical.
+
+### Added
+- **Light and dark variants.** A crest is drawn *for* a ground. The installer detects `LTBG`/`DKBG`, `1c_white`/`1c_black`, `OneColor_White`, `light bg`/`dark bg` and `mono-rev`, keeps one mark per ground, and the deck asks for the ground it is drawing on. Columbus is the club that proves the point: its light-background crest has a black wordmark that disappears on navy, and its reversed twin has a white one that disappears on white. Both are genuinely required. Most clubs ship one full-colour crest with its own keyline, and that one file still serves both grounds.
+- **Aspect ratios are honoured.** The installer records pixel dimensions and `crest()` centres each mark in its square socket at its own aspect. The Red Bulls crest is landscape (2561×2085) and San Diego's is portrait (1829×2400); both were being stretched to square.
+- **A `properties` bucket** for MLS NEXT, MLS NEXT Cup and MLS NEXT Fest, reachable as `deck.propertyMark(key, dark)` and as `.mls-mark[data-mark="next"]` on the web. MLS NEXT's full-colour mark has a near-black shield that goes muddy on navy, so the dark ground takes the cyan one-colour version rather than the white one — legible either way, but only one of them is still MLS NEXT.
+- **A `nextClubs` bucket** for MLS NEXT member clubs, recorded and wired into no layout. They are third-party youth organisations whose names collide with real MLS clubs — "Dallas Hornets", "Houston Rangers", "LA Bulls" — so they are claimed by folder path before club scoring ever runs.
+- **Deck-sized rasters.** A crest is never drawn above about 2.5in on a 13.33in slide, so each mark gets a 900px `@deck.png` beside the untouched original. The reference decks went from 10.3 MB to 6.6 MB with no visible change.
+- The installer takes **several source folders at once** and recurses into all of them.
+- **`npm run package`** builds the release zip. Marks and rendered decks are excluded by default, mirroring what git tracks; `--with-marks --with-decks` includes them for private use, and says so on the way out. MLS NEXT member-club marks need `--with-next-clubs` on top of that — they are third-party, wired into no layout, and three megabytes. Whatever a build leaves out is stripped from the manifest it ships, so the index always describes what is actually in the archive.
+
+### Fixed, second pass
+- **A missing deck copy no longer hides a mark.** `@deck.png` is a derived file and an archive can legitimately ship without it; `markOf()` now falls back to the full-resolution original instead of returning null and drawing a lettered socket over a crest that exists.
+
+### The league became a theme value
+- **`data-club="mls"`** is now a real theme that restores the league colours, and `createDeck({ club: 'mls' })` (or `'league'`) works the same way. `:root` was already MLS, so nothing rendered differently before — but MLS was the one option in thirty-one you got by *removing* an attribute rather than setting it, which made it the option most likely to be dropped from a theme switcher or a picker. The axis is now thirty-one values set identically, and it restores the league inside a club-themed subtree, which removing the attribute cannot do.
+- **`claude/SETUP.md`** carries the paste-ready onboarding copy for Claude Design's setup form, both free-text fields verbatim, so re-onboarding a new workspace does not mean retyping it from memory and losing the parts that matter.
+- **`claude/CLAUDE.md` §2b** documents the tweak axes the system actually has — theme, appearance, deck register, surface, type, density — with the rule that a generated artefact exposes them rather than baking one setting in, and that the theme axis always includes MLS, first.
+
+### Web layer
+- **A crest is keyed on its own `data-tricode`, not on an ancestor's `data-club`.** Those are different things: a scoreline carries one `data-club` and two crests, so the old selector painted the away side with the home club's mark. `data-club` still themes a crest that does not name a team.
+- `.mls-crest` now sets `background-size: contain` and `background-origin: content-box`, so an installed mark is drawn inside the 4×-X clear space at its own aspect rather than across the whole box.
+- The lettered socket switches itself off where a mark exists, and stays on wherever an author writes `data-placeholder` — "no asset here" is a statement worth being able to make.
+- `.mls-mark[data-mark="next"]` carries the league property marks, with the same dark-mode swap.
+
+### Fixed
+- **macOS resource forks are skipped.** Archives zipped on a Mac carry an AppleDouble fork beside every file — `__MACOSX/._POR.png`, four kilobytes, a `.png` extension and a perfect name match. Every club would have installed one instead of its crest. `npm run verify` now also fails any mark under 4 KB.
+- **Size is measured, not read off the filename.** In the official pack `NSH_Logo_PRI_FC_RGB_2160x2160.png` is 800×800 and `ATL_…_2160x2160.png` is 2200×2200. The installer reads each file's header.
+- **`CFM` → `mtl`.** The pack names CF Montréal's files `CFM`, the tricode is `MTL`, and tokenising "CF Montréal" strips the accent to "montral", so nothing matched. An alias table now carries that and a dozen other common abbreviations.
+- **The photo placeholder no longer collides with the deck mark.** Both wanted the bottom-right corner; the label moves to the crest's left, on its centre line.
+- **EPS, AI and PDF are ignored.** Without Ghostscript, ImageMagick returns only the 416×190 indexed-colour TIFF preview embedded in them, and installing that in place of the shipped PNG is a silent downgrade.
+
+### Changed
+- **`crestWall()` is a data slide in all three designs**, where it was a page slide. It is the one layout whose surface is not ours to choose: every club crest was drawn to sit on white, and the burgundy, the darker greens and the darker navies lose their outline against a dark ground. On paper, all thirty read.
+- `npm run verify` checks reversed variants, deck copies, properties and recorded dimensions, and fails a mark that has none rather than letting it be drawn square.
+
+## 2.2.0 — 2026-08-15
+
+Sourcing for the marks. Still none ship.
+
+### Added
+- **`assets/logo/SOURCES.md`** — where to get the marks, best source first. The official pack is a public Box folder linked from MLS's own media-resources page, and it is the only source that carries vector, the mono and reversed variants, the gradient variant and the league crest.
+- **`scripts/fetch-logos.sh`** (`npm run logos:fetch`) — downloads all thirty club crests from `images.mlssoccer.com`, the CDN behind mlssoccer.com/clubs, and installs them in one step. It runs on your machine, not in this repository.
+
+### Known limits of the CDN route
+It gives you web PNGs, one colourway each. It does **not** give you the league crest — that is not on the clubs page — nor any vector, mono, reversed or gradient variant. Use it to get moving; overwrite with the official pack via `npm run logos -- <folder> --force`.
+
+
+## 2.1.0 — 2026-08-13
+
+Marks become installable. Still none ship: the MLS crest and the club crests are trademarks of Major League Soccer, L.L.C. and its member clubs, and this repository does not redistribute them.
+
+### Added
+- **`scripts/install-logos.mjs`** (`npm run logos -- <folder>`). Point it at whatever folder the marks arrive in and it matches every file to a club or a league variant, normalises them into `assets/logo/`, rasterises SVG to PNG for the Office layer, writes `assets/logo/manifest.json` and prints a coverage report. It does not care about naming: `MLS crest logo RGB - Portland Timbers.svg`, `por.png` and `Timbers logo (1).png` all match. `--dry` reports without writing.
+- Marks appear automatically once installed: the deck mark bottom-right on every stage slide (club crest when the deck is club-themed, else the league crest), all thirty in `crestWall()`, and both sides of `matchup()` when each side is given a `club:`.
+- `dist/mls.crests.css`, generated from the manifest, wires `.mls-crest` per `data-club` for the web layer.
+- `deck.crestOn(slide, { slug, x, y, size })` for placing a mark by hand.
+
+### Decisions worth knowing
+- **A missing club crest gives a lettered socket, never the league crest.** Thirty MLS crests standing in for thirty clubs reads as a bug; thirty sockets reads as a decision. A partial install is a supported state, and nothing needs editing to get there.
+- **Ambiguous filenames are skipped, not guessed.** A file that matches two clubs equally well is reported rather than installed, because a wrong crest is worse than a missing one.
+- **PNG for decks, SVG for the web.** PowerPoint's SVG support is inconsistent across versions, so a vector-only mark vanishes from every deck while still looking correct in a browser. `npm run verify` now fails on any club that is SVG-only rather than letting that pass quietly.
+- Dark grounds take the reversed one-colour league variant when it is installed; light grounds take the primary.
+- `assets/logo/` is gitignored (except its README), so an installed set is never committed by accident.
+
+### Verify
+243 checks. The new ones confirm that every manifest entry resolves to a file that exists and that every club key is a real slug — a manifest pointing at a deleted file is a broken deck that fails silently at render time. **Zero marks installed is the expected state and never fails.**
+
+
 ## 2.0.0 — 2026-08-13
 
 **Breaking.** The deck's five-ground system is replaced by three designs. `createDeck({ surface })` becomes `createDeck({ design })`, and `palette()` becomes `theme()`.

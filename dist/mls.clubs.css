@@ -18,6 +18,49 @@
  * Correcting the first would be a brand violation. Not correcting the
  * second would make 24 of 30 club themes fail WCAG.
  */
+/* Major League Soccer -- the league itself, as a selectable theme.
+ * :root is already MLS, so this exists so that "MLS" can be an explicit value
+ * anywhere the theme is offered as a choice, and so it can be restored inside
+ * a club-themed subtree. Keep it first in any list of themes. */
+[data-club="mls"] {
+  --mls-club-name: "Major League Soccer";
+  --mls-club-tricode: "MLS";
+  --mls-club-primary: #E2231A;
+  --mls-club-secondary: #001F5B;
+  --mls-club-tertiary: #FFFFFF;
+  --mls-club-accent-light: #E2231A;
+  --mls-club-accent-dark: #E2231A;
+  --mls-club-on-accent-light: #FFFFFF;
+  --mls-club-on-accent-dark: #FFFFFF;
+  /* Full-bleed surfaces: navy carries white type, red is the spark on it. */
+  --mls-club-field: #001F5B;
+  --mls-club-on-field: #FFFFFF;
+  --mls-club-spark-on-field: #E2231A;
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #FBE0DF;
+  --mls-color-accent-emphasis: #D30203;
+  --mls-color-border-accent: #E2231A;
+}
+[data-club="mls"][data-theme="dark"],
+[data-theme="dark"] [data-club="mls"] {
+  --mls-color-accent-base: #E2231A;
+  --mls-color-accent-contrast: #FFFFFF;
+  --mls-color-accent-muted: #291217;
+  --mls-color-accent-emphasis: #FF4738;
+  --mls-color-border-accent: #E2231A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-club="mls"],
+  [data-club="mls"]:where(:root:not([data-theme="light"]) *) {
+    --mls-color-accent-base: #E2231A;
+    --mls-color-accent-contrast: #FFFFFF;
+    --mls-color-accent-muted: #291217;
+    --mls-color-accent-emphasis: #FF4738;
+    --mls-color-border-accent: #E2231A;
+  }
+}
+
 /* Atlanta United FC -- Eastern, since 2017. Colour confidence: medium. Accent contrast-corrected for UI; --mls-club-primary holds the true brand value. */
 [data-club="atl"] {
   --mls-club-name: "Atlanta United FC";

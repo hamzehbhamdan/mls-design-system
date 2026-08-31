@@ -15,7 +15,8 @@ Unofficial reference, compiled August 2026. Confidence ratings are real — resp
 5. **Never invent a hex, a font name, or a rule.** If a value is `null` in `data/clubs.json`, it is null because no trustworthy source exists. Say so rather than filling the gap.
 6. **Club names are a lookup table, not a pattern.** FC leads for FC Dallas and FC Cincinnati, trails for Austin FC and Toronto FC. CF leads for CF Montréal, trails for Inter Miami CF. Eleven clubs have no suffix at all. Read `data/clubs.json`.
 7. **Club names take plural verbs.** "Austin United **are** playing." "Inter Miami **have** climbed the mountaintop." This deviates from AP style and it is the single most-violated MLS convention.
-8. **Radius stays tight.** 2–6px. The crest is straight lines and hard angles. Where a shape needs personality use `.mls-notch` (a clipped 45° corner), not a bigger radius.
+8. **Expose the variables as tweaks, and always include MLS.** Anything you generate should let its theme, appearance and register be changed without regenerating it. `data-club="mls"` is a real theme value, so the theme axis is 31 options, not 30: a picker that offers only the clubs has dropped the league. See §2b.
+9. **Radius stays tight.** 2–6px. The crest is straight lines and hard angles. Where a shape needs personality use `.mls-notch` (a clipped 45° corner), not a bigger radius.
 
 ---
 
@@ -24,6 +25,29 @@ Unofficial reference, compiled August 2026. Confidence ratings are real — resp
 MLS is the top-division professional soccer league of the United States and Canada, founded 1996, thirty clubs, headquartered in New York. Its crest, introduced in 2014 for the 2015 season, is built as a **flexible template**: a shield split in two, referencing the two halves of a match, with one half reserved for the league and the other available to clubs in their own colours. Three stars stand for the brand's three pillars — **For Club, For Country, For Community**. A 45° slash breaks the perimeter and drives upward, representing "the nonstop nature of our game and the rising trajectory of our league." The red, white and navy pay homage to the two nations the league represents.
 
 The league is currently at a genuine inflection point: a new commissioner from 1 January 2027, and a switch from the spring-to-fall calendar to a summer-to-spring one, bridged by the **2027 MLS Sprint Season**. Note carefully: **the crest has not changed.** MLS is reframing meaning, not redrawing marks.
+
+---
+
+## 2b. Tweaks — expose the variables, always
+
+Anything you generate from this system should ship with its variables exposed as tweaks, not baked in. This system was built to be re-themed and re-registered; a generated artefact that hard-codes one setting throws that away and forces a regeneration to see the alternative.
+
+**Offer a tweak wherever the system already has an axis.** These are real, they are token-backed, and every layout already responds to them:
+
+| Axis | Values | How it is set |
+|---|---|---|
+| **Theme** | `mls` + the 30 club slugs (31 total) | `data-club` on any element; `club:` in the deck and document layers |
+| **Appearance** | `light`, `dark`, `system` | `data-theme` on the root; `system` means neither attribute |
+| **Deck register** | `report`, `kickoff`, `press` | `design:` in `createDeck()` |
+| **Surface** | `paper` (white), `page` (light grey), `navy`/club field | the role a layout asks for |
+| **Type** | licensed (MLS Tifo, DIN Next Pro) or open substitutes (Inter, Archivo) | font stacks resolve automatically; expose it only when a preview needs to force one |
+| **Density** | comfortable, compact | spacing scale steps; expose on tables, standings and lists |
+
+**MLS is always an option in the theme tweak, and it is always first.** `data-club="mls"` is a real theme that restores the league values, so the theme axis is thirty-one values set the same way, with no special case for the default. A club picker that offers only the thirty clubs is wrong: it drops the league, which is the most-used theme in the system and the only correct one for league-level work. `club: 'mls'` (or `'league'`) works identically in the deck and document layers.
+
+**Do not stop at the theme.** "Tweaks" here means every axis the artefact actually has, not a club dropdown bolted onto an otherwise fixed design. If you generate a standings table, expose density and appearance alongside the theme. If you generate a deck, expose the register. If you generate something with an axis this table does not list, expose that too.
+
+**A tweak must change something real.** Wire it to the token or the attribute, never to a hard-coded second copy of the design. If flipping the tweak would not change the output, do not offer it.
 
 ---
 
@@ -142,6 +166,17 @@ Muted and subtle steps are SOLVED for contrast, not fixed mixes: 0.28 toward the
 1. `lineSpacingMultiple` multiplies the FONT's line height (~1.17em), not the point size. Measure with lead L, render `lsm(L) = L/1.17`, or every block is 17% taller than its reserved space.
 2. A list's gap BETWEEN items must be ~1.5x the line gap INSIDE one, or it reads as a paragraph with numbers in it. Shrink the type before crowding.
 3. Columns are n columns and n−1 gutters with dividers centred in the gutters. Insetting all but the first gives uneven accent-mark intervals and a short last column.
+
+**Marks.** None are committed — the crest and club crests are trademarks. `node scripts/install-logos.mjs <folder>…` matches files to clubs by name and writes `assets/logo/manifest.json`; the deck, document layer and CSS build all read it. Installed marks appear automatically: deck mark bottom-right on stage slides, all thirty in `crestWall()`, both sides of `matchup()`, and league properties via `deck.propertyMark(key, dark)`. Rules that matter when you touch this:
+
+- **A missing club crest must give a lettered socket, never the league crest** — thirty MLS crests standing in for thirty clubs reads as a bug.
+- **A mark is drawn for a ground.** Dark surfaces take the reversed variant where the manifest has one (`rec.onDark`). Columbus needs it in both directions: black wordmark invisible on navy, white wordmark invisible on white.
+- **Never resize a mark to square.** `size` reserves a square box; the mark centres inside it at its own recorded aspect. Red Bulls is landscape, San Diego portrait.
+- **`crestWall()` is a data slide** in all three designs. Club crests were drawn for white, and several lose their outline on a dark ground.
+- **PNG for decks** (PowerPoint's SVG support is inconsistent; a vector-only mark vanishes from decks while looking fine on the web), SVG for the web, and `@deck.png` — a 900px copy — for embedding.
+- **MLS NEXT member clubs are not MLS clubs.** They live in `nextClubs` and are wired into no layout; their names collide with real clubs.
+
+`assets/logo/` is gitignored so an installed set is never committed.
 
 **Documents:** headings are real Word styles so the TOC and navigation pane work; page is US Letter, stated explicitly because docx-js defaults to A4; table widths in DXA on both the table and every cell, because percentages break in Google Docs; `ShadingType.CLEAR`, never `SOLID`, which renders black.
 

@@ -77,6 +77,15 @@
   min-inline-size: var(--mls-geometry-crestMinWidthPx);
   padding: calc(var(--crest-x) * 4);
   flex: none;
+
+  /* An installed mark arrives as a background image from dist/mls.crests.css.
+   * `contain` keeps a non-square crest at its own aspect -- the Red Bulls mark
+   * is landscape, San Diego's portrait -- and the padding above is the
+   * clear space, so the image is drawn inside the content box, not across it. */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-origin: content-box;
 }
 .mls-crest > img,
 .mls-crest > svg { inline-size: 100%; block-size: 100%; object-fit: contain; }

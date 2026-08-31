@@ -1,69 +1,121 @@
 # Logo assets
 
-**This folder is intentionally empty.**
+**Nothing in this folder is committed to git.** The MLS crest, the club crests
+and the league property marks are registered trademarks of Major League Soccer,
+L.L.C., its member clubs and its properties. `.gitignore` excludes everything
+here except this file and `SOURCES.md`, so an installed set stays on the machine
+that installed it.
 
-The MLS crest and all club crests are registered trademarks of Major League Soccer, L.L.C. and its member clubs. They are not redistributed here.
+If you received this as an archive with marks already in place: they are there
+because whoever packaged it was entitled to use them privately. That is not a
+licence to redistribute them. See [`../NOTICE.md`](../NOTICE.md).
 
-## Getting the real assets
+## Installing them
 
-Official marks come from MLS Brand or from the relevant club's brand or communications team. The distributed package uses a consistent naming convention, so the sanctioned set you should expect is:
+**Where to get them: see [SOURCES.md](SOURCES.md).** Short version — the
+official pack is linked from <https://www.mlssoccer.com/media-resources/> under
+"Logos", or run `npm run logos:fetch` to pull the thirty club crests straight
+off MLS's CDN.
 
-- `MLS crest logo RGB`
-- `MLS crest logo CMYK gradient`
-- `MLS crest logo RGB gradient`
-- `MLS crest logo Mono`
-- `MLS crest logo Mono rev black`
-- `MLS crest logo RGB - <Club Name>` — the per-club colourways
+Then point the installer at whatever folders you get back:
 
-Note the official **gradient** variant. A system that only accounts for flat fills is missing a sanctioned form.
+```bash
+node scripts/install-logos.mjs ~/Downloads/MLS\ Club\ Logos ~/Downloads/MLS\ Logos
+npm run build        # regenerate dist/, including dist/mls.crests.css
+npm run examples     # rebuild the reference decks with real marks
+```
 
-## Dropping them in
+It takes several folders at once, recurses into them, and does not care how the
+files are named. Official packages use `POR_Logo_PRI_FC_RGB_2160x2160.png`,
+other packages use `MLS crest logo RGB - Portland Timbers.svg`, asset portals
+use `por.png`, and a download folder uses `Timbers logo (1).png`. All four
+match. Run it with `--dry` first to see what it would do.
 
-Recommended layout:
+**A partial install is a valid state.** Install the ten clubs you have and the
+other twenty keep their lettered sockets. Nothing needs editing, and nothing
+breaks. A club that is missing shows a socket — never the league crest standing
+in for a club, because thirty MLS crests where thirty club crests should be is
+worse than thirty sockets.
+
+## What it produces
 
 ```
 assets/logo/
-  crest-league.svg
-  crest-league-mono.svg
-  crest-league-mono-rev.svg
-  crest-league-gradient.svg
+  manifest.json                  <- read by the deck, the document layer and the CSS build
+  crest-league-gradient.png      <- and @deck.png beside it
   clubs/
-    crest-por.svg      <- match the slug in data/clubs.json
-    crest-sea.svg
+    por.png                      <- named by the slug in data/clubs.json
+    por@deck.png                 <- 900px copy, used by the Office layer
+    clb.png                      <- Columbus, light-background variant
+    clb-on-dark.png              <- and its reversed twin
     …
+  properties/
+    mls-next.png                 <- MLS NEXT, MLS NEXT Cup, MLS NEXT Fest
+    mls-next-on-dark.png
+    …
+  next-clubs/                    <- MLS NEXT member clubs; recorded, wired into no layout
 ```
 
-Then replace the placeholder:
+## What the installer decides, and why
 
-```html
-<!-- before -->
-<span class="mls-crest" data-tricode="POR" data-placeholder></span>
+**Junk is skipped.** macOS archives carry an AppleDouble resource fork beside
+every file — `__MACOSX/._POR.png`, a few kilobytes, with a `.png` extension and
+a perfect name match. Installing one instead of the crest gives you a mark that
+is not an image. `npm run verify` also fails any mark under 4 KB, as a
+second line of defence.
 
-<!-- after -->
-<span class="mls-crest">
-  <img src="/assets/logo/clubs/crest-por.svg" alt="">
-</span>
-```
+**Size is measured, not read off the filename.** In the official pack,
+`NSH_Logo_PRI_FC_RGB_2160x2160.png` is 800×800 and `ATL_…_2160x2160.png` is
+2200×2200. The installer opens each file's header and keeps the largest.
 
-## What the component already handles
+**Grounds are detected.** `LTBG`/`DKBG`, `1c_white`/`1c_black`,
+`OneColor_White`, `light bg`/`dark bg` and `mono-rev` all resolve to a light or
+dark variant. Where a pack ships both, both are installed and the deck picks per
+surface. Where it ships one full-colour crest with its own keyline — most clubs
+— that one file serves both grounds.
 
-`.mls-crest` enforces two published rules so you do not have to:
+**Aspect ratios are recorded.** The Red Bulls crest is landscape and San
+Diego's is portrait. The deck centres each mark in its square socket at its own
+aspect rather than stretching it, which it can only do from recorded pixel
+dimensions.
 
-- **Clear space** — padding is computed as `4 × (size / 16)` on all sides, which is the 4×-X rule from MLS's guidelines
-- **Minimum size** — `min-inline-size: 32px`, the digital equivalent of the published 0.50in print minimum
+**A second, smaller raster is written.** A crest is never drawn larger than
+about 2.5in on a 13.33in slide, so `@deck.png` is capped at 900px — still over
+300dpi at the largest size any layout uses. The full-resolution original stays
+untouched beside it for the web and for print.
 
-Sizes: `--sm` 2rem · default 3rem · `--lg` 5rem · `--xl` 8rem. Override with `--crest-size`.
+**EPS, AI and PDF are ignored.** Without Ghostscript, ImageMagick returns only
+the low-resolution TIFF preview embedded in those files — 416×190, indexed
+colour — and installing that in place of the shipped PNG is a silent downgrade.
 
-## Rules you still have to follow
+SVG is kept for the web layer where a pack provides it. PNG is generated for the
+Office layer, because PowerPoint's SVG support is inconsistent across versions
+and a vector-only mark silently vanishes from every deck while still looking
+fine in a browser. `npm run verify` fails if any club is SVG-only.
 
-From MLS's published guidelines — do not alter the form, rotate, change the stroke colour, tint, shade, distort, crop, cover with other elements, or apply shadows, glows or effects. The trap keyline must be **white only**.
+Rasterising needs one of `rsvg-convert` (Debian: `librsvg2-bin`), `inkscape`, or
+ImageMagick. If none is present the installer says so and installs the SVGs
+anyway.
 
-And one this design system adds: **never redraw or approximate the crest.** Not as SVG, not in CSS, not as a placeholder that happens to be a shield with a diagonal and three stars. Use the empty socket.
+## Where the marks appear
 
-Full detail in [`docs/02-logo-and-crest.md`](../../docs/02-logo-and-crest.md).
+Once installed they are placed automatically:
 
-## Alt text
+| Surface | Mark |
+|---|---|
+| Openers, dividers, statements | Deck mark, bottom-right. Club crest if the deck is club-themed, else the league crest. `crest: false` to suppress. |
+| `crestWall()` | All thirty club marks, with clear space inside each cell, on paper in all three designs. |
+| `matchup()` | Both club marks, flanking the score. Pass `club:` on each side. |
+| `deck.propertyMark(key, dark)` | MLS NEXT and its competition marks, by key. |
+| Web `.mls-crest` | Set by `dist/mls.crests.css`, per `data-club`, with a `[data-theme="dark"]` rule where a reversed variant exists. |
+| Web `.mls-mark[data-mark="next"]` | League property marks, same pattern. |
 
-- Crest sits next to a club name already in the DOM → `alt=""`. It is decorative.
-- Crest is the **only** identification of the club → `alt="Portland Timbers"`.
-- **Never** `alt="Portland Timbers logo"` — a screen reader renders that as "Portland Timbers logo, image."
+## The rules the socket already enforces
+
+**Clear space** — a minimum of 4× the crest's "X" measurement on all sides. In
+the deck, `size` is the *mark*, not the box: layouts reserve room around it.
+
+**Never redraw, recolour or reproportion the crest.** The club colourways are
+sanctioned versions supplied by MLS; there is no other legitimate way to
+recolour it. Note that the official set includes a **gradient** variant — a
+system that only accounts for flat fills is missing a sanctioned form.

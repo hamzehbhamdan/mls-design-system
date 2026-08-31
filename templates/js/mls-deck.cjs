@@ -66,7 +66,113 @@ const fs = require('fs');
 const path = require('path');
 const PptxGenJS = require('pptxgenjs');
 
-const DIST = path.join(__dirname, '..', '..', 'dist');
+const ROOT_DIR = path.join(__dirname, '..', '..');
+const DIST = path.join(ROOT_DIR, 'dist');
+
+/**
+ * Installed marks.
+ *
+ * This repository ships none: the MLS crest and the club crests are
+ * trademarks and are not ours to redistribute. `scripts/install-logos.mjs`
+ * writes the manifest that this reads. Every layout that can show a mark asks
+ * `crestFor()` first and falls back to the lettered socket, so an empty
+ * manifest, a partial install and a full install are all valid states and
+ * none of them needs a code change.
+ */
+const CRESTS = (() => {
+  const f = path.join(ROOT_DIR, 'assets', 'logo', 'manifest.json');
+  try { return JSON.parse(fs.readFileSync(f, 'utf8')); }
+  catch { return { league: {}, clubs: {} }; }
+})();
+
+const abs = (rel) => (rel ? path.join(ROOT_DIR, rel) : null);
+
+/**
+ * Resolve one manifest record to a usable mark, on the ground it will sit on.
+ *
+ * A crest is drawn FOR a ground. Columbus ships two: the light-background one
+ * has a black wordmark that disappears on navy, and its reversed twin has a
+ * white one that disappears on white. Where a pack ships both, the manifest
+ * carries both and this picks. Where it ships one full-colour crest with its
+ * own keyline -- which is most of them -- that one serves both grounds.
+ *
+ * Returns the pixel dimensions alongside the path, because the marks are not
+ * all square: the Red Bulls crest is landscape and San Diego's is portrait, so
+ * a caller that assumes a square box will stretch them.
+ */
+function markOf(rec, dark) {
+  if (!rec) return null;
+  const chosen = dark && rec.onDark ? rec.onDark : rec;
+  /* The Office layer needs raster; PowerPoint's SVG support is inconsistent.
+   * It also prefers the deck-sized copy where the installer made one: a crest
+   * is never drawn above about 2.5in, so the 2200px original would be embedded
+   * thirty times to no visible gain.
+   *
+   * Falling back to the original matters. The deck copy is a derived file --
+   * an archive can legitimately ship without it -- and a manifest entry whose
+   * @deck.png is absent must not turn a crest that exists into a socket. */
+  const a = [chosen.deckPng, chosen.png]
+    .map((rel) => abs(rel || null))
+    .find((f) => f && fs.existsSync(f));
+  if (!a) return null;
+  return { path: a, w: chosen.w || 0, h: chosen.h || 0, aspect: chosen.w && chosen.h ? chosen.w / chosen.h : 1 };
+}
+
+/** One specific club's mark, or null. Never falls back to the league. */
+function clubCrest(slug, dark = false) {
+  if (!slug) return null;
+  const key = String(slug).toLowerCase();
+  const direct = markOf(CRESTS.clubs && CRESTS.clubs[key], dark);
+  if (direct) return direct;
+  // Callers often have only a tricode.
+  const c = CLUBS.find((x) => x.tricode.toLowerCase() === key);
+  return c ? markOf(CRESTS.clubs && CRESTS.clubs[c.slug], dark) : null;
+}
+
+/** The league mark, in the variant that suits the ground it sits on. */
+function leagueCrest(dark) {
+  const L = CRESTS.league || {};
+  const order = dark
+    ? ['monoRev', 'primary', 'gradient', 'mono']
+    : ['primary', 'gradient', 'mono', 'monoRev'];
+  for (const k of order) { const f = markOf(L[k], dark); if (f) return f; }
+  return null;
+}
+
+/**
+ * A league property mark: MLS NEXT, MLS NEXT Cup, MLS NEXT Fest.
+ *
+ * Properties are not clubs and never stand in for one. They are here so a deck
+ * about the player pathway can show the real mark instead of setting the words
+ * "MLS NEXT" in Arial.
+ */
+function propertyMark(key, dark = false) {
+  const P = CRESTS.properties || {};
+  return markOf(P[key], dark);
+}
+const propertyKeys = () => Object.keys(CRESTS.properties || {});
+
+/**
+ * The mark to use for a deck: the club's if this deck is club-themed, else the
+ * league's. Deliberately NOT used where a specific club is being shown -- a
+ * missing club crest must give a lettered socket, because a wall of thirty
+ * league crests standing in for thirty clubs is worse than a wall of sockets.
+ */
+const crestFor = (slug, dark) => clubCrest(slug, dark) || leagueCrest(dark);
+
+/**
+ * Fit a mark inside a square socket without distorting it.
+ *
+ * `size` stays the bounding box the caller reserved, so clear space and
+ * alignment are unaffected; the mark is centred within it at its own aspect.
+ */
+function fitMark(mark, x, y, size) {
+  const ar = mark && mark.aspect > 0 ? mark.aspect : 1;
+  const w = ar >= 1 ? size : size * ar;
+  const h = ar >= 1 ? size / ar : size;
+  return { x: x + (size - w) / 2, y: y + (size - h) / 2, w, h };
+}
+const hasCrests = () => Object.keys(CRESTS.clubs || {}).length > 0 || Object.keys(CRESTS.league || {}).length > 0;
 const T = JSON.parse(fs.readFileSync(path.join(DIST, 'mls.tokens.json'), 'utf8')).tokens;
 const CLUBS = JSON.parse(fs.readFileSync(path.join(DIST, 'mls.clubs.json'), 'utf8')).clubs;
 
@@ -410,9 +516,17 @@ function navySurface(c) {
   };
 }
 
+/* The league is a value, not the absence of one. `club: 'mls'` means Major
+ * League Soccer, the same way `club: 'por'` means Portland, so anything
+ * offering the theme as a choice can pass thirty-one values through one code
+ * path instead of special-casing the default. */
+const LEAGUE_KEYS = new Set(['mls', 'league', 'major league soccer']);
+
 function theme({ club, design = 'press' }) {
-  const c = club ? CLUBS.find((x) => x.slug === club || x.tricode.toLowerCase() === String(club).toLowerCase()) : null;
-  if (club && !c) throw new Error(`Unknown club "${club}". Use a slug from data/clubs.json.`);
+  const key = club == null ? null : String(club).toLowerCase();
+  const wantsLeague = key !== null && LEAGUE_KEYS.has(key);
+  const c = key && !wantsLeague ? CLUBS.find((x) => x.slug === key || x.tricode.toLowerCase() === key) : null;
+  if (key && !wantsLeague && !c) throw new Error(`Unknown club "${club}". Use a slug from data/clubs.json, or "mls" for the league.`);
   const D = DESIGNS[design];
   if (!D) throw new Error(`Unknown design "${design}". Use one of: ${Object.keys(DESIGNS).join(', ')}.`);
   return {
@@ -501,6 +615,11 @@ function createDeck(opts = {}) {
    * and not ours to redistribute -- so without an `image` the frame renders
    * as a labelled placeholder that is obviously a slot rather than a design.
    */
+  /* Where the crest sits on an opener: bottom-right, clear of the corner
+   * slash above it and the lockup to its left. Shared so that anything else
+   * wanting that corner can measure around it instead of guessing. */
+  const MARK = { size: 0.62, x: S.w - S.m - 0.62, y: S.h - 0.62 - 0.62 };
+
   function photoFrame(s, { image } = {}) {
     if (image) {
       s.addImage({ path: image, x: 0, y: 0, w: S.w, h: S.h, sizing: { type: 'cover', w: S.w, h: S.h } });
@@ -510,8 +629,10 @@ function createDeck(opts = {}) {
         x: S.w * 0.46, y: -S.h * 0.34, w: S.w * 0.62, h: S.h * 1.05,
         fill: { color: 'FFFFFF', transparency: 90 }, line: { type: 'none' },
       });
+      /* Left of the crest, on its centre line, not under it. Both want the
+       * bottom-right corner and the crest has the stronger claim. */
       s.addText('Photography', {
-        x: S.w - 2.9, y: S.h - 0.78, w: 2.2, h: 0.3,
+        x: MARK.x - 0.24 - 2.2, y: MARK.y + (MARK.size - 0.3) / 2, w: 2.2, h: 0.3,
         fontFace: F.body, fontSize: 9, color: C.panelEdge,
         align: 'right', charSpacing: 1.4, margin: 0,
       });
@@ -547,6 +668,33 @@ function createDeck(opts = {}) {
     }
   }
 
+  /**
+   * Place a crest. `size` is the MARK, not the box: the published rule is a
+   * minimum of 4x the crest's "X" measurement of clear space on all sides, so
+   * callers must reserve room around this, never inside it.
+   *
+   * Falls back to the lettered socket when no mark is installed, which is what
+   * lets a half-installed set look deliberate rather than broken.
+   */
+  function crest(s, { slug = null, x, y, size, socket = true, label: lab, strict = false, mark = null } = {}) {
+    const m = mark || (strict ? clubCrest(slug, C.dark) : crestFor(slug, C.dark));
+    if (m) {
+      // Centred at its own aspect inside the reserved square. Not every mark
+      // is square -- the Red Bulls crest is landscape, San Diego's portrait --
+      // and forcing them to a square box stretches them.
+      s.addImage({ path: m.path, ...fitMark(m, x, y, size) });
+      return true;
+    }
+    if (!socket) return false;
+    rect(s, x, y, size, size, C.dark ? C.panel : C.bgSubtle);
+    s.addText(String(lab ?? slug ?? '').toUpperCase(), {
+      x, y, w: size, h: size,
+      fontFace: F.heading, fontSize: Math.max(7, Math.round(size * 26)), bold: true,
+      color: C.inkMuted, align: 'center', margin: 0, valign: 'middle', charSpacing: 0.8,
+    });
+    return false;
+  }
+
   function newSlide(roleName = 'page', o = {}) {
     const role = D.roles[roleName] || D.roles.page;
     C = SURF[role.surface];
@@ -556,6 +704,11 @@ function createDeck(opts = {}) {
     if (role.photo) photoFrame(s, { image: o.image });
     if (role.mark === 'slash') cornerSlash(s);
     s._role = role;
+    // The mark sits bottom-right on openers: the corner slash owns top-right,
+    // and the lockup owns the lower left.
+    if (roleName === 'stage' && o.crest !== false && crestFor(club, C.dark)) {
+      crest(s, { slug: club, x: MARK.x, y: MARK.y, size: MARK.size, socket: false });
+    }
     return s;
   }
 
@@ -700,8 +853,8 @@ function createDeck(opts = {}) {
 
     /* ---- Openers and dividers ---------------------------------- */
 
-    title({ eyebrow: eb, title: t, subtitle, footer: f, image, notes } = {}) {
-      const s = newSlide('stage', { image });
+    title({ eyebrow: eb, title: t, subtitle, footer: f, image, crest: showCrest, notes } = {}) {
+      const s = newSlide('stage', { image, crest: showCrest });
       stage(s, { eyebrow: eb, title: t, subtitle, kicker: null, size: TY.display, maxCh: 17 });
       if (f) s.addText(String(f), {
         x: S.m, y: S.footerY, w: 9.4, h: 0.3,
@@ -712,8 +865,8 @@ function createDeck(opts = {}) {
     },
 
     /** The opener with a matchday kicker. Same ground, more context. */
-    titleSplit({ eyebrow: eb, title: t, subtitle, kicker, image, notes } = {}) {
-      const s = newSlide('stage', { image });
+    titleSplit({ eyebrow: eb, title: t, subtitle, kicker, image, crest: showCrest, notes } = {}) {
+      const s = newSlide('stage', { image, crest: showCrest });
       // With no explicit kicker the eyebrow is promoted to the top of the
       // slide; printing it in both places is just the same words twice.
       stage(s, {
@@ -819,8 +972,8 @@ function createDeck(opts = {}) {
       return s;
     },
 
-    closing({ title: t = 'Thank you', subtitle, contact, image, notes } = {}) {
-      const s = newSlide('stage', { image });
+    closing({ title: t = 'Thank you', subtitle, contact, image, crest: showCrest, notes } = {}) {
+      const s = newSlide('stage', { image, crest: showCrest });
       stage(s, { title: t, subtitle, size: TY.display, maxCh: 15 });
       if (contact) s.addText(String(contact), {
         x: S.m, y: S.footerY, w: 9.4, h: 0.3,
@@ -1322,7 +1475,13 @@ function createDeck(opts = {}) {
 
     /** Thirty crest sockets, square and equal. Crests are never shipped here. */
     crestWall({ eyebrow: eb, title: t, clubs: list = [], cols = 10, note, notes } = {}) {
-      const s = newSlide('page');
+      /* DATA, not page. A wall of thirty club marks is a reference chart, and
+       * it is the one slide where the surface is not ours to choose: every
+       * club crest was drawn to sit on white, and a handful of them -- the
+       * burgundy, the greens, the darker navies -- lose their outline against
+       * a dark ground. Putting the wall on paper in all three designs shows
+       * each mark on the ground its owner designed it for. */
+      const s = newSlide('data');
       const c = head(s, eb, t);
       const rows = Math.ceil(list.length / cols);
       const gap = 0.18;
@@ -1332,12 +1491,16 @@ function createDeck(opts = {}) {
       list.forEach((cl, i) => {
         const x = x0 + (i % cols) * (cell + gap);
         const y = y0 + Math.floor(i / cols) * (cell + gap);
-        rect(s, x, y, cell, cell, C.dark ? C.panel : C.bgSubtle);
-        s.addText(String(typeof cl === 'string' ? cl : cl.tricode).toUpperCase(), {
-          x, y, w: cell, h: cell,
-          fontFace: F.heading, fontSize: TY.caption, bold: true, color: C.inkMuted,
-          align: 'center', margin: 0, valign: 'middle', charSpacing: 0.8,
+        const slug = typeof cl === 'string' ? String(cl).toLowerCase() : cl.slug;
+        const tri = typeof cl === 'string' ? cl : cl.tricode;
+        // Clear space inside the cell. The socket fills it; a real mark does
+        // not, because the published rule wants room around the crest.
+        const pad = cell * 0.16;
+        const drew = crest(s, {
+          slug: slug || tri, x: x + pad, y: y + pad, size: cell - pad * 2,
+          socket: false, strict: true,
         });
+        if (!drew) crest(s, { slug: null, x, y, size: cell, label: tri });
       });
       if (note) s.addText(String(note), {
         x: c.x, y: S.contentBottom - 0.36, w: c.w, h: 0.36,
@@ -1491,15 +1654,22 @@ function createDeck(opts = {}) {
       const s = newSlide('stage', { image });
       const half = S.w / 2;
       const meta = [state, venue, date].filter(Boolean).join('      ');
-      const gH = 0.34 + 0.30 + 0.05 + 0.42 + 1.05 + 0.42 + (meta ? 0.34 + 0.40 : 0);
+      const marks = [home, away].some((t) => clubCrest(t.club, C.dark));
+      const gH = 0.34 + 0.30 + 0.05 + 0.42 + (marks ? 0.92 + 0.34 : 0) + 1.05 + 0.42 + (meta ? 0.34 + 0.40 : 0);
       let y = (S.contentBottom - gH) / 2;
       if (competition) label(s, competition, { x: 0, y, w: S.w, color: C.inkMuted, align: 'center' });
       y += 0.34 + 0.30;
       rect(s, half - 0.75, y, 1.5, 0.05, C.spark);
-      y += 0.05 + 0.42;
+      y += 0.05 + 0.42 + (marks ? 0.92 + 0.34 : 0);
+      const anyMark = [home, away].some((t) => clubCrest(t.club, C.dark));
       [[home, 'right'], [away, 'left']].forEach(([team, align]) => {
         const x = align === 'right' ? S.m : half + 1.55;
         const w = half - 1.55 - S.m;
+        if (anyMark) {
+          const size = 0.92;
+          const cx = align === 'right' ? x + w - size : x;
+          crest(s, { slug: team.club, x: cx, y: y - size - 0.34, size, socket: false, strict: true });
+        }
         s.addText(String(team.name || ''), {
           x, y, w, h: 1.05,
           fontFace: F.heading, fontSize: 26, bold: true, color: C.ink, align, margin: 0, valign: 'middle',
@@ -1671,6 +1841,11 @@ function createDeck(opts = {}) {
 
     blank({ role = 'page' } = {}) { return newSlide(role); },
 
+    /** Place a mark yourself: deck.crestOn(slide, { slug, x, y, size }). */
+    crestOn(s, o) { return crest(s, o); },
+    /** Which marks are installed. Empty object is a valid, expected state. */
+    crests: CRESTS,
+
     save(file) { return pres.writeFile({ fileName: file }); },
   };
 
@@ -1678,6 +1853,6 @@ function createDeck(opts = {}) {
 }
 
 module.exports = {
-  createDeck, theme, DESIGNS,
+  createDeck, theme, DESIGNS, CRESTS, crestFor, clubCrest, leagueCrest, propertyMark, propertyKeys, hasCrests,
   TOKENS: T, CLUBS, SLIDE: S, FONTS, hex, mixHex,
 };

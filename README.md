@@ -41,7 +41,7 @@ Three things this repo deliberately does **not** contain:
 
 | Not included | Why | What to do |
 |---|---|---|
-| MLS or club logo files | Trademarked. Not ours to redistribute. | Drop official assets into `assets/logo/`. The `.mls-crest` component is the socket, and it already enforces the published clear-space and minimum-size rules. |
+| MLS or club logo files | Trademarked. Not ours to redistribute, so nothing under `assets/logo/` is committed. | `npm run logos:fetch` pulls the thirty club crests from MLS's own CDN; `npm run logos -- <folder>…` installs the official packs once you have them. Either way they wire themselves into the deck, the documents and the CSS, and any club without a mark keeps a lettered socket. See [`assets/logo/SOURCES.md`](assets/logo/SOURCES.md). If you received this as an archive with marks already installed, read [`NOTICE.md`](NOTICE.md) before doing anything with it. |
 | MLS Tifo, MLS Streets, DIN Next Pro font binaries | Commercially licensed. | Every font stack names the licensed original **first**, so a machine with the real fonts uses them. Everyone else falls back to a vetted open-source substitute. See [`assets/fonts/README.md`](assets/fonts/README.md). |
 | Invented "official" values | MLS publishes no public brand-colour specification. | Every value carries a confidence rating. See [`docs/15-sourcing-and-confidence.md`](docs/15-sourcing-and-confidence.md). Verify with MLS Brand before any print, licensing or partner use. |
 
@@ -71,7 +71,15 @@ npm install          # no runtime dependencies; scripts only
 npm run build        # regenerate everything in dist/
 npm run verify       # contrast audit + token integrity + render check
 npm start            # serve the gallery at :4173
+npm run package      # zip it up, without marks by default
 ```
+
+`npm run package -- --with-marks --with-decks` includes an installed set of
+marks and the rendered reference decks; add `--with-next-clubs` for the MLS NEXT
+member-club marks, which are third-party and used by no layout. The default
+excludes all three, mirroring what git tracks — see [`NOTICE.md`](NOTICE.md) for
+why that is the default. Whatever a build leaves out is stripped from the
+manifest it ships, so `npm run verify` passes on a fresh unzip.
 
 Or just use the built files — `dist/` is committed.
 
@@ -97,7 +105,7 @@ Nothing in `dist/` is hand-edited. Sources are `tokens/tokens.json` and `data/cl
 Push it:
 
 ```bash
-git init && git add -A && git commit -m "MLS Design System v2.0.0"
+git init && git add -A && git commit -m "MLS Design System v2.2.0"
 gh repo create mls-design-system --private --source=. --push
 ```
 
@@ -119,6 +127,7 @@ Groups used: `Brand`, `Colors`, `Type`, `Spacing`, `Components`, `Clubs`, `Docum
 
 ```
 claude/CLAUDE.md          Machine-first brief. Claude reads this first.
+claude/SETUP.md           Paste-ready copy for onboarding this into Claude Design.
 docs/                     The brand book. 19 chapters, human-readable.
 tokens/tokens.json        Token source of truth (W3C DTCG format).
 data/clubs.json           All 30 clubs: names, tricodes, colours, confidence ratings.

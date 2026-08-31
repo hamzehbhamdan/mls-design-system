@@ -12,7 +12,7 @@ Nothing in this repository grants any right to use those marks. Trademark law is
 
 ## What is not in this repository, and why
 
-**No logo or crest files.** No MLS crest, no club crests, no wordmarks, no partner marks. The `.mls-crest` component is an empty socket with published clear-space and minimum-size rules already enforced. Official assets should be obtained from MLS Brand or the relevant club and placed in `assets/logo/`.
+**No logo or crest files in git.** No MLS crest, no club crests, no wordmarks, no partner marks are committed. `.gitignore` excludes everything under `assets/logo/`, and with nothing installed the `.mls-crest` component is an empty socket with published clear-space and minimum-size rules already enforced. Official assets should be obtained from MLS Brand or the relevant club and installed with `scripts/install-logos.mjs`. **A copy of this project distributed as an archive may contain an installed set** — see "Marks" below, because that changes what you may do with it.
 
 **No font binaries.** MLS Tifo (MLS Headline / Standard / Micro), MLS Streets, MLS Stands, MLS Pitch and DIN Next Pro are commercially licensed typefaces. This repository names them at the head of each font stack so that a licensed installation uses them, and specifies openly licensed substitutes for everyone else. See `assets/fonts/README.md`.
 
@@ -34,3 +34,28 @@ MLS has not published a public brand-colour specification, a public league-level
 ## Contributing corrections
 
 If you have access to official values that contradict anything here, correcting `tokens/tokens.json` or `data/clubs.json` and re-running `npm run build` propagates the fix through every output format. Please raise the `confidence` field at the same time and note the source.
+
+## Marks
+
+No MLS, club or league-property marks are committed to this repository.
+`scripts/install-logos.mjs` installs marks that **you** have obtained and are
+entitled to use; it does not fetch, bundle or redistribute anything.
+
+If you install marks, be aware that you are adding trademarked material to your
+copy of the project. Keep that copy private, do not publish it, and do not
+redistribute the marks. Internal use inside MLS or by a party MLS has licensed
+is a different matter from a public repository, and only you can know which one
+you are in. `.gitignore` excludes `assets/logo/` for exactly this reason — an
+installed set will not be committed unless you deliberately override it.
+
+**If you received this project as an archive containing marks under
+`assets/logo/`,** they were installed by whoever packaged it, from files they
+held. Their presence is not a licence. Do not push that archive to a public
+repository, publish it, or pass the marks on. Deleting `assets/logo/` and
+re-running `npm run build` returns the system to lettered sockets, and every
+layout, preview and check is designed to keep working in that state.
+
+This applies equally to the MLS NEXT, MLS NEXT Cup and MLS NEXT Fest marks under
+`assets/logo/properties/`, and to the MLS NEXT member-club marks under
+`assets/logo/next-clubs/`, which belong to third-party youth organisations
+rather than to MLS.
