@@ -1,5 +1,7 @@
 # The 2027 transition
 
+*Facts in this chapter reviewed 16 November 2026. The rest of the system was compiled in August 2026.*
+
 MLS is in the middle of the largest structural change in its history. Any brand or product work done now will outlive the current season vocabulary, so this chapter exists to keep the rest of the system from going stale silently.
 
 **Design consequence up front: the crest is not changing.** The "new era" language attaches entirely to the calendar and competition format. MLS is reframing meaning, not redrawing marks. Everything in chapters 02 through 07 survives this.
@@ -18,13 +20,15 @@ The 2026 season runs on the legacy spring-to-fall calendar, with a mid-season br
 
 ## 2027 MLS Sprint Season — the bridge
 
-This is the official name and it is now controlled vocabulary. Announced 19 March 2026.
+This is the official name and it is now controlled vocabulary. Announced 19 March 2026; schedule released **29 October 2026**.
 
 - **Window:** February to May 2027, inclusive of playoffs and MLS Cup
+- **Opening weekend:** **19 February 2027**, Inter Miami CF v FC Cincinnati first, then thirteen more matches across the Saturday and Sunday
+- **Decision Day 2027:** **8 May 2027**, the close of the regular season
 - **Regular season:** 14 matches — 7 home, 7 away, conference opponents only, each once
 - **Playoffs:** top 8 per conference, 16 clubs, single-elimination bracket per conference
 - **Hosting:** every playoff match including MLS Cup is hosted by the club higher in the final 2027 Supporters' Shield standings
-- **Final:** East champion v West champion, **2027 MLS Cup presented by Audi**, May 2027
+- **Final:** East champion v West champion, **2027 MLS Cup presented by Audi**, **Memorial Day weekend**, May 2027. The round-by-round postseason schedule is still to be announced
 - **Supporters' Shield: retained**, awarded on best overall regular-season record, governing home-field advantage throughout and carrying a Concacaf Champions Cup berth
 
 MLS's own framing: *"fast-paced, high-stakes"*, where *"every game has high stakes"*, under the banner **"A New Era for Major League Soccer."**
@@ -37,12 +41,13 @@ MLS's own framing: *"fast-paced, high-stakes"*, where *"every game has high stak
 - **Winter break:** play pauses mid-December, no matches in January, resumes February
 - MLS states **91%** of matches fall inside the current season window despite the flip
 - The league says it is introducing *"a new regular season format that blends elements of the global game with North American sports traditions"* and will review potential adjustments to the playoff format
+- **The two-non-league-competitions cap is gone.** Reported 2 September 2026: MLS has lifted the rule limiting a club to two non-league competitions per season. All **27 US-based clubs** enter the **2027 U.S. Open Cup**, first round July 2027, immediately before the 2027–28 season opens, alongside Leagues Cup and Concacaf Champions Cup participation. The three Canadian clubs remain ineligible for the Open Cup and continue in the Canadian Championship
 
 ### Qualification off the Sprint Season
 
 - **2028 Concacaf Champions Cup (5–6 berths):** MLS Cup winner, Supporters' Shield winner, both conference regular-season winners, then next-best by Shield standings
 - **2028 Leagues Cup:** top 9 per conference (18 clubs)
-- **2028 U.S. Open Cup:** format to be announced by U.S. Soccer
+- **2028 U.S. Open Cup:** format to be announced by U.S. Soccer. US-based club participation is no longer capped — see the cap change above
 - **2028 Canadian Championship:** all three Canadian clubs continue
 
 ---
@@ -56,6 +61,12 @@ Multiple outlets report that 2027–28 will replace the Eastern/Western conferen
 **Treat as strongly expected but not officially announced. Do not state division names or alignments — those are speculative in every source.**
 
 Practical consequence for anyone building now: **do not hard-code "Eastern" and "Western" as the only possible groupings.** `data/clubs.json` carries a `conference` field per club; if divisions arrive, that field changes and the standings component should not need rewriting to accommodate it.
+
+### Vancouver relocation — open
+
+A Las Vegas investor group's formal offer to buy the **Vancouver Whitecaps** and relocate the club reached the league office on 30 April 2026 and is **unresolved as of November 2026**. Any sale and move needs an MLS Board of Governors vote and a negotiated relocation fee; local business and provincial efforts to keep the club in Vancouver are active, and the league has signalled a preference for a Vancouver solution. No vote has been scheduled and nothing is decided.
+
+This is the live risk to club data — not expansion. Treat club name, market and tricode as values, never as constants: `data/clubs.json` is the single source for all three, and the Whitecaps entry is the most exposed row in the file.
 
 ---
 
@@ -93,7 +104,8 @@ Note the tonal continuity with [08 Voice](08-voice-and-tone.md): foundation ackn
 | "Regular Season", offseason and transfer-window vocabulary | **High** | July 2027 |
 | Playoff round names | **Medium** | Format review, TBA |
 | Eastern/Western conference structure | **Medium** | If the divisional restructure is confirmed |
-| Club count and `data/clubs.json` | **Low** — no expansion announced | New club award |
+| Club count | **Low** — no expansion announced | New club award |
+| Club identity and market in `data/clubs.json` | **Medium** | Vancouver relocation bid, live and unresolved — needs a Board of Governors vote |
 | Crest, colour, typography, devices | **Low** | No signal of a refresh |
 | Voice, vocabulary, editorial style | **Low** | Stable across the transition |
 

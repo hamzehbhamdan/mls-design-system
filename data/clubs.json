@@ -7,6 +7,7 @@
     "eastern": 15,
     "western": 15,
     "compiledOn": "2026-08-10",
+    "lastReviewed": "2026-11-16",
     "confidenceLegend": {
       "high": "Corroborated by the club's own site or launch release plus at least one independent source.",
       "medium": "Multiple third-party sources agree, no direct club-published hex found.",
@@ -94,7 +95,7 @@
       "secondReference": ["the Galaxy"], "conference": "Western", "firstSeason": 1996,
       "colors": { "primary": { "name": "Navy", "hex": "#00245D" }, "secondary": { "name": "Gold", "hex": "#FFD200" }, "tertiary": { "name": "Blue", "hex": "#0065A4" } },
       "confidence": "low",
-      "notes": "Five competing golds. Club appears to carry both a Gold and a Dark Gold. No periods in 'LA' -- contrast with D.C. United. Only club with a gold five-title star."
+      "notes": "Five competing golds. Club appears to carry both a Gold and a Dark Gold. No periods in 'LA' -- contrast with D.C. United. Crest marking moved on 8 January 2026: six stars, three per side above the crest, one per MLS Cup title, debuting on the 2026 kits. The league's five-title gold star no longer describes what the club wears."
     },
     {
       "slug": "lafc", "tricode": "LAFC", "name": "Los Angeles Football Club", "short": "LAFC",
@@ -209,7 +210,7 @@
       "slug": "van", "tricode": "VAN", "name": "Vancouver Whitecaps FC", "short": "Vancouver",
       "secondReference": ["the Whitecaps", "Vancouver"], "conference": "Western", "firstSeason": 2011,
       "colors": { "primary": { "name": "Deep Sea Blue", "hex": "#12284C" }, "secondary": { "name": "Whitecaps Blue", "hex": "#8AB7E9" }, "tertiary": { "name": "White", "hex": "#FFFFFF" } },
-      "confidence": "medium", "notes": null
+      "confidence": "medium", "notes": "Ownership and market under review: a Las Vegas investor group's offer to buy the club and relocate it reached the league office on 30 April 2026 and is unresolved as of November 2026. A move needs an MLS Board of Governors vote and a relocation fee. Palette and naming stand until a sale closes; this is the most relocation-exposed entry in this file."
     }
   ]
 }

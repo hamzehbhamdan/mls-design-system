@@ -90,7 +90,7 @@ Positioning language from the guidelines is worth quoting because it explains th
 Separate from the crest system, effective 2021:
 
 - The **defending MLS Cup champion** wears a **silver** MLS crest on the jersey sleeve for the following season, in place of the standard badge.
-- A **gold star** sits above the club crest for clubs with **five MLS Cup titles**. Currently only LA Galaxy.
+- A **gold star** sits above the club crest for clubs with **five MLS Cup titles**. LA Galaxy is the only club to have passed that threshold — and its own execution has since moved on: on **8 January 2026** the club adopted a **six-star formation**, three stars per side above the crest, one per MLS Cup title, debuting on the 2026 kits. Read the five-title gold star as the league-documented rule and the club's current crest as the thing actually on the shirt. Verify any star treatment against the club, not against this line.
 
 ## The component
 
@@ -108,7 +108,7 @@ While empty it renders a dashed box with the tricode. That placeholder is delibe
 
 ## Has the crest changed for 2026 or 2027?
 
-**No.** There is no announced crest change, brand refresh or new visual identity for the 2026 or 2027 eras. The 2014/2015 crest remains current as of August 2026.
+**No.** There is no announced crest change, brand refresh or new visual identity for the 2026 or 2027 eras. The 2014/2015 crest remains current as of November 2026.
 
 The league's "new era" language attaches exclusively to the **calendar and competition format** — see [14 The 2027 transition](14-the-2027-transition.md) — not to the identity.
 

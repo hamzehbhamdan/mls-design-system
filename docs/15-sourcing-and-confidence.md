@@ -20,7 +20,7 @@ Compiled August 2026 from public sources. This chapter exists so that anyone usi
 - Crest authorship (Athletics + Berliner Benson), launch date (18 September 2014), and rollout for the 2015 season
 - Element-by-element crest symbolism: perimeter, 45° slash, three stars = For Club / For Country / For Community, the open right half, the two-halves-of-a-match split
 - The club-colourable system, described by MLS as "flexible" and by Athletics as "a flexible template"
-- The champions marking system: silver crest for the defending champion, gold star at five titles
+- The champions marking system: silver crest for the defending champion, gold star at five titles — see [02 Logo and crest](02-logo-and-crest.md) for LA Galaxy's six-star execution from January 2026, which supersedes the five-title description in practice
 - **MLS Tifo** (F37 Foundry) as the current brand typeface — Headline / Standard / Micro, four variable axes, one file
 - **MLS Streets / Stands / Pitch** (Rick Banks, F37, 2020) — the tri-line kit face, its Penrose Triangle concept, and its derivation from the crest's three stars
 - The full 2027 Sprint Season structure and the 2027–28 calendar

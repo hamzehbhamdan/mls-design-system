@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased — fact refresh, 2026-11-16
+
+Nothing in the design layer moved. The crest, the thirty club themes, the palettes, the type stacks and the component set are unchanged. This is a currency pass over the seasonal and competition claims, checked against public reporting on 16 November 2026.
+
+### Corrected
+- **LA Galaxy's champions marking.** [02 Logo and crest](docs/02-logo-and-crest.md) and the club's note in `data/clubs.json` described a gold star for five MLS Cup titles, Galaxy only. The club adopted a **six-star formation** — three per side above the crest, one per title — on 8 January 2026, debuting on the 2026 kits. The league-documented five-title rule is retained as the rule; the Galaxy line now says what is actually on the shirt. [15 Sourcing](docs/15-sourcing-and-confidence.md) carries the same pointer.
+
+### Added
+- **The 2027 Sprint Season schedule**, released 29 October 2026 and absent from the August compilation: opening weekend **19 February 2027** (Inter Miami v FC Cincinnati first), regular season closing on **Decision Day, 8 May 2027**, MLS Cup on **Memorial Day weekend**. The round-by-round postseason schedule is still unannounced, and [14 The 2027 transition](docs/14-the-2027-transition.md) says so.
+- **The non-league competition cap is gone.** Reported 2 September 2026. All 27 US-based clubs enter the 2027 U.S. Open Cup, first round July 2027. The old "format to be announced" line understated a settled change.
+- **The Vancouver relocation bid**, which the staleness table had no row for. A Las Vegas group's offer to buy and move the Whitecaps reached the league office on 30 April 2026 and is unresolved; it needs a Board of Governors vote. The club-data risk was rated "Low — no expansion announced", which was the wrong risk: expansion is quiet, relocation is not. Club identity and market now carry their own **Medium** row, the Whitecaps entry in `data/clubs.json` is annotated, and the chapter states the rule that club name, market and tricode are values rather than constants.
+- `meta.lastReviewed` in `data/clubs.json`, and a review stamp at the head of chapter 14, so the next reader can see how old the seasonal facts are without diffing.
+
+### Confirmed still accurate
+- No MLS crest change, brand refresh or new visual identity, as of November 2026.
+- Thirty clubs, fifteen per conference. No 31st club awarded.
+- The five-division single-table restructure remains **reported, not announced** — MLS has published no divisional alignment and no new playoff format. The chapter's refusal to name divisions stands.
+- The Garber → Berg succession and its dates, the Apple TV / Season Pass change, and the Audi naming constructions.
+
 ## 2.3.0 — 2026-08-30
 
 The installer meets real asset packs, and the marks stop being hypothetical.

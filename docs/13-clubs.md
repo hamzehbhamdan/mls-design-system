@@ -123,7 +123,7 @@ See [09 Vocabulary](09-vocabulary.md) for suffix placement, second-reference for
 
 **Inter Miami CF** — CF trails the name. Contrast with CF Montreal, where CF leads.
 
-**LA Galaxy** — Five competing golds. Club appears to carry both a Gold and a Dark Gold. No periods in 'LA' -- contrast with D.C. United. Only club with a gold five-title star.
+**LA Galaxy** — Five competing golds. Club appears to carry both a Gold and a Dark Gold. No periods in 'LA' -- contrast with D.C. United. Crest marking moved on 8 January 2026: six stars, three per side above the crest, one per MLS Cup title, debuting on the 2026 kits. The league's five-title gold star no longer describes what the club wears.
 
 **Los Angeles Football Club** — Six near-identical golds in circulation. 'Glory Red' appears on a single crowd source only. Never 'LA FC' with a space.
 
@@ -150,3 +150,5 @@ See [09 Vocabulary](09-vocabulary.md) for suffix placement, second-reference for
 **St. Louis CITY SC** — CITY is all caps -- confirmed on the club's own site. MLS's scores page renders 'St. Louis City SC', which contradicts the club's own branding; follow the club. Club officially names four colours but publishes no hex values for the last two. Reserve side is CITY2.
 
 **Toronto FC** — Unresolved three-way split on the red: #A6192E (PMS 187), #AA182C (ESPN), #B81137 (club site). One source cites Pantone 200 C, which converts to none of them.
+
+**Vancouver Whitecaps FC** — Ownership and market under review: a Las Vegas investor group's offer to buy the club and relocate it reached the league office on 30 April 2026 and is unresolved as of November 2026. A move needs an MLS Board of Governors vote and a relocation fee. Palette and naming stand until a sale closes; this is the most relocation-exposed entry in this file.
